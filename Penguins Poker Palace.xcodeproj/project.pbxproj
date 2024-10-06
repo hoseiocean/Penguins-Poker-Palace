@@ -6,14 +6,66 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		116D412B2CB3215F00F55A08 /* VideoPokerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D411E2CB3215F00F55A08 /* VideoPokerApp.swift */; };
+		116D412C2CB3215F00F55A08 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41292CB3215F00F55A08 /* ContentView.swift */; };
+		116D412D2CB3215F00F55A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 116D41252CB3215F00F55A08 /* Assets.xcassets */; };
+		116D412E2CB3215F00F55A08 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 116D41272CB3215F00F55A08 /* Preview Assets.xcassets */; };
+		116D41302CB321AE00F55A08 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D412F2CB321AE00F55A08 /* Card.swift */; };
+		116D41352CB3220100F55A08 /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41342CB3220100F55A08 /* Suit.swift */; };
+		116D41372CB3220F00F55A08 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41362CB3220F00F55A08 /* Rank.swift */; };
+		116D41392CB3222000F55A08 /* Hand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41382CB3222000F55A08 /* Hand.swift */; };
+		116D413B2CB3223A00F55A08 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D413A2CB3223A00F55A08 /* Deck.swift */; };
+		116D413D2CB3224F00F55A08 /* HandRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D413C2CB3224F00F55A08 /* HandRank.swift */; };
+		116D413F2CB3227300F55A08 /* InMemoryGameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D413E2CB3227300F55A08 /* InMemoryGameRepository.swift */; };
+		116D41422CB3228E00F55A08 /* GameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41412CB3228E00F55A08 /* GameRepository.swift */; };
+		116D41442CB322A200F55A08 /* VideoPokerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41432CB322A200F55A08 /* VideoPokerViewModel.swift */; };
+		116D41462CB3234000F55A08 /* VideoPokerGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41452CB3234000F55A08 /* VideoPokerGame.swift */; };
+		116D41492CB326DB00F55A08 /* MockVideoPokerGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41482CB326DB00F55A08 /* MockVideoPokerGame.swift */; };
+		116D414B2CB326FD00F55A08 /* MockGameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D414A2CB326FD00F55A08 /* MockGameRepository.swift */; };
+		116D415E2CB32FB100F55A08 /* CardFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D415D2CB32FB100F55A08 /* CardFactory.swift */; };
+		116D41602CB32FF300F55A08 /* RandomCardFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D415F2CB32FF300F55A08 /* RandomCardFactory.swift */; };
+		116D41622CB3352A00F55A08 /* CardColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41612CB3352300F55A08 /* CardColor.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		116D41572CB32CB400F55A08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 115441002CB31CC8006EC8B1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 115441072CB31CC8006EC8B1;
+			remoteInfo = "Penguins Poker Palace";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		115441082CB31CC8006EC8B1 /* Penguins Poker Palace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Penguins Poker Palace.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		116D411E2CB3215F00F55A08 /* VideoPokerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPokerApp.swift; sourceTree = "<group>"; };
+		116D41252CB3215F00F55A08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		116D41272CB3215F00F55A08 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		116D41292CB3215F00F55A08 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		116D412F2CB321AE00F55A08 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		116D41342CB3220100F55A08 /* Suit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suit.swift; sourceTree = "<group>"; };
+		116D41362CB3220F00F55A08 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
+		116D41382CB3222000F55A08 /* Hand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hand.swift; sourceTree = "<group>"; };
+		116D413A2CB3223A00F55A08 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		116D413C2CB3224F00F55A08 /* HandRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandRank.swift; sourceTree = "<group>"; };
+		116D413E2CB3227300F55A08 /* InMemoryGameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryGameRepository.swift; sourceTree = "<group>"; };
+		116D41412CB3228E00F55A08 /* GameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRepository.swift; sourceTree = "<group>"; };
+		116D41432CB322A200F55A08 /* VideoPokerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPokerViewModel.swift; sourceTree = "<group>"; };
+		116D41452CB3234000F55A08 /* VideoPokerGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPokerGame.swift; sourceTree = "<group>"; };
+		116D41482CB326DB00F55A08 /* MockVideoPokerGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockVideoPokerGame.swift; sourceTree = "<group>"; };
+		116D414A2CB326FD00F55A08 /* MockGameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGameRepository.swift; sourceTree = "<group>"; };
+		116D41532CB32CB400F55A08 /* VideoPokerAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VideoPokerAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		116D415D2CB32FB100F55A08 /* CardFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFactory.swift; sourceTree = "<group>"; };
+		116D415F2CB32FF300F55A08 /* RandomCardFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomCardFactory.swift; sourceTree = "<group>"; };
+		116D41612CB3352300F55A08 /* CardColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		1154410A2CB31CC8006EC8B1 /* Penguins Poker Palace */ = {
+		116D41542CB32CB400F55A08 /* VideoPokerAppTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Penguins Poker Palace";
+			path = VideoPokerAppTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,13 +78,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		116D41502CB32CB400F55A08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		115440FF2CB31CC8006EC8B1 = {
 			isa = PBXGroup;
 			children = (
-				1154410A2CB31CC8006EC8B1 /* Penguins Poker Palace */,
+				116D412A2CB3215F00F55A08 /* Penguins Poker Palace */,
+				116D41542CB32CB400F55A08 /* VideoPokerAppTests */,
 				115441092CB31CC8006EC8B1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +101,155 @@
 			isa = PBXGroup;
 			children = (
 				115441082CB31CC8006EC8B1 /* Penguins Poker Palace.app */,
+				116D41532CB32CB400F55A08 /* VideoPokerAppTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		116D41192CB3215F00F55A08 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				116D41412CB3228E00F55A08 /* GameRepository.swift */,
+				116D413E2CB3227300F55A08 /* InMemoryGameRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		116D411A2CB3215F00F55A08 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				116D41192CB3215F00F55A08 /* Repositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		116D411B2CB3215F00F55A08 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				116D412F2CB321AE00F55A08 /* Card.swift */,
+				116D41612CB3352300F55A08 /* CardColor.swift */,
+				116D413A2CB3223A00F55A08 /* Deck.swift */,
+				116D41382CB3222000F55A08 /* Hand.swift */,
+				116D413C2CB3224F00F55A08 /* HandRank.swift */,
+				116D41362CB3220F00F55A08 /* Rank.swift */,
+				116D41342CB3220100F55A08 /* Suit.swift */,
+				116D41452CB3234000F55A08 /* VideoPokerGame.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		116D411C2CB3215F00F55A08 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		116D411D2CB3215F00F55A08 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				116D411B2CB3215F00F55A08 /* Entities */,
+				116D415C2CB32F9400F55A08 /* Factories */,
+				116D411C2CB3215F00F55A08 /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		116D411F2CB3215F00F55A08 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				116D411E2CB3215F00F55A08 /* VideoPokerApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		116D41202CB3215F00F55A08 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		116D41212CB3215F00F55A08 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				116D411F2CB3215F00F55A08 /* App */,
+				116D41202CB3215F00F55A08 /* Persistence */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		116D41222CB3215F00F55A08 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				116D41432CB322A200F55A08 /* VideoPokerViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		116D41232CB3215F00F55A08 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				116D41292CB3215F00F55A08 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		116D41242CB3215F00F55A08 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				116D41222CB3215F00F55A08 /* ViewModels */,
+				116D41232CB3215F00F55A08 /* Views */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		116D41262CB3215F00F55A08 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				116D41252CB3215F00F55A08 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		116D41282CB3215F00F55A08 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				116D41272CB3215F00F55A08 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		116D412A2CB3215F00F55A08 /* Penguins Poker Palace */ = {
+			isa = PBXGroup;
+			children = (
+				116D411D2CB3215F00F55A08 /* Domain */,
+				116D411A2CB3215F00F55A08 /* Data */,
+				116D41242CB3215F00F55A08 /* Presentation */,
+				116D41212CB3215F00F55A08 /* Framework */,
+				116D41262CB3215F00F55A08 /* Resources */,
+				116D41472CB326C100F55A08 /* Mocks */,
+				116D41282CB3215F00F55A08 /* Preview Content */,
+			);
+			path = "Penguins Poker Palace";
+			sourceTree = "<group>";
+		};
+		116D41472CB326C100F55A08 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				116D414A2CB326FD00F55A08 /* MockGameRepository.swift */,
+				116D41482CB326DB00F55A08 /* MockVideoPokerGame.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		116D415C2CB32F9400F55A08 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				116D415F2CB32FF300F55A08 /* RandomCardFactory.swift */,
+				116D415D2CB32FB100F55A08 /* CardFactory.swift */,
+			);
+			path = Factories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -60,15 +267,35 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				1154410A2CB31CC8006EC8B1 /* Penguins Poker Palace */,
-			);
 			name = "Penguins Poker Palace";
 			packageProductDependencies = (
 			);
 			productName = "Penguins Poker Palace";
 			productReference = 115441082CB31CC8006EC8B1 /* Penguins Poker Palace.app */;
 			productType = "com.apple.product-type.application";
+		};
+		116D41522CB32CB400F55A08 /* VideoPokerAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 116D41592CB32CB400F55A08 /* Build configuration list for PBXNativeTarget "VideoPokerAppTests" */;
+			buildPhases = (
+				116D414F2CB32CB400F55A08 /* Sources */,
+				116D41502CB32CB400F55A08 /* Frameworks */,
+				116D41512CB32CB400F55A08 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				116D41582CB32CB400F55A08 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				116D41542CB32CB400F55A08 /* VideoPokerAppTests */,
+			);
+			name = VideoPokerAppTests;
+			packageProductDependencies = (
+			);
+			productName = VideoPokerAppTests;
+			productReference = 116D41532CB32CB400F55A08 /* VideoPokerAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -82,6 +309,10 @@
 				TargetAttributes = {
 					115441072CB31CC8006EC8B1 = {
 						CreatedOnToolsVersion = 16.1;
+					};
+					116D41522CB32CB400F55A08 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = 115441072CB31CC8006EC8B1;
 					};
 				};
 			};
@@ -100,12 +331,22 @@
 			projectRoot = "";
 			targets = (
 				115441072CB31CC8006EC8B1 /* Penguins Poker Palace */,
+				116D41522CB32CB400F55A08 /* VideoPokerAppTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		115441062CB31CC8006EC8B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				116D412D2CB3215F00F55A08 /* Assets.xcassets in Resources */,
+				116D412E2CB3215F00F55A08 /* Preview Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		116D41512CB32CB400F55A08 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -119,10 +360,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				116D41492CB326DB00F55A08 /* MockVideoPokerGame.swift in Sources */,
+				116D41442CB322A200F55A08 /* VideoPokerViewModel.swift in Sources */,
+				116D41462CB3234000F55A08 /* VideoPokerGame.swift in Sources */,
+				116D41622CB3352A00F55A08 /* CardColor.swift in Sources */,
+				116D415E2CB32FB100F55A08 /* CardFactory.swift in Sources */,
+				116D413D2CB3224F00F55A08 /* HandRank.swift in Sources */,
+				116D41602CB32FF300F55A08 /* RandomCardFactory.swift in Sources */,
+				116D413B2CB3223A00F55A08 /* Deck.swift in Sources */,
+				116D412B2CB3215F00F55A08 /* VideoPokerApp.swift in Sources */,
+				116D41302CB321AE00F55A08 /* Card.swift in Sources */,
+				116D414B2CB326FD00F55A08 /* MockGameRepository.swift in Sources */,
+				116D41392CB3222000F55A08 /* Hand.swift in Sources */,
+				116D41352CB3220100F55A08 /* Suit.swift in Sources */,
+				116D41372CB3220F00F55A08 /* Rank.swift in Sources */,
+				116D41422CB3228E00F55A08 /* GameRepository.swift in Sources */,
+				116D413F2CB3227300F55A08 /* InMemoryGameRepository.swift in Sources */,
+				116D412C2CB3215F00F55A08 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		116D414F2CB32CB400F55A08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		116D41582CB32CB400F55A08 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 115441072CB31CC8006EC8B1 /* Penguins Poker Palace */;
+			targetProxy = 116D41572CB32CB400F55A08 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		115441142CB31CC9006EC8B1 /* Debug */ = {
@@ -302,6 +575,42 @@
 			};
 			name = Release;
 		};
+		116D415A2CB32CB400F55A08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 35HGB43CC5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.happios.VideoPokerAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Penguins Poker Palace.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Penguins Poker Palace";
+			};
+			name = Debug;
+		};
+		116D415B2CB32CB400F55A08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 35HGB43CC5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.happios.VideoPokerAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Penguins Poker Palace.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Penguins Poker Palace";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -319,6 +628,15 @@
 			buildConfigurations = (
 				115441172CB31CC9006EC8B1 /* Debug */,
 				115441182CB31CC9006EC8B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		116D41592CB32CB400F55A08 /* Build configuration list for PBXNativeTarget "VideoPokerAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				116D415A2CB32CB400F55A08 /* Debug */,
+				116D415B2CB32CB400F55A08 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
