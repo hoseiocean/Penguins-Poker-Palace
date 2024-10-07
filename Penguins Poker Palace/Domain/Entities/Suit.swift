@@ -31,7 +31,7 @@ enum Suit: String, CaseIterable {
   }
   
   var name: String {
-    rawValue
+    String(localized: String.LocalizationValue(rawValue))
   }
   
   var symbol: String {
