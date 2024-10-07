@@ -23,6 +23,21 @@ enum HandRank: Int {
     }
   }
   
+  var winnings: Int {
+    switch self {
+      case .royalFlush: 250
+      case .straightFlush: 50
+      case .fourOfAKind: 25
+      case .fullHouse: 9
+      case .flush: 6
+      case .straight: 4
+      case .threeOfAKind: 3
+      case .twoPair: 2
+      case .onePair: 1
+      case .none: 0
+    }
+  }
+  
   private static func areImmediatlyConsecutive(ranks: [Rank]) -> Bool {
     let sortedRanks = ranks.sorted()
     let consecutiveRanksPairs = zip(sortedRanks, sortedRanks.dropFirst())
