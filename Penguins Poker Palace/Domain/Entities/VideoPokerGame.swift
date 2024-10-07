@@ -39,6 +39,11 @@ class VideoPokerGame {
     handState = .finalHand
     return currentHand
   }
+
+  func getHandName() -> String {
+    let handRank = evaluateHand()
+    return handRank.name
+  }
   
   func resetGame() {
     deck.reset()

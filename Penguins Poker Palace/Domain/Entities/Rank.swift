@@ -12,29 +12,29 @@ enum Rank: Int, CaseIterable {
   
   var name: String {
     switch self {
-      case .two: String(localized: "Two")
-      case .three: String(localized: "Three")
-      case .four: String(localized: "Four")
-      case .five: String(localized: "Five")
-      case .six: String(localized: "Six")
-      case .seven: String(localized: "Seven")
-      case .eight: String(localized: "Eight")
-      case .nine: String(localized: "Nine")
-      case .ten: String(localized: "Ten")
-      case .jack: String(localized: "Jack")
-      case .queen: String(localized: "Queen")
-      case .king: String(localized: "King")
-      case .ace: String(localized: "Ace")
+      case .two: String(localized: "rank_name_two")
+      case .three: String(localized: "rank_name_three")
+      case .four: String(localized: "rank_name_four")
+      case .five: String(localized: "rank_name_five")
+      case .six: String(localized: "rank_name_six")
+      case .seven: String(localized: "rank_name_seven")
+      case .eight: String(localized: "rank_name_eight")
+      case .nine: String(localized: "rank_name_nine")
+      case .ten: String(localized: "rank_name_ten")
+      case .jack: String(localized: "rank_name_jack")
+      case .queen: String(localized: "rank_name_queen")
+      case .king: String(localized: "rank_name_king")
+      case .ace: String(localized: "rank_name_ace")
     }
   }
   
   var symbol: String {
     switch self {
       case .two, .three, .four, .five, .six, .seven, .eight, .nine, .ten: String(rawValue)
-      case .jack: String(localized: "J")
-      case .queen: String(localized: "Q")
-      case .king: String(localized: "K")
-      case .ace: String(localized: "A")
+      case .jack: String(localized: "rank_symbol_j")
+      case .queen: String(localized: "rank_symbol_q")
+      case .king: String(localized: "rank_symbol_k")
+      case .ace: String(localized: "rank_symbol_a")
     }
   }
 }

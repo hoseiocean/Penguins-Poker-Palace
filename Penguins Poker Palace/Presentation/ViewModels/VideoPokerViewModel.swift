@@ -10,6 +10,7 @@ import Foundation
 
 class VideoPokerViewModel: ObservableObject {
   @Published var currentHand: [Card] = []
+  @Published var handName: String = ""
   
   private let game: VideoPokerGame
   private let repository: GameRepository
@@ -22,16 +23,19 @@ class VideoPokerViewModel: ObservableObject {
   
   func dealHand() {
     currentHand = game.dealHand()
+    handName = game.getHandName()
   }
   
   func exchangeSelectedCards(indices: [Int]) {
     currentHand = game.exchangeCards(indices: indices)
+    handName = game.getHandName()
     saveGameState()
   }
   
   func loadGameState() {
     if let loadedGame = repository.loadGameState() {
       currentHand = loadedGame.currentHand
+      handName = game.getHandName()
     } else {
       dealHand()
     }
@@ -40,6 +44,7 @@ class VideoPokerViewModel: ObservableObject {
   func resetGame() {
     game.resetGame()
     currentHand = game.currentHand
+    handName = game.getHandName()
     saveGameState()
   }
 

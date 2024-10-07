@@ -9,10 +9,10 @@ import SwiftUICore
 
 
 enum Suit: String, CaseIterable {
-  case clubs = "Clubs"
-  case diamonds = "Diamonds"
-  case hearts = "Hearts"
-  case spades = "Spades"
+  case clubs = "suit_clubs"
+  case diamonds = "suit_diamonds"
+  case hearts = "suit_hearts"
+  case spades = "suit_spades"
   
   var color: CardColor {
     switch self {

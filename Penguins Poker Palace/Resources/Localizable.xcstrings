@@ -61,6 +61,12 @@
         }
       }
     },
+    "button_exchange_cards" : {
+
+    },
+    "button_new_game" : {
+
+    },
     "Clubs" : {
       "comment" : "Suit name",
       "extractionState" : "manual",
@@ -151,34 +157,6 @@
         }
       }
     },
-    "Exchange Cards" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Karten tauschen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Intercambiar Cartas"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Échanger Cartes"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "카드 교환"
-          }
-        }
-      }
-    },
     "Five" : {
       "comment" : "Rank name",
       "extractionState" : "manual",
@@ -205,35 +183,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "오"
-          }
-        }
-      }
-    },
-    "Flush" : {
-      "comment" : "Hand name",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Flush"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Color"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Couleur"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "플러시"
           }
         }
       }
@@ -268,63 +217,35 @@
         }
       }
     },
-    "Four of a Kind" : {
-      "comment" : "Hand name",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vierling"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Póker"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Carré"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "포카드"
-          }
-        }
-      }
+    "hand_flush" : {
+
     },
-    "Full House" : {
-      "comment" : "Hand name",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Full House"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Full"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Full"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "풀 하우스"
-          }
-        }
-      }
+    "hand_four_of_a_kind" : {
+
+    },
+    "hand_full_House" : {
+
+    },
+    "hand_high_card" : {
+
+    },
+    "hand_one_pair" : {
+
+    },
+    "hand_royal_flush" : {
+
+    },
+    "hand_straight" : {
+
+    },
+    "hand_straight_flush" : {
+
+    },
+    "hand_three_of_a_kind" : {
+
+    },
+    "hand_two_pair" : {
+
     },
     "Hearts" : {
       "comment" : "Suit name",
@@ -358,6 +279,7 @@
     },
     "High Card" : {
       "comment" : "Hand name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -505,34 +427,6 @@
         }
       }
     },
-    "New Game" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Neues Spiel"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nueva Partida"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nouvelle Partie"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "새 게임"
-          }
-        }
-      }
-    },
     "Nine" : {
       "comment" : "Rank name",
       "extractionState" : "manual",
@@ -559,35 +453,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "구"
-          }
-        }
-      }
-    },
-    "Pair" : {
-      "comment" : "Hand name",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ein Paar"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pareja"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Carte Haute"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "원 페어"
           }
         }
       }
@@ -652,34 +517,56 @@
         }
       }
     },
-    "Royal Flush" : {
-      "comment" : "Hand name",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Royale Flush"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Escalera Real de Color"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quinte Flush Royale"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "로얄 플러시"
-          }
-        }
-      }
+    "rank_name_ace" : {
+
+    },
+    "rank_name_eight" : {
+
+    },
+    "rank_name_five" : {
+
+    },
+    "rank_name_four" : {
+
+    },
+    "rank_name_jack" : {
+
+    },
+    "rank_name_king" : {
+
+    },
+    "rank_name_nine" : {
+
+    },
+    "rank_name_queen" : {
+
+    },
+    "rank_name_seven" : {
+
+    },
+    "rank_name_six" : {
+
+    },
+    "rank_name_ten" : {
+
+    },
+    "rank_name_three" : {
+
+    },
+    "rank_name_two" : {
+
+    },
+    "rank_symbol_a" : {
+
+    },
+    "rank_symbol_j" : {
+
+    },
+    "rank_symbol_k" : {
+
+    },
+    "rank_symbol_q" : {
+
     },
     "Seven" : {
       "comment" : "Rank name",
@@ -771,64 +658,6 @@
         }
       }
     },
-    "Straight" : {
-      "comment" : "Hand name",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Straße"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Escalera"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quinte"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "스트레이트"
-          }
-        }
-      }
-    },
-    "Straight Flush" : {
-      "comment" : "Hand name",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Straight Flush"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Escalera de Color"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quinte Flush"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "스트레이트 플러시"
-          }
-        }
-      }
-    },
     "Ten" : {
       "comment" : "Rank name",
       "extractionState" : "manual",
@@ -889,35 +718,6 @@
         }
       }
     },
-    "Three of a Kind" : {
-      "comment" : "Hand name",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Drilling"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Trío"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Brelan"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "트리플"
-          }
-        }
-      }
-    },
     "Two" : {
       "comment" : "Rank name",
       "extractionState" : "manual",
@@ -944,35 +744,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "이"
-          }
-        }
-      }
-    },
-    "Two Pair" : {
-      "comment" : "Hand name",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zwei Paare"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Doble Pareja"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Double Paire"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "투 페어"
           }
         }
       }

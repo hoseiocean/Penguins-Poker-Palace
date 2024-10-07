@@ -24,14 +24,18 @@ struct ContentView: View {
       }
       .padding()
       
-      Button("Exchange Cards") {
+      Text(viewModel.handName)
+        .font(.title2)
+        .padding()
+      
+      Button("button_exchange_cards") {
         viewModel.exchangeSelectedCards(indices: Array(selectedCards))
         selectedCards.removeAll()
       }
       .padding()
       .disabled(selectedCards.isEmpty)
       
-      Button("New Game") {
+      Button("button_new_game") {
         viewModel.resetGame()
         selectedCards.removeAll()
       }
