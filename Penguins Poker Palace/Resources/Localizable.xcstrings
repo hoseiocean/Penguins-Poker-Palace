@@ -2,7 +2,6 @@
   "sourceLanguage" : "en",
   "strings" : {
     "button_confirm_selection" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -37,7 +36,6 @@
       }
     },
     "button_new_game" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -70,6 +68,9 @@
           }
         }
       }
+    },
+    "button_ok" : {
+
     },
     "hand_flush" : {
       "localizations" : {
@@ -988,6 +989,21 @@
           }
         }
       }
+    },
+    "view_bet: %lld" : {
+
+    },
+    "view_game_state: %@" : {
+
+    },
+    "view_points: %lld" : {
+
+    },
+    "view_set_your_bet:" : {
+
+    },
+    "view_winnings: %lld" : {
+
     }
   },
   "version" : "1.0"

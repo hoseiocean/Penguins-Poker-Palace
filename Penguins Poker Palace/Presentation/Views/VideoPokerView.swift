@@ -7,15 +7,16 @@
 
 import SwiftUI
 
+
 struct VideoPokerView: View {
   @StateObject var viewModel: VideoPokerViewModel
-  
   @State private var selectedCards: Set<Int> = []
+  @State private var betInput: String = "1"
   
   var body: some View {
     VStack {
       HStack {
-        ForEach(0..<viewModel.currentHand.count, id: \.self) { index in
+        ForEach(viewModel.currentHand.indices, id: \.self) { index in
           CardView(card: viewModel.currentHand[index], isSelected: selectedCards.contains(index))
             .onTapGesture {
               toggleCardSelection(at: index)
@@ -28,19 +29,54 @@ struct VideoPokerView: View {
         .font(.title2)
         .padding()
       
-      let buttonTitle = String(localized: viewModel.handState == .initialHand ? "button_confirm_selection" : "button_new_game")
-      Button(buttonTitle) {
-        if viewModel.handState == .initialHand {
-          viewModel.exchangeSelectedCards(indices: Array(selectedCards))
-        } else {
-          viewModel.resetGame()
-        }
-        selectedCards.removeAll()
+      HStack {
+        Text("view_points: \(viewModel.totalPoints)")
+          .font(.title3)
+          .padding()
+        Text("view_bet: \(viewModel.currentBet)")
+          .font(.title3)
+          .padding()
+        Text("view_winnings: \(viewModel.winnings)")
+          .font(.title3)
+          .padding()
       }
-      .padding()
+      
+      Text("view_game_state: \(viewModel.handState == .initialHand ? "view_initial_hand" : "view_final_hand")")
+        .font(.title3)
+        .padding()
+      
+      HStack {
+        TextField("view_set_your_bet:", text: $betInput)
+          .keyboardType(.numberPad)
+          .textFieldStyle(RoundedBorderTextFieldStyle())
+          .frame(width: 100)
+          .padding()
+        
+        Button("button_ok") {
+          if let bet = Int(betInput) {
+            viewModel.setBet(bet)
+          }
+        }
+        .padding()
+      }
+      
+      if viewModel.handState == .initialHand {
+        Button("button_confirm_selection") {
+          viewModel.exchangeSelectedCards(indices: Array(selectedCards))
+          selectedCards.removeAll()
+        }
+        .padding()
+      } else {
+        Button("button_new_game") {
+          viewModel.startNewRound()
+          selectedCards.removeAll()
+        }
+        .padding()
+      }
     }
     .onAppear {
-      viewModel.dealHand()
+      viewModel.startNewRound()
+      selectedCards.removeAll()
     }
   }
   
