@@ -14,7 +14,7 @@ struct VideoPokerApp: App {
       let game = VideoPokerGame(deck: Deck())
       let repository = InMemoryGameRepository()
       let viewModel = VideoPokerViewModel(game: game, repository: repository)
-      ContentView(viewModel: viewModel)
+      VideoPokerView(viewModel: viewModel)
     }
   }
 }

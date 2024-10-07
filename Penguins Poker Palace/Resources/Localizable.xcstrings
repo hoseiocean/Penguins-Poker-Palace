@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "button_confirm_selection" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -36,6 +37,7 @@
       }
     },
     "button_new_game" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

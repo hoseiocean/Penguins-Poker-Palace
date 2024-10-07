@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		116D412B2CB3215F00F55A08 /* VideoPokerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D411E2CB3215F00F55A08 /* VideoPokerApp.swift */; };
-		116D412C2CB3215F00F55A08 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41292CB3215F00F55A08 /* ContentView.swift */; };
+		116D412C2CB3215F00F55A08 /* VideoPokerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41292CB3215F00F55A08 /* VideoPokerView.swift */; };
 		116D412D2CB3215F00F55A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 116D41252CB3215F00F55A08 /* Assets.xcassets */; };
 		116D412E2CB3215F00F55A08 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 116D41272CB3215F00F55A08 /* Preview Assets.xcassets */; };
 		116D41302CB321AE00F55A08 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D412F2CB321AE00F55A08 /* Card.swift */; };
@@ -46,7 +46,7 @@
 		116D411E2CB3215F00F55A08 /* VideoPokerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPokerApp.swift; sourceTree = "<group>"; };
 		116D41252CB3215F00F55A08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		116D41272CB3215F00F55A08 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		116D41292CB3215F00F55A08 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		116D41292CB3215F00F55A08 /* VideoPokerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPokerView.swift; sourceTree = "<group>"; };
 		116D412F2CB321AE00F55A08 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		116D41342CB3220100F55A08 /* Suit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suit.swift; sourceTree = "<group>"; };
 		116D41362CB3220F00F55A08 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				116D41632CB341A400F55A08 /* CardView.swift */,
-				116D41292CB3215F00F55A08 /* ContentView.swift */,
+				116D41292CB3215F00F55A08 /* VideoPokerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -392,7 +392,7 @@
 				116D41372CB3220F00F55A08 /* Rank.swift in Sources */,
 				116D41422CB3228E00F55A08 /* GameRepository.swift in Sources */,
 				116D413F2CB3227300F55A08 /* InMemoryGameRepository.swift in Sources */,
-				116D412C2CB3215F00F55A08 /* ContentView.swift in Sources */,
+				116D412C2CB3215F00F55A08 /* VideoPokerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
