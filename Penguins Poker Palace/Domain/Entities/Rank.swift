@@ -37,6 +37,10 @@ enum Rank: Int, CaseIterable {
       case .ace: String(localized: "rank_symbol_a")
     }
   }
+  
+  func isImmediatlyFollowedBy(_ other: Rank) -> Bool {
+    other.rawValue == self.rawValue + 1
+  }
 }
 
 extension Rank: Comparable {

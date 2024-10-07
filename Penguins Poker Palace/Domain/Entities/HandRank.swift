@@ -5,13 +5,12 @@
 //  Created by Thomas Heinis on 06/10/2024.
 //
 
-
 enum HandRank: Int {
-  case highCard, onePair, twoPair, threeOfAKind, straight, flush, fullHouse, fourOfAKind, straightFlush, royalFlush
+  case none, onePair, twoPair, threeOfAKind, straight, flush, fullHouse, fourOfAKind, straightFlush, royalFlush
   
   var name: String {
     switch self {
-      case .highCard: String(localized: "hand_high_card")
+      case .none: String(localized: "hand_none")
       case .onePair: String(localized: "hand_one_pair")
       case .twoPair: String(localized: "hand_two_pair")
       case .threeOfAKind: String(localized: "hand_three_of_a_kind")
@@ -24,47 +23,39 @@ enum HandRank: Int {
     }
   }
   
-  private static func isConsecutive(ranks: [Int]) -> Bool {
+  private static func areImmediatlyConsecutive(ranks: [Rank]) -> Bool {
     let sortedRanks = ranks.sorted()
-    for i in 1..<sortedRanks.count {
-      if sortedRanks[i] != sortedRanks[i - 1] + 1 {
-        return false
-      }
-    }
-    return true
+    let consecutiveRanksPairs = zip(sortedRanks, sortedRanks.dropFirst())
+    return consecutiveRanksPairs.allSatisfy { lowRank, highRank in lowRank.isImmediatlyFollowedBy(highRank) }
   }
   
   static func evaluate(cards: [Card]) -> HandRank {
-    let ranks = cards.map { card in card.rank.rawValue }
+    let ranks = cards.map { card in card.rank }
     let suits = cards.map { card in card.suit }
     
     let rankCounts = Dictionary(ranks.map { rank in (rank, 1) }, uniquingKeysWith: +)
     let suitCounts = Dictionary(suits.map { suit in (suit, 1) }, uniquingKeysWith: +)
     
     let isFlush = suitCounts.values.contains(5)
-    let isStraight = isConsecutive(ranks: ranks)
+    let isStraight = areImmediatlyConsecutive(ranks: ranks)
     
-    switch (isFlush, isStraight, rankCounts) {
-    case (true, true, _) where ranks.max() == Rank.ace.rawValue && ranks.min() == 10:
-        return .royalFlush
-    case (true, true, _):
-        return .straightFlush
-    case (_, _, let rankCounts) where rankCounts.values.contains(4):
-        return .fourOfAKind
-    case (_, _, let rankCounts) where rankCounts.values.contains(3) && rankCounts.values.contains(2):
-        return .fullHouse
-    case (true, _, _):
-        return .flush
-    case (_, true, _):
-        return .straight
-    case (_, _, let rankCounts) where rankCounts.values.contains(3):
-        return .threeOfAKind
-    case (_, _, let rankCounts) where rankCounts.filter { $0.value == 2 }.count == 2:
-        return .twoPair
-    case (_, _, let rankCounts) where rankCounts.values.contains(2):
-        return .onePair
-    default:
-        return .highCard
+    return switch (isFlush, isStraight, rankCounts) {
+      case (true, true, _) where ranks.max() == .ace && ranks.min() == .ten: .royalFlush
+      case (true, true, _): .straightFlush
+      case (_, _, let rankCounts) where rankCounts.values.contains(4): .fourOfAKind
+      case (_, _, let rankCounts) where rankCounts.values.contains(3) && rankCounts.values.contains(2): .fullHouse
+      case (true, _, _): .flush
+      case (_, true, _): .straight
+      case (_, _, let rankCounts) where rankCounts.values.contains(3): .threeOfAKind
+      case (_, _, let rankCounts) where rankCounts.filter { rankCount in rankCount.value == 2 }.count == 2: .twoPair
+      case (_, _, let rankCounts) where rankCounts.values.contains(2):
+        if let pairRank = rankCounts.first(where: { rankCount in rankCount.value == 2 })?.key, pairRank >= .jack {
+          .onePair
+        } else {
+          .none
+        }
+      default:
+        .none
     }
   }
 }
