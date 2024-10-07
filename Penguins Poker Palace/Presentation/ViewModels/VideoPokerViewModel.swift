@@ -8,7 +8,7 @@
 import Foundation
 
 
-class VideoPokerViewModel: ObservableObject {
+final class VideoPokerViewModel: ObservableObject {
   @Published var currentHand: [Card] = []
   @Published var handName: String = ""
   

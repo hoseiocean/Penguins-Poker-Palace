@@ -6,7 +6,7 @@
 //
 
 
-class Deck {
+final class Deck {
   private var cards: [Card] = []
   
   init() {

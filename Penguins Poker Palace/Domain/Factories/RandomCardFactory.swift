@@ -6,7 +6,7 @@
 //
 
 
-class RandomCardFactory: CardFactory {
+final class RandomCardFactory: CardFactory {
   func createRandomCard() -> Card {
     let randomRank = Rank.allCases.randomElement()!
     let randomSuit = Suit.allCases.randomElement()!

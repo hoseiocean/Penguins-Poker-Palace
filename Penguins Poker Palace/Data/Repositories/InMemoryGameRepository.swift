@@ -6,7 +6,7 @@
 //
 
 
-class InMemoryGameRepository: GameRepository {
+final class InMemoryGameRepository: GameRepository {
   private var savedGame: VideoPokerGame?
   
   func loadGameState() -> VideoPokerGame? {

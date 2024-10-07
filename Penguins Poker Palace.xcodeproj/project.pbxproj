@@ -255,8 +255,8 @@
 		116D415C2CB32F9400F55A08 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
-				116D415F2CB32FF300F55A08 /* RandomCardFactory.swift */,
 				116D415D2CB32FB100F55A08 /* CardFactory.swift */,
+				116D415F2CB32FF300F55A08 /* RandomCardFactory.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";

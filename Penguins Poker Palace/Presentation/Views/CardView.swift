@@ -26,5 +26,5 @@ struct CardView: View {
 }
 
 #Preview {
-  CardView(card: RandomCardFactory().createRandomCard(), isSelected: false)
+  CardView(card: RandomCardFactory().createRandomCard(), isSelected: Bool.random())
 }
