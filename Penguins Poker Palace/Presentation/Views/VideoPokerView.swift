@@ -30,12 +30,12 @@ struct VideoPokerView: View {
       
       let buttonTitle = String(localized: viewModel.handState == .initialHand ? "button_confirm_selection" : "button_new_game")
       Button(buttonTitle) {
-          if viewModel.handState == .initialHand {
-              viewModel.exchangeSelectedCards(indices: Array(selectedCards))
-          } else {
-              viewModel.resetGame()
-          }
-          selectedCards.removeAll()
+        if viewModel.handState == .initialHand {
+          viewModel.exchangeSelectedCards(indices: Array(selectedCards))
+        } else {
+          viewModel.resetGame()
+        }
+        selectedCards.removeAll()
       }
       .padding()
     }
