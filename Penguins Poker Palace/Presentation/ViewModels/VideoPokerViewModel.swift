@@ -42,11 +42,9 @@ final class VideoPokerViewModel: ObservableObject {
   func loadGameState() {
     if let loadedGame = repository.loadGameState() {
       currentHand = loadedGame.currentHand
-      handName = game.getHandName()  // Ici on peut choisir de réévaluer
-      handState = game.handState
+      updateState()
     } else {
       resetGame()
-      dealHand()
     }
   }
   
