@@ -12,29 +12,29 @@ enum Rank: Int, CaseIterable {
   
   var name: String {
     switch self {
-      case .two: "two"
-      case .three: "three"
-      case .four: "four"
-      case .five: "five"
-      case .six: "six"
-      case .seven: "seven"
-      case .eight: "eight"
-      case .nine: "nine"
-      case .ten: "ten"
-      case .jack: "jack"
-      case .queen: "queen"
-      case .king: "king"
-      case .ace: "ace"
+      case .two: String(localized: "Two")
+      case .three: String(localized: "Three")
+      case .four: String(localized: "Four")
+      case .five: String(localized: "Five")
+      case .six: String(localized: "Six")
+      case .seven: String(localized: "Seven")
+      case .eight: String(localized: "Eight")
+      case .nine: String(localized: "Nine")
+      case .ten: String(localized: "Ten")
+      case .jack: String(localized: "Jack")
+      case .queen: String(localized: "Queen")
+      case .king: String(localized: "King")
+      case .ace: String(localized: "Ace")
     }
   }
   
   var symbol: String {
     switch self {
       case .two, .three, .four, .five, .six, .seven, .eight, .nine, .ten: String(rawValue)
-      case .jack: "J"
-      case .queen: "Q"
-      case .king: "K"
-      case .ace: "A"
+      case .jack: String(localized: "J")
+      case .queen: String(localized: "Q")
+      case .king: String(localized: "K")
+      case .ace: String(localized: "A")
     }
   }
 }

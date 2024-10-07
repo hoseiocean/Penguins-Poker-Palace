@@ -26,6 +26,8 @@
 		116D415E2CB32FB100F55A08 /* CardFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D415D2CB32FB100F55A08 /* CardFactory.swift */; };
 		116D41602CB32FF300F55A08 /* RandomCardFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D415F2CB32FF300F55A08 /* RandomCardFactory.swift */; };
 		116D41622CB3352A00F55A08 /* CardColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41612CB3352300F55A08 /* CardColor.swift */; };
+		116D41642CB341A400F55A08 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41632CB341A400F55A08 /* CardView.swift */; };
+		116D41682CB34C5000F55A08 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 116D41672CB34C5000F55A08 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		116D415D2CB32FB100F55A08 /* CardFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFactory.swift; sourceTree = "<group>"; };
 		116D415F2CB32FF300F55A08 /* RandomCardFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomCardFactory.swift; sourceTree = "<group>"; };
 		116D41612CB3352300F55A08 /* CardColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardColor.swift; sourceTree = "<group>"; };
+		116D41632CB341A400F55A08 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		116D41672CB34C5000F55A08 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -190,6 +194,7 @@
 		116D41232CB3215F00F55A08 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				116D41632CB341A400F55A08 /* CardView.swift */,
 				116D41292CB3215F00F55A08 /* ContentView.swift */,
 			);
 			path = Views;
@@ -208,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				116D41252CB3215F00F55A08 /* Assets.xcassets */,
+				116D41672CB34C5000F55A08 /* Localizable.xcstrings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -322,6 +328,10 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
+				es,
+				de,
+				ko,
 			);
 			mainGroup = 115440FF2CB31CC8006EC8B1;
 			minimizedProjectReferenceProxies = 1;
@@ -343,6 +353,7 @@
 			files = (
 				116D412D2CB3215F00F55A08 /* Assets.xcassets in Resources */,
 				116D412E2CB3215F00F55A08 /* Preview Assets.xcassets in Resources */,
+				116D41682CB34C5000F55A08 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +381,7 @@
 				116D413B2CB3223A00F55A08 /* Deck.swift in Sources */,
 				116D412B2CB3215F00F55A08 /* VideoPokerApp.swift in Sources */,
 				116D41302CB321AE00F55A08 /* Card.swift in Sources */,
+				116D41642CB341A400F55A08 /* CardView.swift in Sources */,
 				116D414B2CB326FD00F55A08 /* MockGameRepository.swift in Sources */,
 				116D41392CB3222000F55A08 /* Hand.swift in Sources */,
 				116D41352CB3220100F55A08 /* Suit.swift in Sources */,
@@ -457,6 +469,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -513,6 +526,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

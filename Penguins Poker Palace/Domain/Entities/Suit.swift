@@ -9,24 +9,24 @@ import SwiftUICore
 
 
 enum Suit: String, CaseIterable {
-  case clubs = "clubs"
-  case diamonds = "diamonds"
-  case hearts = "hearts"
-  case spades = "spades"
+  case clubs = "Clubs"
+  case diamonds = "Diamonds"
+  case hearts = "Hearts"
+  case spades = "Spades"
   
   var color: CardColor {
     switch self {
-      case .clubs, .spades: return .black
-      case .diamonds, .hearts: return .red
+      case .clubs, .spades: .black
+      case .diamonds, .hearts: .red
     }
   }
   
   var emoji: String {
     switch self {
-      case .clubs: return "♣️"
-      case .diamonds: return "♦️"
-      case .hearts: return "❤️"
-      case .spades: return "♠️"
+      case .clubs: "♣️"
+      case .diamonds: "♦️"
+      case .hearts: "❤️"
+      case .spades: "♠️"
     }
   }
   
@@ -36,10 +36,10 @@ enum Suit: String, CaseIterable {
   
   var symbol: String {
     switch self {
-      case .clubs: return "♣"
-      case .diamonds: return "♦"
-      case .hearts: return "♥"
-      case .spades: return "♠"
+      case .clubs: "♣"
+      case .diamonds: "♦"
+      case .hearts: "♥"
+      case .spades: "♠"
     }
   }
 }

@@ -7,6 +7,6 @@
 
 
 enum CardColor {
-  case red
   case black
+  case red
 }

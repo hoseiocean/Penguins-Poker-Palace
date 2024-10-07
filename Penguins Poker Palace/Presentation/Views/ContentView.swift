@@ -10,24 +10,43 @@ import SwiftUI
 struct ContentView: View {
   @StateObject var viewModel: VideoPokerViewModel
   
+  @State private var selectedCards: Set<Int> = []
+  
   var body: some View {
     VStack {
       HStack {
-        ForEach(viewModel.hand, id: \.self) { card in
-          Text("\(card.rank.symbol)\(card.suit.emoji)")
+        ForEach(0..<viewModel.currentHand.count, id: \.self) { index in
+          CardView(card: viewModel.currentHand[index], isSelected: selectedCards.contains(index))
+            .onTapGesture {
+              toggleCardSelection(at: index)
+            }
         }
       }
+      .padding()
       
-      Text("Hand Rank: \(viewModel.handRank.rawValue)")
-      
-      Button(action: {
-        viewModel.dealHand()
-      }) {
-        Text("Deal")
+      Button("Exchange Cards") {
+        viewModel.exchangeSelectedCards(indices: Array(selectedCards))
+        selectedCards.removeAll()
       }
+      .padding()
+      .disabled(selectedCards.isEmpty)
+      
+      Button("New Game") {
+        viewModel.resetGame()
+        selectedCards.removeAll()
+      }
+      .padding()
     }
     .onAppear {
-      viewModel.loadGame()
+      viewModel.dealHand()
+    }
+  }
+  
+  private func toggleCardSelection(at index: Int) {
+    if selectedCards.contains(index) {
+      selectedCards.remove(index)
+    } else {
+      selectedCards.insert(index)
     }
   }
 }

@@ -6,7 +6,7 @@
 //
 
 
-struct Card: Hashable {
+struct Card {
   let suit: Suit
   let rank: Rank
 }

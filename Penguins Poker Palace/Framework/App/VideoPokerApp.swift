@@ -11,8 +11,8 @@ import SwiftUI
 struct VideoPokerApp: App {
   var body: some Scene {
     WindowGroup {
-      let repository = InMemoryGameRepository()
       let game = VideoPokerGame(deck: Deck())
+      let repository = InMemoryGameRepository()
       let viewModel = VideoPokerViewModel(game: game, repository: repository)
       ContentView(viewModel: viewModel)
     }

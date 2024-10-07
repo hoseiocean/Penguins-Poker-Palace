@@ -9,30 +9,35 @@ import Foundation
 
 
 class VideoPokerViewModel: ObservableObject {
-  @Published var hand: [Card] = []
-  @Published var handRank: HandRank = .highCard
+  @Published var currentHand: [Card] = []
   
   private let game: VideoPokerGame
   private let repository: GameRepository
-  
+
   init(game: VideoPokerGame, repository: GameRepository) {
     self.game = game
     self.repository = repository
+    loadGameState()
   }
   
   func dealHand() {
-    hand = game.dealHand()
-    handRank = game.evaluateHand()
+    currentHand = game.dealHand()
   }
   
-  func saveGame() {
-    repository.saveGameState(game)
+  func exchangeSelectedCards(indices: [Int]) {
+    currentHand = game.exchangeCards(indices: indices)
   }
   
-  func loadGame() {
+  func loadGameState() {
     if let loadedGame = repository.loadGameState() {
-      hand = loadedGame.currentHand
-      handRank = loadedGame.evaluateHand()
+      currentHand = loadedGame.currentHand
+    } else {
+      dealHand()
     }
+  }
+  
+  func resetGame() {
+    game.resetGame()
+    currentHand = game.currentHand
   }
 }

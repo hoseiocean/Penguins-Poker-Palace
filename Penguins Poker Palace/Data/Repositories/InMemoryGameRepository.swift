@@ -9,11 +9,11 @@
 class InMemoryGameRepository: GameRepository {
   private var savedGame: VideoPokerGame?
   
-  func saveGameState(_ game: VideoPokerGame) {
-    savedGame = game
-  }
-  
   func loadGameState() -> VideoPokerGame? {
     savedGame
+  }
+
+  func saveGameState(_ game: VideoPokerGame) {
+    savedGame = game
   }
 }

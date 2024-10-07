@@ -7,6 +7,6 @@
 
 
 protocol GameRepository {
-  func saveGameState(_ game: VideoPokerGame)
   func loadGameState() -> VideoPokerGame?
+  func saveGameState(_ game: VideoPokerGame)
 }

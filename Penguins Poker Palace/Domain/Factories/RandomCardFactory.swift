@@ -8,9 +8,8 @@
 
 class RandomCardFactory: CardFactory {
   func createRandomCard() -> Card {
-    let suits: [Suit] = [.hearts, .diamonds, .clubs, .spades]
-    let randomSuit = suits.randomElement()!
-    let randomRank = Rank(rawValue: Int.random(in: 2...14))!
+    let randomRank = Rank.allCases.randomElement()!
+    let randomSuit = Suit.allCases.randomElement()!
     return Card(suit: randomSuit, rank: randomRank)
   }
 }
