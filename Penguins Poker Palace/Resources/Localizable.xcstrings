@@ -1,36 +1,36 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "button_exchange_cards" : {
+    "button_confirm_selection" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Karten tauschen"
+            "value" : "Auswahl bestätigen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Exchange Cards"
+            "value" : "Confirm Selection"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Intercambiar Cartas"
+            "value" : "Validar la selección"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Echanger les Cartes"
+            "value" : "Valider la sélection"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "카드 교환"
+            "value" : "선택 확인"
           }
         }
       }
