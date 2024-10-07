@@ -28,18 +28,21 @@ struct ContentView: View {
         .font(.title2)
         .padding()
       
-      Button("button_exchange_cards") {
-        viewModel.exchangeSelectedCards(indices: Array(selectedCards))
-        selectedCards.removeAll()
+      switch viewModel.handState {
+        case .initialHand:
+          Button("button_confirm_selection") {
+            viewModel.exchangeSelectedCards(indices: Array(selectedCards))
+            selectedCards.removeAll()
+          }
+          .padding()
+        case .finalHand:
+          Button("button_new_game") {
+            viewModel.resetGame()
+            selectedCards.removeAll()
+          }
+          .padding()
       }
-      .padding()
-      .disabled(selectedCards.isEmpty)
       
-      Button("button_new_game") {
-        viewModel.resetGame()
-        selectedCards.removeAll()
-      }
-      .padding()
     }
     .onAppear {
       viewModel.dealHand()

@@ -11,6 +11,7 @@ import Foundation
 final class VideoPokerViewModel: ObservableObject {
   @Published var currentHand: [Card] = []
   @Published var handName: String = ""
+  @Published var handState: HandState = .initialHand
   
   private let game: VideoPokerGame
   private let repository: GameRepository
@@ -21,21 +22,28 @@ final class VideoPokerViewModel: ObservableObject {
     loadGameState()
   }
   
-  func dealHand() {
-    currentHand = game.dealHand()
+  private func updateState() {
+    currentHand = game.currentHand
     handName = game.getHandName()
+    handState = game.handState
+  }
+  
+  func dealHand() {
+    game.dealHand()
+    updateState()
   }
   
   func exchangeSelectedCards(indices: [Int]) {
-    currentHand = game.exchangeCards(indices: indices)
-    handName = game.getHandName()
+    game.exchangeCards(indices: indices)
+    updateState()
     saveGameState()
   }
   
   func loadGameState() {
     if let loadedGame = repository.loadGameState() {
       currentHand = loadedGame.currentHand
-      handName = game.getHandName()
+      handName = game.getHandName()  // Ici on peut choisir de réévaluer
+      handState = game.handState
     } else {
       dealHand()
     }
@@ -43,11 +51,10 @@ final class VideoPokerViewModel: ObservableObject {
   
   func resetGame() {
     game.resetGame()
-    currentHand = game.currentHand
-    handName = game.getHandName()
+    updateState()
     saveGameState()
   }
-
+  
   func saveGameState() {
     repository.saveGameState(game)
   }

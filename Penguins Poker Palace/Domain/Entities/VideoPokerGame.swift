@@ -8,9 +8,9 @@
 
 class VideoPokerGame {
   private var deck: Deck
-  private var handState: HandState
-
+  
   private(set) var currentHand: [Card]
+  private(set) var handState: HandState
 
   init(deck: Deck, currentHand: [Card] = [], handState: HandState = .initialHand) {
     self.deck = deck
@@ -18,6 +18,7 @@ class VideoPokerGame {
     self.handState = handState
   }
   
+  @discardableResult
   func dealHand() -> [Card] {
     guard handState == .initialHand else { return currentHand }
     currentHand = deck.drawCards(5)
@@ -28,6 +29,7 @@ class VideoPokerGame {
     HandRank.evaluate(cards: currentHand)
   }
   
+  @discardableResult
   func exchangeCards(indices: [Int]) -> [Card] {
     guard handState == .initialHand else { return currentHand }
     indices.forEach { index in
