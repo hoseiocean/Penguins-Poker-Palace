@@ -171,36 +171,36 @@
         }
       }
     },
-    "hand_high_card" : {
+    "hand_none" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hohe Karte"
+            "value" : "Keine Kombination"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "High Card"
+            "value" : "No Combination"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Carta Alta"
+            "value" : "Sin Combinación"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Carte Haute"
+            "value" : "Aucune combinaison"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "높은 카드"
+            "value" : "조합 없음"
           }
         }
       }
