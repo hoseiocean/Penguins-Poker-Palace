@@ -45,6 +45,7 @@ final class VideoPokerViewModel: ObservableObject {
       handName = game.getHandName()  // Ici on peut choisir de réévaluer
       handState = game.handState
     } else {
+      resetGame()
       dealHand()
     }
   }

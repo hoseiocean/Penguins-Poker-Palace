@@ -26,13 +26,14 @@ final class Deck {
   }
   
   func dealCard() -> Card? {
-    drawCards(1).first
+    cards.isEmpty ? nil : cards.removeLast()
   }
   
   func drawCards(_ requestedQuantity: Int) -> [Card] {
-    let requestedCards = Array(cards.prefix(requestedQuantity))
-    cards.removeFirst(min(requestedQuantity, cards.count))
-    return requestedCards
+    let count = min(requestedQuantity, cards.count)
+    let drawnCards = Array(cards.suffix(count))
+    cards.removeLast(count)
+    return drawnCards
   }
   
   func reset() {
