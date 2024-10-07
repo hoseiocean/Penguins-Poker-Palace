@@ -3,6 +3,12 @@
   "strings" : {
     "button_exchange_cards" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karten tauschen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19,6 +25,12 @@
     },
     "button_new_game" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neues Spiel"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -35,6 +47,12 @@
     },
     "hand_flush" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flush"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -51,6 +69,12 @@
     },
     "hand_four_of_a_kind" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vierling"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -67,6 +91,12 @@
     },
     "hand_full_house" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full House"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -83,6 +113,12 @@
     },
     "hand_high_card" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hohe Karte"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -99,6 +135,12 @@
     },
     "hand_one_pair" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein Paar"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -115,6 +157,12 @@
     },
     "hand_royal_flush" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Royale Flush"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -131,6 +179,12 @@
     },
     "hand_straight" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Straße"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -147,6 +201,12 @@
     },
     "hand_straight_flush" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Straight Flush"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -163,6 +223,12 @@
     },
     "hand_three_of_a_kind" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drilling"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -179,6 +245,12 @@
     },
     "hand_two_pair" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zwei Paare"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -195,6 +267,12 @@
     },
     "rank_name_ace" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ass"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -211,6 +289,12 @@
     },
     "rank_name_eight" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acht"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -227,6 +311,12 @@
     },
     "rank_name_five" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fünf"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -243,6 +333,12 @@
     },
     "rank_name_four" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vier"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -259,6 +355,12 @@
     },
     "rank_name_jack" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bube"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -275,6 +377,12 @@
     },
     "rank_name_king" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "König"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -291,6 +399,12 @@
     },
     "rank_name_nine" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neun"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -307,6 +421,12 @@
     },
     "rank_name_queen" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dame"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -323,6 +443,12 @@
     },
     "rank_name_seven" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sieben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -339,6 +465,12 @@
     },
     "rank_name_six" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sechs"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -355,6 +487,12 @@
     },
     "rank_name_ten" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zehn"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -371,6 +509,12 @@
     },
     "rank_name_three" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drei"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -387,6 +531,12 @@
     },
     "rank_name_two" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zwei"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -403,6 +553,12 @@
     },
     "rank_symbol_a" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -419,6 +575,12 @@
     },
     "rank_symbol_j" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "B"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -435,6 +597,12 @@
     },
     "rank_symbol_k" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "K"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -451,6 +619,12 @@
     },
     "rank_symbol_q" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "D"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
