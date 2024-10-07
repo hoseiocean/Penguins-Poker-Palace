@@ -8,9 +8,11 @@
 
 class MockVideoPokerGame: VideoPokerGame {
   var deck: Deck
-  
-  override init(deck: Deck = .init()) {
+  var handState: HandState
+
+  override init(deck: Deck = .init(), currentHand: [Card] = [], handState: HandState = .initialHand) {
     self.deck = deck
+    self.handState = handState
     super.init(deck: deck)
   }
   

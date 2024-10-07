@@ -28,6 +28,7 @@
 		116D41622CB3352A00F55A08 /* CardColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41612CB3352300F55A08 /* CardColor.swift */; };
 		116D41642CB341A400F55A08 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41632CB341A400F55A08 /* CardView.swift */; };
 		116D41682CB34C5000F55A08 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 116D41672CB34C5000F55A08 /* Localizable.xcstrings */; };
+		116D416A2CB3681100F55A08 /* HandState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41692CB3681100F55A08 /* HandState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		116D41612CB3352300F55A08 /* CardColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardColor.swift; sourceTree = "<group>"; };
 		116D41632CB341A400F55A08 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		116D41672CB34C5000F55A08 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		116D41692CB3681100F55A08 /* HandState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -135,6 +137,7 @@
 				116D413A2CB3223A00F55A08 /* Deck.swift */,
 				116D41382CB3222000F55A08 /* Hand.swift */,
 				116D413C2CB3224F00F55A08 /* HandRank.swift */,
+				116D41692CB3681100F55A08 /* HandState.swift */,
 				116D41362CB3220F00F55A08 /* Rank.swift */,
 				116D41342CB3220100F55A08 /* Suit.swift */,
 				116D41452CB3234000F55A08 /* VideoPokerGame.swift */,
@@ -377,6 +380,7 @@
 				116D41622CB3352A00F55A08 /* CardColor.swift in Sources */,
 				116D415E2CB32FB100F55A08 /* CardFactory.swift in Sources */,
 				116D413D2CB3224F00F55A08 /* HandRank.swift in Sources */,
+				116D416A2CB3681100F55A08 /* HandState.swift in Sources */,
 				116D41602CB32FF300F55A08 /* RandomCardFactory.swift in Sources */,
 				116D413B2CB3223A00F55A08 /* Deck.swift in Sources */,
 				116D412B2CB3215F00F55A08 /* VideoPokerApp.swift in Sources */,

@@ -13,7 +13,7 @@ class VideoPokerViewModel: ObservableObject {
   
   private let game: VideoPokerGame
   private let repository: GameRepository
-
+  
   init(game: VideoPokerGame, repository: GameRepository) {
     self.game = game
     self.repository = repository
@@ -26,6 +26,7 @@ class VideoPokerViewModel: ObservableObject {
   
   func exchangeSelectedCards(indices: [Int]) {
     currentHand = game.exchangeCards(indices: indices)
+    saveGameState()
   }
   
   func loadGameState() {
@@ -39,5 +40,10 @@ class VideoPokerViewModel: ObservableObject {
   func resetGame() {
     game.resetGame()
     currentHand = game.currentHand
+    saveGameState()
+  }
+
+  func saveGameState() {
+    repository.saveGameState(game)
   }
 }
