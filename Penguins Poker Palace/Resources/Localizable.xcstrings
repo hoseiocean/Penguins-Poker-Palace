@@ -1,296 +1,92 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "A" : {
-      "comment" : "Suit symbol",
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A"
-          }
-        }
-      }
-    },
-    "Ace" : {
-      "comment" : "Rank name",
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ass"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "As"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "As"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "에이스"
-          }
-        }
-      }
-    },
     "button_exchange_cards" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exchange Cards"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Echanger les Cartes"
+          }
+        }
+      }
     },
     "button_new_game" : {
-
-    },
-    "Clubs" : {
-      "comment" : "Suit name",
-      "extractionState" : "manual",
       "localizations" : {
-        "de" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kreuz"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tréboles"
+            "value" : "New Game"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trèfle"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "클럽"
-          }
-        }
-      }
-    },
-    "Diamonds" : {
-      "comment" : "Suit name",
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Karo"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Diamantes"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Carreau"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "다이아몬드"
-          }
-        }
-      }
-    },
-    "Eight" : {
-      "comment" : "Rank name",
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Acht"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ocho"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Huit"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "팔"
-          }
-        }
-      }
-    },
-    "Five" : {
-      "comment" : "Rank name",
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fünf"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cinco"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cinq"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "오"
-          }
-        }
-      }
-    },
-    "Four" : {
-      "comment" : "Rank name",
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vier"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cuatro"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quatre"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "사"
+            "value" : "Nouveau Jeu"
           }
         }
       }
     },
     "hand_flush" : {
-
-    },
-    "hand_four_of_a_kind" : {
-
-    },
-    "hand_full_House" : {
-
-    },
-    "hand_high_card" : {
-
-    },
-    "hand_one_pair" : {
-
-    },
-    "hand_royal_flush" : {
-
-    },
-    "hand_straight" : {
-
-    },
-    "hand_straight_flush" : {
-
-    },
-    "hand_three_of_a_kind" : {
-
-    },
-    "hand_two_pair" : {
-
-    },
-    "Hearts" : {
-      "comment" : "Suit name",
-      "extractionState" : "manual",
       "localizations" : {
-        "de" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Herz"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Corazones"
+            "value" : "Flush"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cœur"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "하트"
+            "value" : "Flush"
           }
         }
       }
     },
-    "High Card" : {
-      "comment" : "Hand name",
-      "extractionState" : "manual",
+    "hand_four_of_a_kind" : {
       "localizations" : {
-        "de" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hohe Karte"
+            "value" : "Four Of A Kind"
           }
         },
-        "es" : {
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Carta Alta"
+            "value" : "Carré"
+          }
+        }
+      }
+    },
+    "hand_full_house" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full House"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full"
+          }
+        }
+      }
+    },
+    "hand_high_card" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "High Card"
           }
         },
         "fr" : {
@@ -298,26 +94,332 @@
             "state" : "translated",
             "value" : "Carte Haute"
           }
-        },
-        "ko" : {
+        }
+      }
+    },
+    "hand_one_pair" : {
+      "localizations" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "높은 카드"
+            "value" : "One Pair"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paire"
           }
         }
       }
     },
-    "J" : {
-      "comment" : "Suit symbol",
-      "extractionState" : "manual",
+    "hand_royal_flush" : {
       "localizations" : {
-        "de" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "B"
+            "value" : "Royal Flush"
           }
         },
-        "es" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quinte Flush Royale"
+          }
+        }
+      }
+    },
+    "hand_straight" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Straight"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quinte"
+          }
+        }
+      }
+    },
+    "hand_straight_flush" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Straight Flush"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quinte Flush"
+          }
+        }
+      }
+    },
+    "hand_three_of_a_kind" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Three Of A Kind"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brelan"
+          }
+        }
+      }
+    },
+    "hand_two_pair" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two Pair"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double Paire"
+          }
+        }
+      }
+    },
+    "rank_name_ace" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ace"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "As"
+          }
+        }
+      }
+    },
+    "rank_name_eight" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eight"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Huit"
+          }
+        }
+      }
+    },
+    "rank_name_five" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Five"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cinq"
+          }
+        }
+      }
+    },
+    "rank_name_four" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Four"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quatre"
+          }
+        }
+      }
+    },
+    "rank_name_jack" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jack"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valet"
+          }
+        }
+      }
+    },
+    "rank_name_king" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "King"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Roi"
+          }
+        }
+      }
+    },
+    "rank_name_nine" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nine"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neuf"
+          }
+        }
+      }
+    },
+    "rank_name_queen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Queen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reine"
+          }
+        }
+      }
+    },
+    "rank_name_seven" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seven"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sept"
+          }
+        }
+      }
+    },
+    "rank_name_six" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Six"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Six"
+          }
+        }
+      }
+    },
+    "rank_name_ten" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ten"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dix"
+          }
+        }
+      }
+    },
+    "rank_name_three" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Three"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trois"
+          }
+        }
+      }
+    },
+    "rank_name_two" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deux"
+          }
+        }
+      }
+    },
+    "rank_symbol_a" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A"
+          }
+        }
+      }
+    },
+    "rank_symbol_j" : {
+      "localizations" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "J"
@@ -328,422 +430,37 @@
             "state" : "translated",
             "value" : "V"
           }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "J"
-          }
         }
       }
-    },
-    "Jack" : {
-      "comment" : "Rank name",
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bube"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sota"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Valet"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "잭"
-          }
-        }
-      }
-    },
-    "K" : {
-      "comment" : "Suit symbol",
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "K"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "R"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "R"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "K"
-          }
-        }
-      }
-    },
-    "King" : {
-      "comment" : "Rank name",
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "König"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rey"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Roi"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "왕"
-          }
-        }
-      }
-    },
-    "Nine" : {
-      "comment" : "Rank name",
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Neun"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nueve"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Neuf"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "구"
-          }
-        }
-      }
-    },
-    "Q" : {
-      "comment" : "Suit symbol",
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "D"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Q"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "D"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Q"
-          }
-        }
-      }
-    },
-    "Queen" : {
-      "comment" : "Rank name",
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dame"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reina"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reine"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "여왕"
-          }
-        }
-      }
-    },
-    "rank_name_ace" : {
-
-    },
-    "rank_name_eight" : {
-
-    },
-    "rank_name_five" : {
-
-    },
-    "rank_name_four" : {
-
-    },
-    "rank_name_jack" : {
-
-    },
-    "rank_name_king" : {
-
-    },
-    "rank_name_nine" : {
-
-    },
-    "rank_name_queen" : {
-
-    },
-    "rank_name_seven" : {
-
-    },
-    "rank_name_six" : {
-
-    },
-    "rank_name_ten" : {
-
-    },
-    "rank_name_three" : {
-
-    },
-    "rank_name_two" : {
-
-    },
-    "rank_symbol_a" : {
-
-    },
-    "rank_symbol_j" : {
-
     },
     "rank_symbol_k" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "K"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "R"
+          }
+        }
+      }
     },
     "rank_symbol_q" : {
-
-    },
-    "Seven" : {
-      "comment" : "Rank name",
-      "extractionState" : "manual",
       "localizations" : {
-        "de" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sieben"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Siete"
+            "value" : "Q"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sept"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "칠"
-          }
-        }
-      }
-    },
-    "Six" : {
-      "comment" : "Rank name",
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sechs"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seis"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Six"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "육"
-          }
-        }
-      }
-    },
-    "Spades" : {
-      "comment" : "Suit name",
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pik"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Picas"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pique"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "스페이드"
-          }
-        }
-      }
-    },
-    "Ten" : {
-      "comment" : "Rank name",
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zehn"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Diez"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dix"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "십"
-          }
-        }
-      }
-    },
-    "Three" : {
-      "comment" : "Rank name",
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Drei"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tres"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Trois"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "삼"
-          }
-        }
-      }
-    },
-    "Two" : {
-      "comment" : "Rank name",
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zwei"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dos"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deux"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이"
+            "value" : "D"
           }
         }
       }

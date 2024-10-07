@@ -17,7 +17,7 @@ enum HandRank: Int {
       case .threeOfAKind: String(localized: "hand_three_of_a_kind")
       case .straight: String(localized: "hand_straight")
       case .flush: String(localized: "hand_flush")
-      case .fullHouse: String(localized: "hand_full_House")
+      case .fullHouse: String(localized: "hand_full_house")
       case .fourOfAKind: String(localized: "hand_four_of_a_kind")
       case .straightFlush: String(localized: "hand_straight_flush")
       case .royalFlush: String(localized: "hand_royal_flush")
