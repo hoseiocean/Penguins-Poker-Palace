@@ -11,7 +11,6 @@ import SwiftUI
 struct VideoPokerView: View {
   @StateObject var viewModel: VideoPokerViewModel
   @State private var selectedCards: Set<Int> = []
-  @State private var betInput: String = "1"
   
   var body: some View {
     VStack {
@@ -34,23 +33,28 @@ struct VideoPokerView: View {
           Text("view_points: \(viewModel.totalPoints)")
             .font(.title3)
             .padding()
-          Text("view_bet: \(String(describing: viewModel.currentBet))")
+          Text("view_bet: \(viewModel.currentBet ?? 0)")
             .font(.title3)
             .padding()
           Text("view_winnings: \(viewModel.winnings)")
             .font(.title3)
             .padding()
         }
+      } else {
+        Text("view_points: \(viewModel.totalPoints)")
+          .font(.title3)
+          .padding()
       }
+      
       HStack {
-        TextField("view_set_your_bet:", text: $betInput)
+        TextField("view_set_your_bet:", text: $viewModel.betInput)
           .keyboardType(.numberPad)
           .textFieldStyle(RoundedBorderTextFieldStyle())
           .frame(width: 100)
           .padding()
         
         Button("button_ok") {
-          if let bet = Int(betInput) {
+          if let bet = Int(viewModel.betInput) {
             viewModel.setBet(bet)
           }
         }
@@ -88,9 +92,9 @@ struct VideoPokerView: View {
   }
 }
 
-#Preview {
-  let mockGame = MockVideoPokerGame()
-  let mockRepository = MockGameRepository()
-  let viewModel = VideoPokerViewModel(game: mockGame, repository: mockRepository)
-  VideoPokerView(viewModel: viewModel)
-}
+//#Preview {
+//  let mockGame = MockVideoPokerGame(, playerData: PlayerData(totalPoints: <#Int#>, currentBet: <#Int#>, bestHand: <#HandRank#>, bestHandDate: <#Date#>, preferredLanguage: <#String#>, firstWinningHandDate: <#Date?#>, handPreference: <#HandPreference#>, pokerLevel: <#PokerLevel#>, beginnerMode: <#Bool#>))
+//  let mockRepository = MockPlayerDataRepository()
+//  let viewModel = VideoPokerViewModel(game: mockGame, repository: mockRepository)
+//  VideoPokerView(viewModel: viewModel)
+//}

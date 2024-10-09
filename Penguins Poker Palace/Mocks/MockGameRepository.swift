@@ -6,11 +6,11 @@
 //
 
 
-class MockGameRepository: GameRepository {
-  func saveGameState(_ game: VideoPokerGame) {
+class MockPlayerDataRepository: PlayerDataRepository {
+  func savePlayerData(_ playerData: PlayerData) {
   }
   
-  func loadGameState() -> VideoPokerGame? {
+  func loadPlayerData() -> PlayerData? {
     nil
   }
 }

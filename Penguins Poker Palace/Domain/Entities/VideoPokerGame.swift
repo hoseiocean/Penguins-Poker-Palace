@@ -5,16 +5,22 @@
 //  Created by Thomas Heinis on 06/10/2024.
 //
 
+import Foundation
+
 
 class VideoPokerGame {
   private var deck: Deck
+  
   private(set) var currentHand: [Card]
   private(set) var handState: HandState
   
-  init(deck: Deck, currentHand: [Card] = [], handState: HandState = .initialHand) {
+  var currentPlayerData: PlayerData
+  
+  init(deck: Deck, playerData: PlayerData, currentHand: [Card] = [], handState: HandState = .initialHand) {
     self.deck = deck
     self.currentHand = currentHand
     self.handState = handState
+    self.currentPlayerData = playerData
   }
   
   @discardableResult
@@ -40,6 +46,24 @@ class VideoPokerGame {
   
   func evaluateHand() -> HandRank {
     HandRank.evaluate(cards: currentHand)
+  }
+  
+  func finalizeHand() -> HandRank {
+    let handRank = evaluateHand()
+    
+    currentPlayerData.totalPoints += handRank.winnings * (currentPlayerData.currentBet ?? 0)
+    if let bestHand = currentPlayerData.bestHand, handRank > bestHand {
+      currentPlayerData.bestHand = handRank
+      currentPlayerData.bestHandDate = Date()
+    }
+    currentPlayerData.totalHandsPlayed += 1
+    if handRank != .none {
+      currentPlayerData.winningHands += 1
+    }
+    
+    handState = .finalHand
+    
+    return handRank
   }
   
   func getHandName() -> String {
