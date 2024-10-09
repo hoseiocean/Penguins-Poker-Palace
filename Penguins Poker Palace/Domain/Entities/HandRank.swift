@@ -5,6 +5,7 @@
 //  Created by Thomas Heinis on 06/10/2024.
 //
 
+
 enum HandRank: Int {
   case none, onePair, twoPair, threeOfAKind, straight, flush, fullHouse, fourOfAKind, straightFlush, royalFlush
   
@@ -38,39 +39,40 @@ enum HandRank: Int {
     }
   }
   
-  private static func areImmediatlyConsecutive(ranks: [Rank]) -> Bool {
+  private static func areImmediatelyConsecutive(ranks: [Rank]) -> Bool {
     let sortedRanks = ranks.sorted()
     let consecutiveRanksPairs = zip(sortedRanks, sortedRanks.dropFirst())
     return consecutiveRanksPairs.allSatisfy { lowRank, highRank in lowRank.isImmediatlyFollowedBy(highRank) }
+  }
+  
+  private static func containsWinningPair(in rankCounts: [Rank: Int]) -> Bool {
+    if let pairRank = rankCounts.first(where: { rankCount in rankCount.value == 2 })?.key, pairRank >= .jack {
+      return true
+    }
+    return false
   }
   
   static func evaluate(cards: [Card]) -> HandRank {
     let ranks = cards.map { card in card.rank }
     let suits = cards.map { card in card.suit }
     
-    let rankCounts = Dictionary(ranks.map { rank in (rank, 1) }, uniquingKeysWith: +)
-    let suitCounts = Dictionary(suits.map { suit in (suit, 1) }, uniquingKeysWith: +)
+    let sameRankCounts = Dictionary(ranks.map { rank in (rank, 1) }, uniquingKeysWith: +)
+    let sameSuitCounts = Dictionary(suits.map { suit in (suit, 1) }, uniquingKeysWith: +)
     
-    let isFlush = suitCounts.values.contains(5)
-    let isStraight = areImmediatlyConsecutive(ranks: ranks)
+    let isFlush = sameSuitCounts.values.contains(5)
+    let isStraight = areImmediatelyConsecutive(ranks: ranks)
     
-    return switch (isFlush, isStraight, rankCounts) {
+    return switch (isFlush, isStraight, sameRankCounts) {
       case (true, true, _) where ranks.max() == .ace && ranks.min() == .ten: .royalFlush
       case (true, true, _): .straightFlush
-      case (_, _, let rankCounts) where rankCounts.values.contains(4): .fourOfAKind
-      case (_, _, let rankCounts) where rankCounts.values.contains(3) && rankCounts.values.contains(2): .fullHouse
+      case (_, _, let sameRanks) where sameRanks.values.contains(4): .fourOfAKind
+      case (_, _, let sameRanks) where sameRanks.values.contains(3) && sameRanks.values.contains(2): .fullHouse
       case (true, _, _): .flush
       case (_, true, _): .straight
-      case (_, _, let rankCounts) where rankCounts.values.contains(3): .threeOfAKind
-      case (_, _, let rankCounts) where rankCounts.filter { rankCount in rankCount.value == 2 }.count == 2: .twoPair
-      case (_, _, let rankCounts) where rankCounts.values.contains(2):
-        if let pairRank = rankCounts.first(where: { rankCount in rankCount.value == 2 })?.key, pairRank >= .jack {
-          .onePair
-        } else {
-          .none
-        }
-      default:
-        .none
+      case (_, _, let sameRanks) where sameRanks.values.contains(3): .threeOfAKind
+      case (_, _, let sameRanks) where sameRanks.filter { rankCount in rankCount.value == 2 }.count == 2: .twoPair
+      case (_, _, let sameRanks) where containsWinningPair(in: sameRanks): .onePair
+      default: .none
     }
   }
 }
