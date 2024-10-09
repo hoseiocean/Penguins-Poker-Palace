@@ -76,3 +76,9 @@ enum HandRank: Int {
     }
   }
 }
+
+extension HandRank: Comparable {
+  public static func < (lhs: HandRank, rhs: HandRank) -> Bool {
+    lhs.rawValue < rhs.rawValue
+  }
+}
