@@ -11,9 +11,9 @@ import Foundation
 final class VideoPokerViewModel: ObservableObject {
   @Published var currentHand: [Card] = []
   @Published var handName: String = ""
-  @Published var handState: HandState = .initialHand
+  @Published var handState: HandState = .initializing
   @Published var totalPoints: Int = 100
-  @Published var currentBet: Int = 1
+  @Published var currentBet: Int? = nil
   @Published var winnings: Int = 0
   
   private let game: VideoPokerGame
@@ -30,24 +30,29 @@ final class VideoPokerViewModel: ObservableObject {
     handName = game.getHandName()
     handState = game.handState
     totalPoints = max(0, totalPoints)
-    currentBet = min(max(currentBet, 1), totalPoints)
+    if let bet = currentBet {
+      currentBet = min(max(bet, 1), totalPoints)
+    }
   }
   
-  // Gestion de la mise
   func setBet(_ bet: Int) {
     if totalPoints > 0 {
       currentBet = min(max(bet, 1), totalPoints)
     } else {
       currentBet = 0
     }
-    updateState()
+    
+    if handState == .initializing {
+      handState = .initialHand
+      startNewRound()
+    }
   }
   
   func startNewRound() {
-    guard handState == .finalHand || handState == .initialHand else { return }
+    guard let bet = currentBet, bet > 0 else { return }
     
-    if totalPoints >= currentBet {
-      totalPoints -= currentBet
+    if totalPoints >= bet {
+      totalPoints -= bet
     }
     
     game.resetForNewRound()
@@ -61,6 +66,7 @@ final class VideoPokerViewModel: ObservableObject {
   }
   
   func finalizeHand() {
+    guard let currentBet else { return }
     let handRank = game.evaluateHand()
     winnings = handRank.winnings * currentBet
     totalPoints += winnings
@@ -68,7 +74,14 @@ final class VideoPokerViewModel: ObservableObject {
   }
   
   func loadGameState() {
-    updateState()
+    if let savedGame = repository.loadGameState() {
+//      totalPoints = savedGame.totalPoints
+//      currentBet = savedGame.currentBet
+      updateState()
+    } else {
+      currentBet = nil
+    }
+    handState = .initializing
   }
   
   func saveGameState() {

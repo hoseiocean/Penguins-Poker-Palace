@@ -7,6 +7,7 @@
 
 
 enum HandState {
+  case initializing
   case initialHand
   case finalHand
 }

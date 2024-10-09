@@ -15,36 +15,33 @@ struct VideoPokerView: View {
   
   var body: some View {
     VStack {
-      HStack {
-        ForEach(viewModel.currentHand.indices, id: \.self) { index in
-          CardView(card: viewModel.currentHand[index], isSelected: selectedCards.contains(index))
-            .onTapGesture {
-              toggleCardSelection(at: index)
-            }
+      if viewModel.handState != .initializing {
+        HStack {
+          ForEach(viewModel.currentHand.indices, id: \.self) { index in
+            CardView(card: viewModel.currentHand[index], isSelected: selectedCards.contains(index))
+              .onTapGesture {
+                toggleCardSelection(at: index)
+              }
+          }
+        }
+        .padding()
+        
+        Text(viewModel.handName)
+          .font(.title2)
+          .padding()
+        
+        HStack {
+          Text("view_points: \(viewModel.totalPoints)")
+            .font(.title3)
+            .padding()
+          Text("view_bet: \(String(describing: viewModel.currentBet))")
+            .font(.title3)
+            .padding()
+          Text("view_winnings: \(viewModel.winnings)")
+            .font(.title3)
+            .padding()
         }
       }
-      .padding()
-      
-      Text(viewModel.handName)
-        .font(.title2)
-        .padding()
-      
-      HStack {
-        Text("view_points: \(viewModel.totalPoints)")
-          .font(.title3)
-          .padding()
-        Text("view_bet: \(viewModel.currentBet)")
-          .font(.title3)
-          .padding()
-        Text("view_winnings: \(viewModel.winnings)")
-          .font(.title3)
-          .padding()
-      }
-      
-      Text("view_game_state: \(viewModel.handState == .initialHand ? "view_initial_hand" : "view_final_hand")")
-        .font(.title3)
-        .padding()
-      
       HStack {
         TextField("view_set_your_bet:", text: $betInput)
           .keyboardType(.numberPad)
@@ -60,23 +57,25 @@ struct VideoPokerView: View {
         .padding()
       }
       
-      if viewModel.handState == .initialHand {
-        Button("button_confirm_selection") {
-          viewModel.exchangeSelectedCards(indices: Array(selectedCards))
-          selectedCards.removeAll()
-        }
-        .padding()
-      } else {
-        Button("button_new_game") {
-          viewModel.startNewRound()
-          selectedCards.removeAll()
-        }
-        .padding()
+      switch viewModel.handState {
+        case .initializing:
+          Text("view_initializing")
+        case .initialHand:
+          Button("button_confirm_selection") {
+            viewModel.exchangeSelectedCards(indices: Array(selectedCards))
+            selectedCards.removeAll()
+          }
+          .padding()
+        case .finalHand:
+          Button("button_new_game") {
+            selectedCards.removeAll()
+            viewModel.startNewRound()
+          }
+          .padding()
       }
     }
     .onAppear {
-      viewModel.startNewRound()
-      selectedCards.removeAll()
+      viewModel.loadGameState()
     }
   }
   
