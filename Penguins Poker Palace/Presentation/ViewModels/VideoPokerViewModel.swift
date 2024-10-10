@@ -19,6 +19,7 @@ final class VideoPokerViewModel: ObservableObject {
   @Published var expertMode: Bool
   @Published var handName: String = ""
   @Published var handState: HandState = .initializing
+  @Published var laterality: Laterality
   @Published var showPlayerInfo: Bool = false
   @Published var totalPoints: Int = 100
   @Published var winnings: Int = 0
@@ -51,11 +52,6 @@ final class VideoPokerViewModel: ObservableObject {
     game.currentPlayerData.language ?? String()
   }
   
-  var laterality: String {
-    guard let laterality = game.currentPlayerData.laterality else { return "Unknown" }
-    return laterality.rawValue
-  }
-  
   var pokerLevel: PokerLevel {
     PlayerLevelDetermination.determinePlayerLevel(playerData: game.currentPlayerData)
   }
@@ -79,8 +75,9 @@ final class VideoPokerViewModel: ObservableObject {
   init(game: VideoPokerGame, repository: PlayerDataRepository) {
     self.game = game
     self.repository = repository
-    expertMode =  game.currentPlayerData.expertMode ?? false
-    
+    expertMode = game.currentPlayerData.expertMode ?? false
+    laterality = game.currentPlayerData.laterality ?? .rightHanded
+
     loadGameState()
   }
   

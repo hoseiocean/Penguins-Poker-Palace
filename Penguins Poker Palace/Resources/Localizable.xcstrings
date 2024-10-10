@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "Best Hand: %@" : {
 
     },
@@ -464,7 +467,10 @@
     "Language: %@" : {
 
     },
-    "Laterality: %@" : {
+    "Laterality:" : {
+
+    },
+    "Left" : {
 
     },
     "Preferences" : {
@@ -1047,6 +1053,9 @@
           }
         }
       }
+    },
+    "Right" : {
+
     },
     "Show Player Info" : {
 

@@ -54,8 +54,15 @@ struct PlayerInfoView: View {
           }
           Label("Language: \(viewModel.language)", systemImage: "globe")
             .labelStyle(ColorfulIconLabelStyle(color: .blue))
-          Label("Laterality: \(viewModel.laterality)", systemImage: "hand.raised.fill")
+          
+          Label("Laterality:", systemImage: "hand.raised.fill")
             .labelStyle(ColorfulIconLabelStyle(color: .blue))
+          
+          Picker("", selection: $viewModel.laterality) {
+            Text("Left").tag(1)
+            Text("Right").tag(2)
+          }
+          .pickerStyle(.segmented)
         }
       }
       .navigationTitle("Information")
