@@ -32,6 +32,8 @@
 		116D41642CB341A400F55A08 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41632CB341A400F55A08 /* CardView.swift */; };
 		116D41682CB34C5000F55A08 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 116D41672CB34C5000F55A08 /* Localizable.xcstrings */; };
 		116D416A2CB3681100F55A08 /* HandState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41692CB3681100F55A08 /* HandState.swift */; };
+		11E06D962CB87737004E5D86 /* PlayerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E06D952CB87737004E5D86 /* PlayerInfoView.swift */; };
+		11E06D992CB88C87004E5D86 /* ColorfulIconLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E06D982CB88C87004E5D86 /* ColorfulIconLabelStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		116D41632CB341A400F55A08 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		116D41672CB34C5000F55A08 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		116D41692CB3681100F55A08 /* HandState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandState.swift; sourceTree = "<group>"; };
+		11E06D952CB87737004E5D86 /* PlayerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoView.swift; sourceTree = "<group>"; };
+		11E06D982CB88C87004E5D86 /* ColorfulIconLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorfulIconLabelStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -214,7 +218,9 @@
 		116D41232CB3215F00F55A08 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				11E06D972CB88C73004E5D86 /* Styles */,
 				116D41632CB341A400F55A08 /* CardView.swift */,
+				11E06D952CB87737004E5D86 /* PlayerInfoView.swift */,
 				116D41292CB3215F00F55A08 /* VideoPokerView.swift */,
 			);
 			path = Views;
@@ -276,6 +282,14 @@
 				116D415F2CB32FF300F55A08 /* RandomCardFactory.swift */,
 			);
 			path = Factories;
+			sourceTree = "<group>";
+		};
+		11E06D972CB88C73004E5D86 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				11E06D982CB88C87004E5D86 /* ColorfulIconLabelStyle.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,9 +412,11 @@
 				116D415E2CB32FB100F55A08 /* CardFactory.swift in Sources */,
 				116D413D2CB3224F00F55A08 /* HandRank.swift in Sources */,
 				116D416A2CB3681100F55A08 /* HandState.swift in Sources */,
+				11E06D992CB88C87004E5D86 /* ColorfulIconLabelStyle.swift in Sources */,
 				116D41602CB32FF300F55A08 /* RandomCardFactory.swift in Sources */,
 				11512EE42CB71577005207EF /* PokerLevel.swift in Sources */,
 				11512EEE2CB71905005207EF /* Laterality.swift in Sources */,
+				11E06D962CB87737004E5D86 /* PlayerInfoView.swift in Sources */,
 				116D413B2CB3223A00F55A08 /* Deck.swift in Sources */,
 				116D412B2CB3215F00F55A08 /* VideoPokerApp.swift in Sources */,
 				116D41302CB321AE00F55A08 /* Card.swift in Sources */,

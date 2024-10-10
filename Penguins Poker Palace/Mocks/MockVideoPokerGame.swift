@@ -14,7 +14,7 @@ class MockVideoPokerGame: VideoPokerGame {
     super.init(deck: deck, playerData: playerData)
   }
   
-  override func dealHand() -> [Card] {
+  func dealHand() -> [Card] {
     [
       RandomCardFactory().createRandomCard(),
       RandomCardFactory().createRandomCard(),

@@ -14,9 +14,8 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
   private let bestHandDateKey = "bestHandDate"
   private let currentBetKey = "currentBet"
   private let firstWinningHandDateKey = "firstWinningHandDate"
+  private let languageKey = "preferredLanguage"
   private let lateralityKey = "laterality"
-  private let pokerLevelKey = "pokerLevel"
-  private let preferredLanguageKey = "preferredLanguage"
   private let successfulBetsKey = "successfulBets"
   private let totalBetsKey = "totalBets"
   private let totalHandsPlayedKey = "totalHandsPlayed"
@@ -25,7 +24,7 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
   
   func savePlayerData(_ playerData: PlayerData) {
     let defaults = UserDefaults.standard
-    defaults.set(playerData.beginnerMode, forKey: beginnerModeKey)
+    defaults.set(playerData.expertMode, forKey: beginnerModeKey)
     defaults.set(playerData.bestHand?.rawValue, forKey: bestHandKey)
     defaults.set(playerData.bestHandDate?.timeIntervalSince1970, forKey: bestHandDateKey)
     defaults.set(playerData.currentBet, forKey: currentBetKey)
@@ -34,13 +33,12 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
       defaults.set(firstWinningHandDate.timeIntervalSince1970, forKey: firstWinningHandDateKey)
     }
 
+    defaults.set(playerData.language, forKey: languageKey)
     defaults.set(playerData.laterality?.rawValue, forKey: lateralityKey)
-    defaults.set(playerData.totalPoints, forKey: totalPointsKey)
-    defaults.set(playerData.pokerLevel?.rawValue, forKey: pokerLevelKey)
-    defaults.set(playerData.preferredLanguage, forKey: preferredLanguageKey)
     defaults.set(playerData.successfulBets, forKey: successfulBetsKey)
     defaults.set(playerData.totalBets, forKey: totalBetsKey)
     defaults.set(playerData.totalHandsPlayed, forKey: totalHandsPlayedKey)
+    defaults.set(playerData.totalPoints, forKey: totalPointsKey)
     defaults.set(playerData.winningHands, forKey: winningHandsKey)
   }
   
@@ -51,11 +49,9 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
       let bestHandRaw = defaults.value(forKey: bestHandKey) as? Int,
       let bestHand = HandRank(rawValue: bestHandRaw),
       let bestHandDate = defaults.value(forKey: bestHandDateKey) as? TimeInterval,
+      let language = defaults.string(forKey: languageKey),
       let lateralityRaw = defaults.string(forKey: lateralityKey),
-      let laterality = Laterality(rawValue: lateralityRaw),
-      let pokerLevelRaw = defaults.string(forKey: pokerLevelKey),
-      let pokerLevel = PokerLevel(rawValue: pokerLevelRaw),
-      let preferredLanguage = defaults.string(forKey: preferredLanguageKey)
+      let laterality = Laterality(rawValue: lateralityRaw)
     else {
       return nil
     }
@@ -77,9 +73,8 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
       bestHandDate: bestHandDateValue,
       currentBet: currentBet,
       firstWinningHandDate: firstWinningHandDateValue,
+      language: language,
       laterality: laterality,
-      pokerLevel: pokerLevel,
-      preferredLanguage: preferredLanguage,
       successfulBets: successfulBets,
       totalBets: totalBets,
       totalHandsPlayed: totalHandsPlayed,

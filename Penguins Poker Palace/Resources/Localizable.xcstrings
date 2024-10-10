@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Best Hand: %@" : {
+
+    },
     "button_confirm_selection" : {
       "localizations" : {
         "de" : {
@@ -102,6 +105,18 @@
           }
         }
       }
+    },
+    "Expert Mode" : {
+
+    },
+    "First Winning Hand Date: %@" : {
+
+    },
+    "Game Stats" : {
+
+    },
+    "General Info" : {
+
     },
     "hand_flush" : {
       "localizations" : {
@@ -442,6 +457,18 @@
           }
         }
       }
+    },
+    "Information" : {
+
+    },
+    "Language: %@" : {
+
+    },
+    "Laterality: %@" : {
+
+    },
+    "Preferences" : {
+
     },
     "rank_name_ace" : {
       "localizations" : {
@@ -1021,6 +1048,21 @@
         }
       }
     },
+    "Show Player Info" : {
+
+    },
+    "Successful Bets: %lld" : {
+
+    },
+    "Total Bets: %lld" : {
+
+    },
+    "Total Hands Played: %lld" : {
+
+    },
+    "Total Points: %lld" : {
+
+    },
     "view_bet: %lld" : {
       "localizations" : {
         "en" : {
@@ -1274,6 +1316,9 @@
           }
         }
       }
+    },
+    "Winning Hands: %lld" : {
+
     }
   },
   "version" : "1.0"

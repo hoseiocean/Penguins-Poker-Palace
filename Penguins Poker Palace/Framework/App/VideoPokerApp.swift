@@ -26,9 +26,8 @@ struct VideoPokerApp: App {
       bestHandDate: Date(),
       currentBet: nil,
       firstWinningHandDate: nil,
+      language: Locale.current.language.languageCode?.identifier ?? "en",
       laterality: .rightHanded,
-      pokerLevel: .donkey,
-      preferredLanguage: Locale.current.language.languageCode?.identifier ?? "en",
       totalPoints: 100
     )
     let game = VideoPokerGame(deck: Deck(), playerData: playerData)

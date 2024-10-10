@@ -11,6 +11,7 @@ import SwiftUI
 struct VideoPokerView: View {
   @StateObject var viewModel: VideoPokerViewModel
   @State private var selectedCards: Set<Int> = []
+  @State private var showingSheet = true
   
   var body: some View {
     VStack {
@@ -25,7 +26,7 @@ struct VideoPokerView: View {
         }
         .padding()
         
-        Text(viewModel.handName)
+        Text(viewModel.handState == .finalHand ? viewModel.handName : "")
           .font(.title2)
           .padding()
         
@@ -77,9 +78,18 @@ struct VideoPokerView: View {
           }
           .padding()
       }
+      Button("Show Player Info") {
+        showingSheet.toggle()
+      }
+      .padding()
     }
     .onAppear {
       viewModel.loadGameState()
+    }
+    .sheet(isPresented: $showingSheet) {
+      PlayerInfoView(viewModel: viewModel)
+        .presentationDetents([.fraction(0.2), .medium, .large])
+        .presentationDragIndicator(.visible)
     }
   }
   
