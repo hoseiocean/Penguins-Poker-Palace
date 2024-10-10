@@ -21,13 +21,13 @@ struct VideoPokerApp: App {
   init () {
     let repository = UserDefaultsPlayerDataRepository()
     let playerData = repository.loadPlayerData() ?? PlayerData(
-      beginnerMode: true,
       bestHand: .none,
       bestHandDate: Date(),
       currentBet: nil,
+      expertMode: true,
       firstWinningHandDate: nil,
       language: Locale.current.language.languageCode?.identifier ?? "en",
-      laterality: .rightHanded,
+      laterality: .right,
       totalPoints: 100
     )
     let game = VideoPokerGame(deck: Deck(), playerData: playerData)

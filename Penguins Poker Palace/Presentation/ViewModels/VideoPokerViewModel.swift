@@ -76,7 +76,7 @@ final class VideoPokerViewModel: ObservableObject {
     self.game = game
     self.repository = repository
     expertMode = game.currentPlayerData.expertMode ?? false
-    laterality = game.currentPlayerData.laterality ?? .rightHanded
+    laterality = game.currentPlayerData.laterality ?? .right
 
     loadGameState()
   }

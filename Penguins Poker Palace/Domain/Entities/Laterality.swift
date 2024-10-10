@@ -7,6 +7,6 @@
 
 
 enum Laterality: String {
-  case leftHanded
-  case rightHanded
+  case left
+  case right
 }

@@ -9,10 +9,10 @@ import Foundation
 
 
 struct PlayerData {
-  var expertMode: Bool?
   var bestHand: HandRank?
   var bestHandDate: Date?
   var currentBet: Int?
+  var expertMode: Bool?
   var firstWinningHandDate: Date?
   var language: String?
   var laterality: Laterality?
@@ -23,10 +23,10 @@ struct PlayerData {
   var winningHands: Int
   
   init(
-    beginnerMode: Bool,
     bestHand: HandRank,
     bestHandDate: Date,
     currentBet: Int?,
+    expertMode: Bool,
     firstWinningHandDate: Date?,
     language: String,
     laterality: Laterality,
@@ -36,10 +36,10 @@ struct PlayerData {
     totalPoints: Int,
     winningHands: Int = 0
   ) {
-    self.expertMode = beginnerMode
     self.bestHand = bestHand
     self.bestHandDate = bestHandDate
     self.currentBet = currentBet
+    self.expertMode = expertMode
     self.firstWinningHandDate = firstWinningHandDate
     self.language = language
     self.laterality = laterality

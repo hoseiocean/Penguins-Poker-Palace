@@ -9,10 +9,10 @@ import Foundation
 
 
 final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
-  private let beginnerModeKey = "beginnerMode"
   private let bestHandKey = "bestHand"
   private let bestHandDateKey = "bestHandDate"
   private let currentBetKey = "currentBet"
+  private let expertModeKey = "expertMode"
   private let firstWinningHandDateKey = "firstWinningHandDate"
   private let languageKey = "preferredLanguage"
   private let lateralityKey = "laterality"
@@ -24,10 +24,10 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
   
   func savePlayerData(_ playerData: PlayerData) {
     let defaults = UserDefaults.standard
-    defaults.set(playerData.expertMode, forKey: beginnerModeKey)
     defaults.set(playerData.bestHand?.rawValue, forKey: bestHandKey)
     defaults.set(playerData.bestHandDate?.timeIntervalSince1970, forKey: bestHandDateKey)
     defaults.set(playerData.currentBet, forKey: currentBetKey)
+    defaults.set(playerData.expertMode, forKey: expertModeKey)
 
     if let firstWinningHandDate = playerData.firstWinningHandDate {
       defaults.set(firstWinningHandDate.timeIntervalSince1970, forKey: firstWinningHandDateKey)
@@ -56,9 +56,9 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
       return nil
     }
     
-    let beginnerMode = defaults.bool(forKey: beginnerModeKey)
     let bestHandDateValue = Date(timeIntervalSince1970: bestHandDate)
     let currentBet = defaults.integer(forKey: currentBetKey)
+    let expertMode = defaults.bool(forKey: expertModeKey)
     let firstWinningHandDate = defaults.value(forKey: firstWinningHandDateKey) as? TimeInterval
     let firstWinningHandDateValue = firstWinningHandDate != nil ? Date(timeIntervalSince1970: firstWinningHandDate!) : nil
     let successfulBets = defaults.integer(forKey: successfulBetsKey)
@@ -68,10 +68,10 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
     let winningHands = defaults.integer(forKey: winningHandsKey)
     
     return PlayerData(
-      beginnerMode: beginnerMode,
       bestHand: bestHand,
       bestHandDate: bestHandDateValue,
       currentBet: currentBet,
+      expertMode: expertMode,
       firstWinningHandDate: firstWinningHandDateValue,
       language: language,
       laterality: laterality,
