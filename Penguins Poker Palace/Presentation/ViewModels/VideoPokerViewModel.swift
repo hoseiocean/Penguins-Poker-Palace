@@ -26,20 +26,30 @@ final class VideoPokerViewModel: ObservableObject {
     loadGameState()
   }
   
-  private func updateState() {
-    currentHand = game.currentHand
-    handName = game.getHandName()
-    handState = game.handState
-    totalPoints = game.currentPlayerData.totalPoints
-  }
-  
-  func finalizeHand() {
+  func exchangeSelectedCards(indices: [Int]) {
+    game.exchangeCards(indices: indices)
     let handRank = game.finalizeHand()
     winnings = handRank.winnings * (currentBet ?? 0)
     updateState()
     saveGameState()
   }
   
+  func loadGameState() {
+    if let loadedPlayerData = repository.loadPlayerData() {
+      currentBet = loadedPlayerData.currentBet
+      game.currentPlayerData = loadedPlayerData
+      handState = .finalHand
+      totalPoints = loadedPlayerData.totalPoints
+    } else {
+      currentBet = nil
+      handState = .initializing
+    }
+  }
+
+  func saveGameState() {
+    repository.savePlayerData(game.currentPlayerData)
+  }
+
   func setBet(_ bet: Int) {
     if totalPoints > 0 {
       currentBet = min(max(bet, 1), totalPoints)
@@ -78,24 +88,10 @@ final class VideoPokerViewModel: ObservableObject {
     saveGameState()
   }
   
-  func exchangeSelectedCards(indices: [Int]) {
-    game.exchangeCards(indices: indices)
-    finalizeHand()
-  }
-  
-  func saveGameState() {
-    repository.savePlayerData(game.currentPlayerData)
-  }
-  
-  func loadGameState() {
-    if let loadedPlayerData = repository.loadPlayerData() {
-      currentBet = loadedPlayerData.currentBet
-      game.currentPlayerData = loadedPlayerData
-      handState = .finalHand
-      totalPoints = loadedPlayerData.totalPoints
-    } else {
-      currentBet = nil
-      handState = .initializing
-    }
+  private func updateState() {
+    currentHand = game.currentHand
+    handName = game.getHandName()
+    handState = game.handState
+    totalPoints = game.currentPlayerData.totalPoints
   }
 }

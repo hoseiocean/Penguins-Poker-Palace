@@ -9,7 +9,10 @@
 enum Rank: Int, CaseIterable {
   case two = 2, three, four, five, six, seven, eight, nine, ten
   case jack, queen, king, ace
-  
+}
+
+extension Rank {
+
   var name: String {
     switch self {
       case .two: String(localized: "rank_name_two")

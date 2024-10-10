@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct VideoPokerApp: App {
+  
   @StateObject private var viewModel: VideoPokerViewModel
 
   var body: some Scene {
@@ -19,20 +20,19 @@ struct VideoPokerApp: App {
   
   init () {
     let repository = UserDefaultsPlayerDataRepository()
-    
     let playerData = repository.loadPlayerData() ?? PlayerData(
       beginnerMode: true,
       bestHand: .none,
       bestHandDate: Date(),
       currentBet: nil,
       firstWinningHandDate: nil,
-      handPreference: .rightHanded,
+      laterality: .rightHanded,
       pokerLevel: .donkey,
       preferredLanguage: Locale.current.language.languageCode?.identifier ?? "en",
       totalPoints: 100
     )
-    
     let game = VideoPokerGame(deck: Deck(), playerData: playerData)
+
     _viewModel = StateObject(wrappedValue: VideoPokerViewModel(game: game, repository: repository))
   }
 }

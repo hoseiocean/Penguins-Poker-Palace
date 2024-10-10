@@ -30,6 +30,10 @@ class VideoPokerGame {
     return currentHand
   }
   
+  func evaluateHand() -> HandRank {
+    HandRank.evaluate(cards: currentHand)
+  }
+  
   @discardableResult
   func exchangeCards(indices: [Int]) -> [Card] {
     guard handState == .initialHand else { return currentHand }
@@ -43,11 +47,7 @@ class VideoPokerGame {
     handState = .finalHand
     return currentHand
   }
-  
-  func evaluateHand() -> HandRank {
-    HandRank.evaluate(cards: currentHand)
-  }
-  
+
   func finalizeHand() -> HandRank {
     let handRank = evaluateHand()
     

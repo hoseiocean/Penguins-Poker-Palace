@@ -14,7 +14,7 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
   private let bestHandDateKey = "bestHandDate"
   private let currentBetKey = "currentBet"
   private let firstWinningHandDateKey = "firstWinningHandDate"
-  private let handPreferenceKey = "handPreference"
+  private let lateralityKey = "laterality"
   private let pokerLevelKey = "pokerLevel"
   private let preferredLanguageKey = "preferredLanguage"
   private let successfulBetsKey = "successfulBets"
@@ -34,7 +34,7 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
       defaults.set(firstWinningHandDate.timeIntervalSince1970, forKey: firstWinningHandDateKey)
     }
 
-    defaults.set(playerData.handPreference?.rawValue, forKey: handPreferenceKey)
+    defaults.set(playerData.laterality?.rawValue, forKey: lateralityKey)
     defaults.set(playerData.totalPoints, forKey: totalPointsKey)
     defaults.set(playerData.pokerLevel?.rawValue, forKey: pokerLevelKey)
     defaults.set(playerData.preferredLanguage, forKey: preferredLanguageKey)
@@ -51,8 +51,8 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
       let bestHandRaw = defaults.value(forKey: bestHandKey) as? Int,
       let bestHand = HandRank(rawValue: bestHandRaw),
       let bestHandDate = defaults.value(forKey: bestHandDateKey) as? TimeInterval,
-      let handPreferenceRaw = defaults.string(forKey: handPreferenceKey),
-      let handPreference = HandPreference(rawValue: handPreferenceRaw),
+      let lateralityRaw = defaults.string(forKey: lateralityKey),
+      let laterality = Laterality(rawValue: lateralityRaw),
       let pokerLevelRaw = defaults.string(forKey: pokerLevelKey),
       let pokerLevel = PokerLevel(rawValue: pokerLevelRaw),
       let preferredLanguage = defaults.string(forKey: preferredLanguageKey)
@@ -77,7 +77,7 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
       bestHandDate: bestHandDateValue,
       currentBet: currentBet,
       firstWinningHandDate: firstWinningHandDateValue,
-      handPreference: handPreference,
+      laterality: laterality,
       pokerLevel: pokerLevel,
       preferredLanguage: preferredLanguage,
       successfulBets: successfulBets,

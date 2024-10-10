@@ -8,7 +8,10 @@
 
 enum HandRank: Int {
   case none, onePair, twoPair, threeOfAKind, straight, flush, fullHouse, fourOfAKind, straightFlush, royalFlush
-  
+}
+
+extension HandRank {
+
   var name: String {
     switch self {
       case .none: String(localized: "hand_none")

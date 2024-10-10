@@ -14,7 +14,7 @@ struct PlayerData {
   var bestHandDate: Date?
   var currentBet: Int?
   var firstWinningHandDate: Date?
-  var handPreference: HandPreference?
+  var laterality: Laterality?
   var pokerLevel: PokerLevel?
   var preferredLanguage: String?
   var successfulBets: Int
@@ -29,7 +29,7 @@ struct PlayerData {
     bestHandDate: Date,
     currentBet: Int?,
     firstWinningHandDate: Date?,
-    handPreference: HandPreference,
+    laterality: Laterality,
     pokerLevel: PokerLevel,
     preferredLanguage: String,
     successfulBets: Int = 0,
@@ -43,7 +43,7 @@ struct PlayerData {
     self.bestHandDate = bestHandDate
     self.currentBet = currentBet
     self.firstWinningHandDate = firstWinningHandDate
-    self.handPreference = handPreference
+    self.laterality = laterality
     self.pokerLevel = pokerLevel
     self.preferredLanguage = preferredLanguage
     self.successfulBets = successfulBets

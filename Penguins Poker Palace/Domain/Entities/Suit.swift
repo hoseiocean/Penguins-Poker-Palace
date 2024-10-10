@@ -13,7 +13,10 @@ enum Suit: String, CaseIterable {
   case diamonds = "suit_diamonds"
   case hearts = "suit_hearts"
   case spades = "suit_spades"
-  
+}
+
+extension Suit {
+
   var color: CardColor {
     switch self {
       case .clubs, .spades: .black

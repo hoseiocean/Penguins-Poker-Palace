@@ -6,7 +6,7 @@
 //
 
 
-enum HandPreference: String {
+enum Laterality: String {
   case leftHanded
   case rightHanded
 }
