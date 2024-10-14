@@ -715,6 +715,41 @@
         }
       }
     },
+    "info_poker_level: %lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stufe: %lld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Level: %lld"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nivel: %lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niveau : %lld"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "레벨: %lld"
+          }
+        }
+      }
+    },
     "info_preferences" : {
       "localizations" : {
         "de" : {
@@ -1531,36 +1566,36 @@
         }
       }
     },
-    "view_bet: %lld" : {
+    "view_bet: %@" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Einsatz: %lld"
+            "value" : "Einsatz: %@"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Betting: %lld"
+            "value" : "Betting: %@"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apuesta: %lld"
+            "value" : "Apuesta: %@"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mise : %lld"
+            "value" : "Mise: %@"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "베팅: %lld"
+            "value" : "베팅: %@"
           }
         }
       }
