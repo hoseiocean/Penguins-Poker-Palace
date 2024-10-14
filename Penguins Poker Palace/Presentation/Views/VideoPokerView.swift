@@ -34,7 +34,7 @@ struct VideoPokerView: View {
           Text("view_points: \(viewModel.totalPoints)")
             .font(.title3)
             .padding()
-          Text("view_bet: \(viewModel.currentBet ?? 0)")
+          Text("view_bet: \(viewModel.currentBetString)")
             .font(.title3)
             .padding()
           Text("view_winnings: \(viewModel.winnings)")
