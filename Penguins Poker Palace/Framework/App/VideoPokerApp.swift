@@ -21,7 +21,7 @@ struct VideoPokerApp: App {
   init () {
     let repository = UserDefaultsPlayerDataRepository()
     let playerData = repository.loadPlayerData() ?? PlayerData(
-      bestHand: .none,
+      bestHand: Optional.none,
       bestHandDate: Date(),
       currentBet: nil,
       expertMode: true,

@@ -32,7 +32,10 @@
 		116D41642CB341A400F55A08 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41632CB341A400F55A08 /* CardView.swift */; };
 		116D41682CB34C5000F55A08 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 116D41672CB34C5000F55A08 /* Localizable.xcstrings */; };
 		116D416A2CB3681100F55A08 /* HandState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41692CB3681100F55A08 /* HandState.swift */; };
-		11E06D962CB87737004E5D86 /* PlayerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E06D952CB87737004E5D86 /* PlayerInfoView.swift */; };
+		11C647352CB8EF5000483523 /* IconName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C647342CB8EF5000483523 /* IconName.swift */; };
+		11C647372CB8EF7400483523 /* Label+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C647362CB8EF7400483523 /* Label+init.swift */; };
+		11C6473E2CB8F10F00483523 /* CaseIterable+randomCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C6473D2CB8F10400483523 /* CaseIterable+randomCase.swift */; };
+		11E06D962CB87737004E5D86 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E06D952CB87737004E5D86 /* InformationView.swift */; };
 		11E06D992CB88C87004E5D86 /* ColorfulIconLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E06D982CB88C87004E5D86 /* ColorfulIconLabelStyle.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,7 +77,10 @@
 		116D41632CB341A400F55A08 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		116D41672CB34C5000F55A08 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		116D41692CB3681100F55A08 /* HandState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandState.swift; sourceTree = "<group>"; };
-		11E06D952CB87737004E5D86 /* PlayerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoView.swift; sourceTree = "<group>"; };
+		11C647342CB8EF5000483523 /* IconName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconName.swift; sourceTree = "<group>"; };
+		11C647362CB8EF7400483523 /* Label+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+init.swift"; sourceTree = "<group>"; };
+		11C6473D2CB8F10400483523 /* CaseIterable+randomCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaseIterable+randomCase.swift"; sourceTree = "<group>"; };
+		11E06D952CB87737004E5D86 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		11E06D982CB88C87004E5D86 /* ColorfulIconLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorfulIconLabelStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,9 +224,10 @@
 		116D41232CB3215F00F55A08 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				11C647332CB8EF3B00483523 /* Components */,
 				11E06D972CB88C73004E5D86 /* Styles */,
 				116D41632CB341A400F55A08 /* CardView.swift */,
-				11E06D952CB87737004E5D86 /* PlayerInfoView.swift */,
+				11E06D952CB87737004E5D86 /* InformationView.swift */,
 				116D41292CB3215F00F55A08 /* VideoPokerView.swift */,
 			);
 			path = Views;
@@ -260,6 +267,7 @@
 				116D41242CB3215F00F55A08 /* Presentation */,
 				116D41212CB3215F00F55A08 /* Framework */,
 				116D41262CB3215F00F55A08 /* Resources */,
+				11C647382CB8F05F00483523 /* Shared */,
 				116D41472CB326C100F55A08 /* Mocks */,
 				116D41282CB3215F00F55A08 /* Preview Content */,
 			);
@@ -282,6 +290,39 @@
 				116D415F2CB32FF300F55A08 /* RandomCardFactory.swift */,
 			);
 			path = Factories;
+			sourceTree = "<group>";
+		};
+		11C647332CB8EF3B00483523 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				11C647342CB8EF5000483523 /* IconName.swift */,
+				11C647362CB8EF7400483523 /* Label+init.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		11C647382CB8F05F00483523 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				11C647392CB8F06800483523 /* Utilities */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		11C647392CB8F06800483523 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				11C6473A2CB8F06F00483523 /* Extensions */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		11C6473A2CB8F06F00483523 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				11C6473D2CB8F10400483523 /* CaseIterable+randomCase.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		11E06D972CB88C73004E5D86 /* Styles */ = {
@@ -416,17 +457,20 @@
 				116D41602CB32FF300F55A08 /* RandomCardFactory.swift in Sources */,
 				11512EE42CB71577005207EF /* PokerLevel.swift in Sources */,
 				11512EEE2CB71905005207EF /* Laterality.swift in Sources */,
-				11E06D962CB87737004E5D86 /* PlayerInfoView.swift in Sources */,
+				11E06D962CB87737004E5D86 /* InformationView.swift in Sources */,
 				116D413B2CB3223A00F55A08 /* Deck.swift in Sources */,
 				116D412B2CB3215F00F55A08 /* VideoPokerApp.swift in Sources */,
 				116D41302CB321AE00F55A08 /* Card.swift in Sources */,
+				11C6473E2CB8F10F00483523 /* CaseIterable+randomCase.swift in Sources */,
 				116D41642CB341A400F55A08 /* CardView.swift in Sources */,
 				11512EEA2CB7176E005207EF /* UserDefaultsPlayerDataRepository.swift in Sources */,
 				11512EE82CB715B7005207EF /* PlayerLevelDetermination.swift in Sources */,
 				116D414B2CB326FD00F55A08 /* MockGameRepository.swift in Sources */,
 				11512EE62CB7159A005207EF /* PlayerData.swift in Sources */,
 				116D41352CB3220100F55A08 /* Suit.swift in Sources */,
+				11C647352CB8EF5000483523 /* IconName.swift in Sources */,
 				116D41372CB3220F00F55A08 /* Rank.swift in Sources */,
+				11C647372CB8EF7400483523 /* Label+init.swift in Sources */,
 				11512EEC2CB717B2005207EF /* PlayerDataRepository.swift in Sources */,
 				116D412C2CB3215F00F55A08 /* VideoPokerView.swift in Sources */,
 			);

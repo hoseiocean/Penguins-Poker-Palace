@@ -78,7 +78,7 @@ struct VideoPokerView: View {
           }
           .padding()
       }
-      Button("Show Player Info") {
+      Button("button_show_information") {
         showingSheet.toggle()
       }
       .padding()
@@ -87,7 +87,7 @@ struct VideoPokerView: View {
       viewModel.loadGameState()
     }
     .sheet(isPresented: $showingSheet) {
-      PlayerInfoView(viewModel: viewModel)
+      InformationView(viewModel: viewModel)
         .presentationDetents([.fraction(0.2), .medium, .large])
         .presentationDragIndicator(.visible)
     }
@@ -102,9 +102,25 @@ struct VideoPokerView: View {
   }
 }
 
-//#Preview {
-//  let mockGame = MockVideoPokerGame(, playerData: PlayerData(totalPoints: <#Int#>, currentBet: <#Int#>, bestHand: <#HandRank#>, bestHandDate: <#Date#>, preferredLanguage: <#String#>, firstWinningHandDate: <#Date?#>, handPreference: <#HandPreference#>, pokerLevel: <#PokerLevel#>, beginnerMode: <#Bool#>))
-//  let mockRepository = MockPlayerDataRepository()
-//  let viewModel = VideoPokerViewModel(game: mockGame, repository: mockRepository)
-//  VideoPokerView(viewModel: viewModel)
-//}
+#Preview {
+  let testPlayerData = PlayerData(
+    bestHand: .royalFlush,
+    bestHandDate: Date(),
+    currentBet: 100,
+    expertMode: true,
+    firstWinningHandDate: Date(),
+    language: "en",
+    laterality: .right,
+    successfulBets: 5,
+    totalBets: 10,
+    totalHandsPlayed: 50,
+    totalPoints: 500,
+    winningHands: 20
+  )
+  
+  let mockGame = MockVideoPokerGame(playerData: testPlayerData)
+  let mockRepository = MockPlayerDataRepository()
+  let viewModel = VideoPokerViewModel(game: mockGame, repository: mockRepository)
+
+  VideoPokerView(viewModel: viewModel)
+}

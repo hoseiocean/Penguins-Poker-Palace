@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct ColorfulIconLabelStyle: LabelStyle {
-  var color: Color
+  var color: Color = .blue
   
   func makeBody(configuration: Configuration) -> some View {
     Label {
@@ -18,11 +18,11 @@ struct ColorfulIconLabelStyle: LabelStyle {
     } icon: {
       configuration
         .icon
-        .font(.system(size: 14))
+        .font(.system(size: 14.0))
         .foregroundColor(.white)
         .background(
-          RoundedRectangle(cornerRadius: 7)
-            .frame(width: 28, height: 28)
+          RoundedRectangle(cornerRadius: 8.0)
+            .frame(width: 28.0, height: 28.0)
             .foregroundColor(color)
         )
     }

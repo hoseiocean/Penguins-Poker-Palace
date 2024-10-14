@@ -56,7 +56,7 @@ class VideoPokerGame {
     let handRank = evaluateHand()
     
     currentPlayerData.totalPoints += handRank.winnings * (currentPlayerData.currentBet ?? 0)
-    updateBestHandIfNeeded(with: handRank)
+    checkAndUpdateBestHandIfNeeded(with: handRank)
     
     currentPlayerData.totalHandsPlayed += 1
     if handRank != .none {
@@ -67,7 +67,7 @@ class VideoPokerGame {
     return handRank
   }
   
-  private func updateBestHandIfNeeded(with handRank: HandRank) {
+  private func checkAndUpdateBestHandIfNeeded(with handRank: HandRank) {
     guard let bestHand = currentPlayerData.bestHand, handRank > bestHand else { return }
     currentPlayerData.bestHand = handRank
     currentPlayerData.bestHandDate = Date()

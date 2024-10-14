@@ -14,16 +14,16 @@ extension HandRank {
 
   var name: String {
     switch self {
-      case .none: String(localized: "hand_none")
-      case .onePair: String(localized: "hand_one_pair")
-      case .twoPair: String(localized: "hand_two_pair")
-      case .threeOfAKind: String(localized: "hand_three_of_a_kind")
-      case .straight: String(localized: "hand_straight")
-      case .flush: String(localized: "hand_flush")
-      case .fullHouse: String(localized: "hand_full_house")
-      case .fourOfAKind: String(localized: "hand_four_of_a_kind")
-      case .straightFlush: String(localized: "hand_straight_flush")
       case .royalFlush: String(localized: "hand_royal_flush")
+      case .straightFlush: String(localized: "hand_straight_flush")
+      case .fourOfAKind: String(localized: "hand_four_of_a_kind")
+      case .fullHouse: String(localized: "hand_full_house")
+      case .flush: String(localized: "hand_flush")
+      case .straight: String(localized: "hand_straight")
+      case .threeOfAKind: String(localized: "hand_three_of_a_kind")
+      case .twoPair: String(localized: "hand_two_pair")
+      case .onePair: String(localized: "hand_one_pair")
+      case .none: String(localized: "hand_none")
     }
   }
   

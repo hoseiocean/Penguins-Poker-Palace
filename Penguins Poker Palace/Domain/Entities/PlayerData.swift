@@ -23,17 +23,17 @@ struct PlayerData {
   var winningHands: Int
   
   init(
-    bestHand: HandRank,
-    bestHandDate: Date,
+    bestHand: HandRank?,
+    bestHandDate: Date?,
     currentBet: Int?,
-    expertMode: Bool,
+    expertMode: Bool?,
     firstWinningHandDate: Date?,
-    language: String,
-    laterality: Laterality,
+    language: String?,
+    laterality: Laterality?,
     successfulBets: Int = 0,
     totalBets: Int = 0,
     totalHandsPlayed: Int = 0,
-    totalPoints: Int,
+    totalPoints: Int = 0,
     winningHands: Int = 0
   ) {
     self.bestHand = bestHand

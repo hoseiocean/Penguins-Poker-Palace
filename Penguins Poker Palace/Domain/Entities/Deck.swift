@@ -30,9 +30,9 @@ final class Deck {
   }
   
   func drawCards(_ requestedQuantity: Int) -> [Card] {
-    let count = min(requestedQuantity, cards.count)
-    let drawnCards = Array(cards.suffix(count))
-    cards.removeLast(count)
+    let quantity = min(requestedQuantity, cards.count)
+    let drawnCards = Array(cards.suffix(quantity))
+    cards.removeLast(quantity)
     return drawnCards
   }
   

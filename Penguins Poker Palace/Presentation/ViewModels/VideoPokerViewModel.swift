@@ -21,7 +21,6 @@ final class VideoPokerViewModel: ObservableObject {
   @Published var handState: HandState = .initializing
   @Published var laterality: Laterality
   @Published var showPlayerInfo: Bool = false
-  @Published var totalPoints: Int = 100
   @Published var winnings: Int = 0
   
   var bestHand: String {
@@ -68,6 +67,10 @@ final class VideoPokerViewModel: ObservableObject {
     game.currentPlayerData.totalHandsPlayed
   }
   
+  var totalPoints: Int {
+    game.currentPlayerData.totalPoints
+  }
+  
   var winningHands: Int {
     game.currentPlayerData.winningHands
   }
@@ -89,8 +92,6 @@ final class VideoPokerViewModel: ObservableObject {
   func loadGameState() {
     if let loadedPlayerData = repository.loadPlayerData() {
       game.currentPlayerData = loadedPlayerData
-      currentBet = loadedPlayerData.currentBet
-      totalPoints = loadedPlayerData.totalPoints
       handState = .finalHand
     } else {
       resetGame()
@@ -131,7 +132,6 @@ final class VideoPokerViewModel: ObservableObject {
     currentHand = game.currentHand
     handName = game.getHandName()
     handState = game.handState
-    totalPoints = game.currentPlayerData.totalPoints
   }
 
   private func resetGame() {
@@ -139,6 +139,7 @@ final class VideoPokerViewModel: ObservableObject {
     handState = .initializing
   }
 }
+
 extension VideoPokerViewModel {
   
   private var longDateFormatter: DateFormatter {

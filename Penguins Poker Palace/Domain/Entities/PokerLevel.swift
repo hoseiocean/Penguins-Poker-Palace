@@ -16,16 +16,6 @@ enum PokerLevel {
 
 extension PokerLevel {
   
-  var emoji: String {
-    switch self {
-      case .donkey: "🐴"
-      case .fish: "🐟"
-      case .mass: "❓"
-      case .shark: "🦈"
-      case .whale: "🐋"
-    }
-  }
-  
   var description: String {
     switch self {
       case .donkey: "You're a donkey! Your poker game is the weakest, but you also don't fare well in betting."
@@ -33,6 +23,16 @@ extension PokerLevel {
       case .mass: "No poker level assigned yet. Keep playing to define your level!"
       case .shark: "You're a shark! You've mastered poker and consistently outplay others."
       case .whale: "You're a whale! You take big risks in betting and often come out on top."
+    }
+  }
+  
+  var emoji: String {
+    switch self {
+      case .donkey: "🐴"
+      case .fish: "🐟"
+      case .mass: "❓"
+      case .shark: "🦈"
+      case .whale: "🐋"
     }
   }
   

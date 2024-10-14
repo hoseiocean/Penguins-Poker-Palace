@@ -20,8 +20,8 @@ struct CardView: View {
     }
     .padding()
     .background(isSelected ? Color.yellow : Color.white)
-    .cornerRadius(8)
-    .shadow(radius: 5)
+    .cornerRadius(8.0)
+    .shadow(radius: 4.0)
   }
 }
 
