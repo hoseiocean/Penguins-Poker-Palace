@@ -9,8 +9,8 @@ import SwiftUI
 
 
 extension Label where Title == Text, Icon == Image {
-  init(_ title: String, icon name: IconName) {
-    self.init(title, systemImage: name.rawValue)
+  init(_ titleKey: LocalizedStringKey, icon name: IconName) {
+    self.init(titleKey, systemImage: name.rawValue)
   }
 }
 

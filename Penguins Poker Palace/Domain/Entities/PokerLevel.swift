@@ -6,16 +6,13 @@
 //
 
 
-enum PokerLevel: String {
-  case donkey = "level_donkey"
-  case fish = "level_fish"
-  case mass = "level_mass"
-  case shark = "level_shark"
-  case whale = "level_whale"
-}
+enum PokerLevel {
+  case donkey
+  case fish
+  case mass
+  case shark
+  case whale
 
-extension PokerLevel {
-  
   var description: String {
     switch self {
       case .donkey: "You're a donkey! Your poker game is the weakest, but you also don't fare well in betting."
@@ -37,6 +34,12 @@ extension PokerLevel {
   }
   
   var name: String {
-    String(localized: String.LocalizationValue(rawValue))
+    switch self {
+      case .donkey: String(localized: String.LocalizationValue("level_donkey"))
+      case .fish: String(localized: String.LocalizationValue("level_fish"))
+      case .mass: String(localized: String.LocalizationValue("level_mass"))
+      case .shark: String(localized: String.LocalizationValue("level_shark"))
+      case .whale: String(localized: String.LocalizationValue("level_whale"))
+    }
   }
 }
