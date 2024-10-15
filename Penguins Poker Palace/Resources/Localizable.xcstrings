@@ -765,8 +765,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Zurdo(-a)"
+            "state" : "translated",
+            "value" : "Izquierda"
           }
         },
         "fr" : {
@@ -833,8 +833,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Diestro(-a)"
+            "state" : "translated",
+            "value" : "Derecha"
           }
         },
         "fr" : {

@@ -53,11 +53,11 @@ struct VideoPokerView: View {
           .textFieldStyle(RoundedBorderTextFieldStyle())
           .frame(width: 100)
           .padding()
-        
-        Button("button_ok") {
-          if let bet = Int(viewModel.betInput) {
-            viewModel.setBet(bet)
+          .onChange(of: viewModel.betInput) {
+            viewModel.betInput = viewModel.betInput.filter { input in input.isNumber }
           }
+        Button("button_ok") {
+          viewModel.setBet(viewModel.betInput)
         }
         .padding()
       }

@@ -44,7 +44,6 @@ struct InformationView: View {
           Text("info_winning_hands: \(viewModel.winningHands)")
           Text("info_total_bets: \(viewModel.totalBets)")
           Text("info_successful_bets: \(viewModel.successfulBets)")
-          Text("info_poker_level: \(viewModel.pokerLevel)")
         }
         
         Section(header: Text("info_preferences")) {

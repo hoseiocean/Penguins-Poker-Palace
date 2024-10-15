@@ -102,12 +102,18 @@ final class VideoPokerViewModel: ObservableObject {
     repository.savePlayerData(game.currentPlayerData)
   }
 
-  func setBet(_ bet: Int) {
-    game.placeBet(bet)
+  func setBet(_ bet: String) {
+    if let betValue = Int(bet), totalPoints > 0 {
+      currentBet = min(max(betValue, 1), totalPoints)
+    } else {
+      currentBet = 0
+    }
+    
+    game.currentPlayerData.currentBet = currentBet
     betInput = ""
     saveGameState()
-
-    if handState == .initializing, game.currentPlayerData.currentBet != nil {
+    
+    if handState == .initializing, currentBet != nil {
       handState = .initialHand
       startNewRound()
     }
