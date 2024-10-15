@@ -15,11 +15,11 @@ enum PokerLevel {
 
   var description: String {
     switch self {
-      case .donkey: "You're a donkey! Your poker game is the weakest, but you also don't fare well in betting."
-      case .fish: "You're a fish! You struggle with both poker and betting, especially with the latter."
-      case .mass: "No poker level assigned yet. Keep playing to define your level!"
-      case .shark: "You're a shark! You've mastered poker and consistently outplay others."
-      case .whale: "You're a whale! You take big risks in betting and often come out on top."
+      case .donkey: String(localized: String.LocalizationValue("You’re a donkey! Your poker game is the weakest, but you also don’t fare well in betting."))
+      case .fish: String(localized: String.LocalizationValue("You’re a fish! You struggle with both poker and betting, especially with the latter."))
+      case .mass: String(localized: String.LocalizationValue("No poker level assigned yet. Keep playing to define your level!"))
+      case .shark: String(localized: String.LocalizationValue("You’re a shark! You’ve mastered poker and consistently outplay others."))
+      case .whale: String(localized: String.LocalizationValue("You’re a whale! You take big risks in betting and often come out on top."))
     }
   }
   

@@ -10,7 +10,7 @@ final class Deck {
   private var cards: [Card] = []
   
   init() {
-    generate()
+    self.generate()
   }
   
   private func generate() {
@@ -30,10 +30,10 @@ final class Deck {
   }
   
   func drawCards(_ requestedQuantity: Int) -> [Card] {
-    let quantity = min(requestedQuantity, cards.count)
-    let drawnCards = Array(cards.suffix(quantity))
+    let quantity = min(requestedQuantity, cards.count) // to avoid taking more cards than available
+    let drawnCards = cards.suffix(quantity)
     cards.removeLast(quantity)
-    return drawnCards
+    return Array(drawnCards)
   }
   
   func reset() {

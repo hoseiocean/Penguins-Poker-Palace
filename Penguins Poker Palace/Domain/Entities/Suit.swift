@@ -8,14 +8,11 @@
 import SwiftUICore
 
 
-enum Suit: String, CaseIterable {
-  case clubs = "suit_clubs"
-  case diamonds = "suit_diamonds"
-  case hearts = "suit_hearts"
-  case spades = "suit_spades"
-}
-
-extension Suit {
+enum Suit: CaseIterable {
+  case clubs
+  case diamonds
+  case hearts
+  case spades
 
   var color: CardColor {
     switch self {
@@ -34,15 +31,11 @@ extension Suit {
   }
   
   var name: String {
-    String(localized: String.LocalizationValue(rawValue))
-  }
-  
-  var symbol: String {
     switch self {
-      case .clubs: "♣"
-      case .diamonds: "♦"
-      case .hearts: "♥"
-      case .spades: "♠"
+      case .clubs: String(localized: String.LocalizationValue("suit_clubs"))
+      case .diamonds: String(localized: String.LocalizationValue("suit_diamonds"))
+      case .hearts: String(localized: String.LocalizationValue("suit_hearts"))
+      case .spades: String(localized: String.LocalizationValue("suit_spades"))
     }
   }
 }

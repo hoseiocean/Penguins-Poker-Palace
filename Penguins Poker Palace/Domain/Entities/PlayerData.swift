@@ -21,7 +21,17 @@ struct PlayerData {
   var totalHandsPlayed: Int
   var totalPoints: Int
   var winningHands: Int
+
+  var ratioOfSuccessHandsAtPoker: Double {
+    guard totalHandsPlayed > 0 else { return 0 }
+    return Double(winningHands) / Double(totalHandsPlayed)
+  }
   
+  var ratioOfSuccessTriesAtBet: Double {
+    guard totalBets > 0 else { return 0 }
+    return Double(successfulBets) / Double(totalBets)
+  }
+
   init(
     bestHand: HandRank?,
     bestHandDate: Date?,
@@ -48,17 +58,5 @@ struct PlayerData {
     self.totalHandsPlayed = totalHandsPlayed
     self.totalPoints = totalPoints
     self.winningHands = winningHands
-  }
-}
-
-extension PlayerData {
-  var ratioOfSuccessHandsAtPoker: Double {
-    guard totalHandsPlayed > 0 else { return 0 }
-    return Double(winningHands) / Double(totalHandsPlayed)
-  }
-  
-  var ratioOfSuccessTriesAtBet: Double {
-    guard totalBets > 0 else { return 0 }
-    return Double(successfulBets) / Double(totalBets)
   }
 }

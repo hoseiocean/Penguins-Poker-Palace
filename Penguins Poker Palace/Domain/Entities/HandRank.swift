@@ -8,9 +8,6 @@
 
 enum HandRank: Int {
   case none, onePair, twoPair, threeOfAKind, straight, flush, fullHouse, fourOfAKind, straightFlush, royalFlush
-}
-
-extension HandRank {
 
   var name: String {
     switch self {
@@ -44,8 +41,8 @@ extension HandRank {
   
   private static func areImmediatelyConsecutive(ranks: [Rank]) -> Bool {
     let sortedRanks = ranks.sorted()
-    let consecutiveRanksPairs = zip(sortedRanks, sortedRanks.dropFirst())
-    return consecutiveRanksPairs.allSatisfy { lowRank, highRank in lowRank.isImmediatlyFollowedBy(highRank) }
+    let consecutiveRanksIntervals = zip(sortedRanks, sortedRanks.dropFirst())
+    return consecutiveRanksIntervals.allSatisfy { lowRank, highRank in lowRank.isImmediatlyFollowedBy(highRank) }
   }
   
   private static func containsWinningPair(in rankCounts: [Rank: Int]) -> Bool {
