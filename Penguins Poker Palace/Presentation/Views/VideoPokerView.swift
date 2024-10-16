@@ -117,10 +117,10 @@ struct VideoPokerView: View {
     totalPoints: 500,
     winningHands: 20
   )
-  
-  let mockGame = MockVideoPokerGame(playerData: testPlayerData)
+  let videoPokerStateManager = VideoPokerStateManager(initialState: .initializing)
+  let mockGame = MockVideoPokerGame(playerData: testPlayerData, videoPokerStateManager: videoPokerStateManager)
   let mockRepository = MockPlayerDataRepository()
-  let viewModel = VideoPokerViewModel(game: mockGame, repository: mockRepository)
+  let viewModel = VideoPokerViewModel(videoPoker: mockGame, repository: mockRepository, videoPokerStateManager: VideoPokerStateManager(initialState: .initializing))
 
   VideoPokerView(viewModel: viewModel)
 }

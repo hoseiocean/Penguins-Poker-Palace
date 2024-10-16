@@ -10,6 +10,8 @@ import SwiftUI
 @main
 struct VideoPokerApp: App {
   
+  private let videoPokerStateManager: VideoPokerStateManager
+  
   @StateObject private var viewModel: VideoPokerViewModel
 
   var body: some Scene {
@@ -30,8 +32,9 @@ struct VideoPokerApp: App {
       laterality: .right,
       totalPoints: 100
     )
-    let game = VideoPokerGame(deck: Deck(), playerData: playerData)
+    videoPokerStateManager = VideoPokerStateManager(initialState: .initializing)
+    let videoPoker = VideoPoker(deck: Deck(), playerData: playerData, videoPokerStateManager: videoPokerStateManager)
 
-    _viewModel = StateObject(wrappedValue: VideoPokerViewModel(game: game, repository: repository))
+    _viewModel = StateObject(wrappedValue: VideoPokerViewModel(videoPoker: videoPoker, repository: repository, videoPokerStateManager: VideoPokerStateManager(initialState: .initializing)))
   }
 }

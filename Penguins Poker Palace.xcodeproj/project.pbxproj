@@ -23,7 +23,7 @@
 		116D413B2CB3223A00F55A08 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D413A2CB3223A00F55A08 /* Deck.swift */; };
 		116D413D2CB3224F00F55A08 /* HandRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D413C2CB3224F00F55A08 /* HandRank.swift */; };
 		116D41442CB322A200F55A08 /* VideoPokerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41432CB322A200F55A08 /* VideoPokerViewModel.swift */; };
-		116D41462CB3234000F55A08 /* VideoPokerGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41452CB3234000F55A08 /* VideoPokerGame.swift */; };
+		116D41462CB3234000F55A08 /* VideoPoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41452CB3234000F55A08 /* VideoPoker.swift */; };
 		116D41492CB326DB00F55A08 /* MockVideoPokerGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41482CB326DB00F55A08 /* MockVideoPokerGame.swift */; };
 		116D414B2CB326FD00F55A08 /* MockGameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D414A2CB326FD00F55A08 /* MockGameRepository.swift */; };
 		116D415E2CB32FB100F55A08 /* CardFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D415D2CB32FB100F55A08 /* CardFactory.swift */; };
@@ -35,6 +35,7 @@
 		11C647352CB8EF5000483523 /* IconName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C647342CB8EF5000483523 /* IconName.swift */; };
 		11C647372CB8EF7400483523 /* Label+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C647362CB8EF7400483523 /* Label+init.swift */; };
 		11C6473E2CB8F10F00483523 /* CaseIterable+randomCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C6473D2CB8F10400483523 /* CaseIterable+randomCase.swift */; };
+		11C647402CC02BC700483523 /* VideoPokerStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C6473F2CC02BC700483523 /* VideoPokerStateManager.swift */; };
 		11E06D962CB87737004E5D86 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E06D952CB87737004E5D86 /* InformationView.swift */; };
 		11E06D992CB88C87004E5D86 /* ColorfulIconLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E06D982CB88C87004E5D86 /* ColorfulIconLabelStyle.swift */; };
 /* End PBXBuildFile section */
@@ -67,7 +68,7 @@
 		116D413A2CB3223A00F55A08 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		116D413C2CB3224F00F55A08 /* HandRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandRank.swift; sourceTree = "<group>"; };
 		116D41432CB322A200F55A08 /* VideoPokerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPokerViewModel.swift; sourceTree = "<group>"; };
-		116D41452CB3234000F55A08 /* VideoPokerGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPokerGame.swift; sourceTree = "<group>"; };
+		116D41452CB3234000F55A08 /* VideoPoker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPoker.swift; sourceTree = "<group>"; };
 		116D41482CB326DB00F55A08 /* MockVideoPokerGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockVideoPokerGame.swift; sourceTree = "<group>"; };
 		116D414A2CB326FD00F55A08 /* MockGameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGameRepository.swift; sourceTree = "<group>"; };
 		116D41532CB32CB400F55A08 /* VideoPokerAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VideoPokerAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +81,7 @@
 		11C647342CB8EF5000483523 /* IconName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconName.swift; sourceTree = "<group>"; };
 		11C647362CB8EF7400483523 /* Label+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+init.swift"; sourceTree = "<group>"; };
 		11C6473D2CB8F10400483523 /* CaseIterable+randomCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaseIterable+randomCase.swift"; sourceTree = "<group>"; };
+		11C6473F2CC02BC700483523 /* VideoPokerStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPokerStateManager.swift; sourceTree = "<group>"; };
 		11E06D952CB87737004E5D86 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		11E06D982CB88C87004E5D86 /* ColorfulIconLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorfulIconLabelStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +115,7 @@
 		11512EEF2CB72A09005207EF /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				11C6473F2CC02BC700483523 /* VideoPokerStateManager.swift */,
 				11512EE72CB715B7005207EF /* PlayerLevelDetermination.swift */,
 			);
 			path = Services;
@@ -165,7 +168,7 @@
 				11512EE32CB71577005207EF /* PokerLevel.swift */,
 				116D41362CB3220F00F55A08 /* Rank.swift */,
 				116D41342CB3220100F55A08 /* Suit.swift */,
-				116D41452CB3234000F55A08 /* VideoPokerGame.swift */,
+				116D41452CB3234000F55A08 /* VideoPoker.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -448,7 +451,7 @@
 			files = (
 				116D41492CB326DB00F55A08 /* MockVideoPokerGame.swift in Sources */,
 				116D41442CB322A200F55A08 /* VideoPokerViewModel.swift in Sources */,
-				116D41462CB3234000F55A08 /* VideoPokerGame.swift in Sources */,
+				116D41462CB3234000F55A08 /* VideoPoker.swift in Sources */,
 				116D41622CB3352A00F55A08 /* CardColor.swift in Sources */,
 				116D415E2CB32FB100F55A08 /* CardFactory.swift in Sources */,
 				116D413D2CB3224F00F55A08 /* HandRank.swift in Sources */,
@@ -457,6 +460,7 @@
 				116D41602CB32FF300F55A08 /* RandomCardFactory.swift in Sources */,
 				11512EE42CB71577005207EF /* PokerLevel.swift in Sources */,
 				11512EEE2CB71905005207EF /* Laterality.swift in Sources */,
+				11C647402CC02BC700483523 /* VideoPokerStateManager.swift in Sources */,
 				11E06D962CB87737004E5D86 /* InformationView.swift in Sources */,
 				116D413B2CB3223A00F55A08 /* Deck.swift in Sources */,
 				116D412B2CB3215F00F55A08 /* VideoPokerApp.swift in Sources */,

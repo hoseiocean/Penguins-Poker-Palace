@@ -10,147 +10,140 @@ import Foundation
 
 final class VideoPokerViewModel: ObservableObject {
   
-  private let game: VideoPokerGame
+  private let videoPoker: VideoPoker
   private let repository: PlayerDataRepository
+  private let videoPokerStateManager: VideoPokerStateManager
 
   @Published var betInput: String = ""
   @Published var currentBet: Int? = nil
   @Published var currentHand: [Card] = []
   @Published var expertMode: Bool
   @Published var handName: String = ""
-  @Published var handState: HandState = .initializing
   @Published var laterality: Laterality
   @Published var showPlayerInfo: Bool = false
-  @Published var winnings: Int = 0
   
   var bestHand: String {
-    guard let bestHand = game.currentPlayerData.bestHand else { return "Unknown" }
+    guard let bestHand = videoPoker.currentPlayerData.bestHand else { return "Unknown" }
     return bestHand.name
   }
   
   var bestHandDate: String {
-    guard let date = game.currentPlayerData.bestHandDate else { return "Unknown" }
+    guard let date = videoPoker.currentPlayerData.bestHandDate else { return "Unknown" }
     return date.formatted()
   }
   
-  var bestHandDateRaw: Date {
-    game.currentPlayerData.bestHandDate ?? Date()
-  }
-  
   var currentBetString: String {
-    guard let currentBet = game.currentPlayerData.currentBet else { return "Unknown" }
+    guard let currentBet = videoPoker.currentPlayerData.currentBet else { return "Unknown" }
     return String(currentBet)
   }
   
   var firstWinningHandDate: String {
-    guard let date = game.currentPlayerData.firstWinningHandDate else { return "Unknown" }
+    guard let date = videoPoker.currentPlayerData.firstWinningHandDate else { return "Unknown" }
     return date.formatted()
   }
   
   var language: String {
-    game.currentPlayerData.language ?? String()
+    videoPoker.currentPlayerData.language ?? String()
   }
   
   var pokerLevel: PokerLevel {
-    PlayerLevelDetermination.determinePlayerLevel(playerData: game.currentPlayerData)
+    PlayerLevelDetermination.determinePlayerLevel(playerData: videoPoker.currentPlayerData)
   }
   
   var successfulBets: Int {
-    game.currentPlayerData.successfulBets
+    videoPoker.currentPlayerData.successfulBets
   }
   
   var totalBets: Int {
-    game.currentPlayerData.totalBets
+    videoPoker.currentPlayerData.totalBets
   }
   
   var totalHandsPlayed: Int {
-    game.currentPlayerData.totalHandsPlayed
+    videoPoker.currentPlayerData.totalHandsPlayed
   }
   
   var totalPoints: Int {
-    game.currentPlayerData.totalPoints
+    videoPoker.currentPlayerData.totalPoints
   }
   
   var winningHands: Int {
-    game.currentPlayerData.winningHands
+    videoPoker.currentPlayerData.winningHands
   }
   
-  init(game: VideoPokerGame, repository: PlayerDataRepository) {
-    self.game = game
+  var winnings: Int {
+    videoPoker.winnings
+  }
+  
+  var handState: HandState {
+    videoPokerStateManager.currentState
+  }
+  
+  init(videoPoker: VideoPoker, repository: PlayerDataRepository, videoPokerStateManager: VideoPokerStateManager) {
+    self.videoPoker = videoPoker
     self.repository = repository
-    expertMode = game.currentPlayerData.expertMode ?? false
-    laterality = game.currentPlayerData.laterality ?? .right
+    self.videoPokerStateManager = videoPokerStateManager
+    expertMode = videoPoker.currentPlayerData.expertMode ?? false
+    laterality = videoPoker.currentPlayerData.laterality ?? .right
 
     loadGameState()
   }
   
   func exchangeSelectedCards(indices: [Int]) {
-    game.exchangeCards(indices: indices)
-    finalizeHand()
+    videoPoker.exchangeCards(indices: indices)
+    videoPoker.evaluateAndStoreHand()
+    updateState()
+    saveGameState()
   }
   
   func loadGameState() {
     if let loadedPlayerData = repository.loadPlayerData() {
-      game.currentPlayerData = loadedPlayerData
-      handState = .finalHand
+      videoPoker.currentPlayerData = loadedPlayerData
+      videoPokerStateManager.currentState = .finalHand
     } else {
       resetGame()
     }
   }
 
   func saveGameState() {
-    repository.savePlayerData(game.currentPlayerData)
+    repository.savePlayerData(videoPoker.currentPlayerData)
   }
 
   func setBet(_ bet: String) {
-    currentBet = Int(bet).map { inputBet in min(max(inputBet, 1), totalPoints) } ?? (totalPoints > 0 ? 1 : 0)
-    
-    game.currentPlayerData.currentBet = currentBet
+    guard let betValue = Int(bet) else { return }
+
+    currentBet = min(max(betValue, 1), videoPoker.currentPlayerData.totalPoints)
+    videoPoker.currentPlayerData.currentBet = currentBet
     betInput = ""
     saveGameState()
-    
-    if handState == .initializing, currentBet != nil {
-      handState = .initialHand
+
+    if videoPokerStateManager.currentState == .initializing, currentBet != nil {
+      videoPokerStateManager.transition(to: .initialHand, with: currentBet)
       startNewRound()
     }
   }
   
   func startNewRound() {
-    guard handState != .initializing else { return }
-    game.pay()
-    updateState()
-    saveGameState()
-  }
-  
-  private func finalizeHand() {
-    let handRank = game.finalizeHand()
-    winnings = handRank.winnings * (game.currentPlayerData.currentBet ?? 0)
+    guard videoPokerStateManager.currentState != .initializing else { return }
+    videoPoker.pay()
     updateState()
     saveGameState()
   }
   
   private func updateState() {
-    currentHand = game.currentHand
-    handName = game.getHandName()
-    handState = game.handState
+    currentHand = videoPoker.currentHand
+    handName = videoPoker.getHandName()
+    switch videoPokerStateManager.currentState {
+    case .initialHand:
+        videoPokerStateManager.transition(to: .finalHand, with: videoPoker.currentPlayerData.currentBet)
+    case .finalHand:
+        videoPokerStateManager.transition(to: .initialHand, with: videoPoker.currentPlayerData.currentBet)
+    default:
+        return
+    }
   }
 
   private func resetGame() {
     currentBet = nil
-    handState = .initializing
-  }
-}
-
-extension VideoPokerViewModel {
-  
-  private var longDateFormatter: DateFormatter {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .full
-    return formatter
-  }
-
-  var formattedBestHandDate: String {
-    guard let date = game.currentPlayerData.bestHandDate else { return "Unknown" }
-    return longDateFormatter.string(from: date)
+    videoPokerStateManager.transition(to: .initializing, with: nil)
   }
 }

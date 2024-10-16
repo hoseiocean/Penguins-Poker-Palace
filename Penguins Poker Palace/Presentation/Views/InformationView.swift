@@ -32,7 +32,7 @@ struct InformationView: View {
           VStack(alignment: .leading) {
             Text("info_best_hand: \(viewModel.bestHand)")
               .font(.body)
-            Text(viewModel.formattedBestHandDate.capitalized)
+            Text(viewModel.bestHandDate)
               .font(.caption)
               .foregroundColor(.gray)
           }
@@ -71,24 +71,24 @@ struct InformationView: View {
   }
 }
 
-#Preview {
-  let testPlayerData = PlayerData(
-    bestHand: .royalFlush,
-    bestHandDate: Date(),
-    currentBet: 50,
-    expertMode: true,
-    firstWinningHandDate: Date(),
-    language: "en",
-    laterality: .right,
-    successfulBets: 10,
-    totalBets: 20,
-    totalHandsPlayed: 100,
-    totalPoints: 1000,
-    winningHands: 30
-  )
-  
-  let testGame = VideoPokerGame(deck: Deck(), playerData: testPlayerData)
-  let testViewModel = VideoPokerViewModel(game: testGame, repository: UserDefaultsPlayerDataRepository())
-  
-  InformationView(viewModel: testViewModel)
-}
+//#Preview {
+//  let testPlayerData = PlayerData(
+//    bestHand: .royalFlush,
+//    bestHandDate: Date(),
+//    currentBet: 50,
+//    expertMode: true,
+//    firstWinningHandDate: Date(),
+//    language: "en",
+//    laterality: .right,
+//    successfulBets: 10,
+//    totalBets: 20,
+//    totalHandsPlayed: 100,
+//    totalPoints: 1000,
+//    winningHands: 30
+//  )
+//  
+//  let testGame = VideoPoker(deck: Deck(), playerData: testPlayerData)
+//  let testViewModel = VideoPokerViewModel(videoPoker: testGame, repository: UserDefaultsPlayerDataRepository())
+//  
+//  InformationView(viewModel: testViewModel)
+//}

@@ -6,12 +6,12 @@
 //
 
 
-class MockVideoPokerGame: VideoPokerGame {
+class MockVideoPokerGame: VideoPoker {
   var deck: Deck
 
-  override init(deck: Deck = .init(), playerData: PlayerData, currentHand: [Card] = [], handState: HandState = .initialHand) {
+  override init(deck: Deck = .init(), playerData: PlayerData, videoPokerStateManager: VideoPokerStateManager) {
     self.deck = deck
-    super.init(deck: deck, playerData: playerData)
+    super.init(deck: deck, playerData: playerData, videoPokerStateManager: videoPokerStateManager)
   }
   
   func dealHand() -> [Card] {
