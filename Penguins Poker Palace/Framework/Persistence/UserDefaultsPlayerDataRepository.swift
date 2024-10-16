@@ -11,6 +11,8 @@ import Foundation
 final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
   private let bestHandKey = "bestHand"
   private let bestHandDateKey = "bestHandDate"
+  private let biggestWinKey = "biggestWin"
+  private let biggestWinDateKey = "biggestWinDate"
   private let currentBetKey = "currentBet"
   private let expertModeKey = "expertMode"
   private let firstWinningHandDateKey = "firstWinningHandDate"
@@ -26,6 +28,8 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
     let defaults = UserDefaults.standard
     defaults.set(playerData.bestHand?.rawValue, forKey: bestHandKey)
     defaults.set(playerData.bestHandDate?.timeIntervalSince1970, forKey: bestHandDateKey)
+    defaults.set(playerData.biggestWin, forKey: biggestWinKey)
+    defaults.set(playerData.biggestWinDate?.timeIntervalSince1970, forKey: biggestWinDateKey)
     defaults.set(playerData.currentBet, forKey: currentBetKey)
     defaults.set(playerData.expertMode, forKey: expertModeKey)
 
@@ -49,6 +53,8 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
       let bestHandRaw = defaults.value(forKey: bestHandKey) as? Int,
       let bestHand = HandRank(rawValue: bestHandRaw),
       let bestHandDate = defaults.value(forKey: bestHandDateKey) as? TimeInterval,
+      let biggestWin = defaults.value(forKey: biggestWinKey) as? Int,
+      let biggestWinDate = defaults.value(forKey: biggestWinDateKey) as? TimeInterval,
       let language = defaults.string(forKey: languageKey),
       let lateralityRaw = defaults.string(forKey: lateralityKey),
       let laterality = Laterality(rawValue: lateralityRaw)
@@ -57,6 +63,7 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
     }
     
     let bestHandDateValue = Date(timeIntervalSince1970: bestHandDate)
+    let biggestWinDateValue = Date(timeIntervalSince1970: biggestWinDate)
     let currentBet = defaults.integer(forKey: currentBetKey)
     let expertMode = defaults.bool(forKey: expertModeKey)
     let firstWinningHandDate = defaults.value(forKey: firstWinningHandDateKey) as? TimeInterval
@@ -70,6 +77,8 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
     return PlayerData(
       bestHand: bestHand,
       bestHandDate: bestHandDateValue,
+      biggestWin: biggestWin,
+      biggestWinDate: biggestWinDateValue,
       currentBet: currentBet,
       expertMode: expertMode,
       firstWinningHandDate: firstWinningHandDateValue,

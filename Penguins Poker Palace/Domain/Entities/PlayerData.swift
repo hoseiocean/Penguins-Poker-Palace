@@ -11,6 +11,8 @@ import Foundation
 struct PlayerData {
   var bestHand: HandRank?
   var bestHandDate: Date?
+  var biggestWin: Int?
+  var biggestWinDate: Date?
   var currentBet: Int?
   var expertMode: Bool?
   var firstWinningHandDate: Date?
@@ -35,6 +37,8 @@ struct PlayerData {
   init(
     bestHand: HandRank?,
     bestHandDate: Date?,
+    biggestWin: Int?,
+    biggestWinDate: Date?,
     currentBet: Int?,
     expertMode: Bool?,
     firstWinningHandDate: Date?,
@@ -48,6 +52,8 @@ struct PlayerData {
   ) {
     self.bestHand = bestHand
     self.bestHandDate = bestHandDate
+    self.biggestWin = biggestWin
+    self.biggestWinDate = biggestWinDate
     self.currentBet = currentBet
     self.expertMode = expertMode
     self.firstWinningHandDate = firstWinningHandDate

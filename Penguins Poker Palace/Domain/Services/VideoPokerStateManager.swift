@@ -7,7 +7,7 @@
 
 
 class VideoPokerStateManager {
-  var currentState: HandState
+  var currentState: HandState = .initializing
   
   init(initialState: HandState) {
     self.currentState = initialState

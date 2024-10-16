@@ -30,6 +30,13 @@ struct InformationView: View {
         Section(header: Text("info_general_info")) {
           Text("info_total_points: \(String(describing: viewModel.totalPoints))")
           VStack(alignment: .leading) {
+            Text("info_biggest_win: \(viewModel.biggestWin)")
+              .font(.body)
+            Text(viewModel.biggestWinDate)
+              .font(.caption)
+              .foregroundColor(.gray)
+          }
+          VStack(alignment: .leading) {
             Text("info_best_hand: \(viewModel.bestHand)")
               .font(.body)
             Text(viewModel.bestHandDate)

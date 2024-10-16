@@ -34,6 +34,13 @@ class VideoPoker {
     currentPlayerData.bestHandDate = Date()
   }
   
+  private func checkAndUpdateBiggestWin() {
+    let biggestWin = currentPlayerData.biggestWin ?? 0
+    guard winnings > biggestWin else { return }
+    currentPlayerData.biggestWin = winnings
+    currentPlayerData.biggestWinDate = Date()
+  }
+  
   private func checkAndUpdateFirstWinningHandDateIfNeeded() {
     guard currentPlayerData.firstWinningHandDate == nil else { return }
     currentPlayerData.firstWinningHandDate = Date()
@@ -70,8 +77,9 @@ class VideoPoker {
     let handRank = evaluateHand()
     winnings = handRank.winnings * (currentPlayerData.currentBet ?? 0)
     currentPlayerData.totalPoints += winnings
-    checkAndUpdateFirstWinningHandDateIfNeeded()
     checkAndUpdateBestHandIfNeeded(with: handRank)
+    checkAndUpdateBiggestWin()
+    checkAndUpdateFirstWinningHandDateIfNeeded()
     currentPlayerData.totalHandsPlayed += 1
 
     if handRank != .none {

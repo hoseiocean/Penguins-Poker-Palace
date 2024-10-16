@@ -511,6 +511,9 @@
         }
       }
     },
+    "info_biggest_win: %@" : {
+
+    },
     "info_expert_mode" : {
       "localizations" : {
         "de" : {

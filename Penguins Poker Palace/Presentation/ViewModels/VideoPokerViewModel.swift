@@ -32,6 +32,16 @@ final class VideoPokerViewModel: ObservableObject {
     return date.formatted()
   }
   
+  var biggestWin: String {
+    guard let biggestWin = videoPoker.currentPlayerData.biggestWin else { return "Unknown" }
+    return String(biggestWin)
+  }
+  
+  var biggestWinDate: String {
+    guard let date = videoPoker.currentPlayerData.biggestWinDate else { return "Unknown" }
+    return date.formatted()
+  }
+  
   var currentBetString: String {
     guard let currentBet = videoPoker.currentPlayerData.currentBet else { return "Unknown" }
     return String(currentBet)
@@ -84,7 +94,6 @@ final class VideoPokerViewModel: ObservableObject {
     self.videoPokerStateManager = videoPokerStateManager
     expertMode = videoPoker.currentPlayerData.expertMode ?? false
     laterality = videoPoker.currentPlayerData.laterality ?? .right
-
     loadGameState()
   }
   
@@ -96,12 +105,8 @@ final class VideoPokerViewModel: ObservableObject {
   }
   
   func loadGameState() {
-    if let loadedPlayerData = repository.loadPlayerData() {
-      videoPoker.currentPlayerData = loadedPlayerData
-      videoPokerStateManager.currentState = .finalHand
-    } else {
-      resetGame()
-    }
+    guard let loadedPlayerData = repository.loadPlayerData() else { return }
+    videoPoker.currentPlayerData = loadedPlayerData
   }
 
   func saveGameState() {
@@ -114,12 +119,8 @@ final class VideoPokerViewModel: ObservableObject {
     currentBet = min(max(betValue, 1), videoPoker.currentPlayerData.totalPoints)
     videoPoker.currentPlayerData.currentBet = currentBet
     betInput = ""
+    videoPokerStateManager.currentState = .finalHand
     saveGameState()
-
-    if videoPokerStateManager.currentState == .initializing, currentBet != nil {
-      videoPokerStateManager.transition(to: .initialHand, with: currentBet)
-      startNewRound()
-    }
   }
   
   func startNewRound() {
@@ -140,10 +141,5 @@ final class VideoPokerViewModel: ObservableObject {
     default:
         return
     }
-  }
-
-  private func resetGame() {
-    currentBet = nil
-    videoPokerStateManager.transition(to: .initializing, with: nil)
   }
 }
