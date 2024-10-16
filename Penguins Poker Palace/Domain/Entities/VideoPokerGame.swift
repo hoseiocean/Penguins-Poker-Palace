@@ -42,7 +42,7 @@ class VideoPokerGame {
     currentPlayerData.currentBet = min(max(bet, 1), currentPlayerData.totalPoints)
   }
 
-  func startNewRound() {
+  func pay() {
     guard let bet = currentPlayerData.currentBet, bet > 0 else { return }
 
     if currentPlayerData.totalPoints >= bet {
@@ -56,6 +56,7 @@ class VideoPokerGame {
     let handRank = evaluateHand()
     
     currentPlayerData.totalPoints += handRank.winnings * (currentPlayerData.currentBet ?? 0)
+    checkAndUpdateFirstWinningHandDateIfNeeded()
     checkAndUpdateBestHandIfNeeded(with: handRank)
     
     currentPlayerData.totalHandsPlayed += 1
@@ -68,9 +69,15 @@ class VideoPokerGame {
   }
   
   private func checkAndUpdateBestHandIfNeeded(with handRank: HandRank) {
-    guard let bestHand = currentPlayerData.bestHand, handRank > bestHand else { return }
+    let bestHand = currentPlayerData.bestHand ?? .none
+    guard handRank > bestHand else { return }
     currentPlayerData.bestHand = handRank
     currentPlayerData.bestHandDate = Date()
+  }
+  
+  private func checkAndUpdateFirstWinningHandDateIfNeeded() {
+    guard currentPlayerData.firstWinningHandDate == nil else { return }
+    currentPlayerData.firstWinningHandDate = Date()
   }
   
   func resetForNewRound() {

@@ -103,11 +103,7 @@ final class VideoPokerViewModel: ObservableObject {
   }
 
   func setBet(_ bet: String) {
-    if let betValue = Int(bet), totalPoints > 0 {
-      currentBet = min(max(betValue, 1), totalPoints)
-    } else {
-      currentBet = 0
-    }
+    currentBet = Int(bet).map { inputBet in min(max(inputBet, 1), totalPoints) } ?? (totalPoints > 0 ? 1 : 0)
     
     game.currentPlayerData.currentBet = currentBet
     betInput = ""
@@ -121,8 +117,7 @@ final class VideoPokerViewModel: ObservableObject {
   
   func startNewRound() {
     guard handState != .initializing else { return }
-    
-    game.startNewRound()
+    game.pay()
     updateState()
     saveGameState()
   }
