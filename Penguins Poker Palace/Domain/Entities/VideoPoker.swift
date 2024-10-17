@@ -28,33 +28,26 @@ class VideoPoker {
   }
   
   private func checkAndUpdateBestHandIfNeeded(with handRank: HandRank) {
-    updatePlayerData(currentValue: &currentPlayerData.bestHand, newValue: handRank, dateKeyPath: \.bestHandDate)
+    let bestHand = currentPlayerData.bestHand ?? .none
+    guard handRank > bestHand else { return }
+    currentPlayerData.bestHand = handRank
+    currentPlayerData.bestHandDate = Date()
   }
   
   private func checkAndUpdateBiggestWin() {
-    updatePlayerData(currentValue: &currentPlayerData.biggestWin, newValue: winnings, dateKeyPath: \.biggestWinDate)
+    let biggestWin = currentPlayerData.biggestWin ?? 0
+    guard winnings > biggestWin else { return }
+    currentPlayerData.biggestWin = winnings
+    currentPlayerData.biggestWinDate = Date()
   }
   
   private func checkAndUpdateFirstWinningHandDateIfNeeded() {
-    guard currentPlayerData.firstWinningHandDate != nil else { return }
-    updatePlayerData(currentValue: &currentPlayerData.firstWinningHandDate, newValue: Date(), dateKeyPath: \.firstWinningHandDate,forceUpdate: true)
+    guard currentPlayerData.firstWinningHandDate == nil else { return }
+    currentPlayerData.firstWinningHandDate = Date()
   }
   
   private func evaluateHand() -> HandRank {
     HandRank.evaluate(cards: currentHand)
-  }
-  
-  private func updatePlayerData<T: Comparable>(
-    currentValue: inout T?,
-    newValue: T,
-    dateKeyPath: WritableKeyPath<PlayerData, Date?>,
-    forceUpdate: Bool = false
-  ) {
-    if let current = currentValue, current >= newValue, !forceUpdate {
-      return
-    }
-    currentValue = newValue
-    currentPlayerData[keyPath: dateKeyPath] = Date()
   }
   
   @discardableResult
