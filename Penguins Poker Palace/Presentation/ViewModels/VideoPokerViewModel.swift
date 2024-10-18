@@ -27,9 +27,8 @@ final class VideoPokerViewModel: ObservableObject {
     return bestHand.name
   }
   
-  var bestHandDate: String {
-    guard let date = videoPoker.currentPlayerData.bestHandDate else { return "Unknown" }
-    return date.formatted()
+  var bestHandDate: Date? {
+    videoPoker.currentPlayerData.bestHandDate
   }
   
   var biggestWin: String {
@@ -37,9 +36,8 @@ final class VideoPokerViewModel: ObservableObject {
     return String(biggestWin)
   }
   
-  var biggestWinDate: String {
-    guard let date = videoPoker.currentPlayerData.biggestWinDate else { return "Unknown" }
-    return date.formatted()
+  var biggestWinDate: Date? {
+    videoPoker.currentPlayerData.biggestWinDate
   }
   
   var currentBetString: String {
@@ -47,9 +45,8 @@ final class VideoPokerViewModel: ObservableObject {
     return String(currentBet)
   }
   
-  var firstWinningHandDate: String {
-    guard let date = videoPoker.currentPlayerData.firstWinningHandDate else { return "Unknown" }
-    return date.formatted()
+  var firstWinningHandDate: Date? {
+    videoPoker.currentPlayerData.firstWinningHandDate
   }
   
   var language: String {
@@ -141,5 +138,20 @@ final class VideoPokerViewModel: ObservableObject {
     default:
         return
     }
+  }
+}
+
+extension VideoPokerViewModel {
+  
+  private var dateFormatter: DateFormatter {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .full
+    formatter.timeStyle = .short
+    return formatter
+  }
+  
+  func formatDate(_ date: Date?) -> String {
+    guard let date = date else { return "Unknown" }
+    return dateFormatter.string(from: date).localizedCapitalized
   }
 }

@@ -115,8 +115,8 @@
 		11512EEF2CB72A09005207EF /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				11C6473F2CC02BC700483523 /* VideoPokerStateManager.swift */,
 				11512EE72CB715B7005207EF /* PlayerLevelDetermination.swift */,
+				11C6473F2CC02BC700483523 /* VideoPokerStateManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";

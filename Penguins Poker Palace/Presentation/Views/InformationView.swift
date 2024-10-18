@@ -32,18 +32,18 @@ struct InformationView: View {
           VStack(alignment: .leading) {
             Text("info_biggest_win: \(viewModel.biggestWin)")
               .font(.body)
-            Text(viewModel.biggestWinDate)
+            Text(viewModel.formatDate(viewModel.biggestWinDate))
               .font(.caption)
               .foregroundColor(.gray)
           }
           VStack(alignment: .leading) {
             Text("info_best_hand: \(viewModel.bestHand)")
               .font(.body)
-            Text(viewModel.bestHandDate)
+            Text(viewModel.formatDate(viewModel.bestHandDate))
               .font(.caption)
               .foregroundColor(.gray)
           }
-          Text("info_first_winning_hand_date: \(viewModel.firstWinningHandDate)")
+          Text("info_first_winning_hand_date: \(viewModel.formatDate(viewModel.firstWinningHandDate))")
         }
         
         Section(header: Text("info_game_stats")) {
