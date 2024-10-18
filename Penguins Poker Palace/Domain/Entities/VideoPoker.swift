@@ -29,11 +29,8 @@ class VideoPoker {
   }
   
   private func checkAndUpdateBestHandIfNeeded(with evaluation: HandEvaluation) {
-    guard
-      let bestHand = currentPlayerData.bestHandRank, evaluation.handRank > bestHand,
-      let bestCard = currentPlayerData.bestCardRank, evaluation.cardRank > bestCard
-    else {
-      return
+    if let bestHand = currentPlayerData.bestHandRank, let bestCard = currentPlayerData.bestCardRank {
+      guard evaluation.handRank > bestHand, evaluation.cardRank > bestCard else { return }
     }
     currentPlayerData.bestCardRank = evaluation.cardRank
     currentPlayerData.bestHandRank = evaluation.handRank
