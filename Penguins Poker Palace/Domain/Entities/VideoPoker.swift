@@ -8,6 +8,7 @@
 import Foundation
 
 
+typealias HandEvaluation = (handRank: HandRank, cardRank: Rank)
 class VideoPoker {
   private var deck: Deck
   private var videoPokerStateManager: VideoPokerStateManager
@@ -27,10 +28,15 @@ class VideoPoker {
     self.currentPlayerData = playerData
   }
   
-  private func checkAndUpdateBestHandIfNeeded(with handRank: HandRank) {
-    let bestHand = currentPlayerData.bestHand ?? .none
-    guard handRank > bestHand else { return }
-    currentPlayerData.bestHand = handRank
+  private func checkAndUpdateBestHandIfNeeded(with evaluation: HandEvaluation) {
+    guard
+      let bestHand = currentPlayerData.bestHandRank, evaluation.handRank > bestHand,
+      let bestCard = currentPlayerData.bestCardRank, evaluation.cardRank > bestCard
+    else {
+      return
+    }
+    currentPlayerData.bestCardRank = evaluation.cardRank
+    currentPlayerData.bestHandRank = evaluation.handRank
     currentPlayerData.bestHandDate = Date()
   }
   
@@ -46,7 +52,7 @@ class VideoPoker {
     currentPlayerData.firstWinningHandDate = Date()
   }
   
-  private func evaluateHand() -> HandRank {
+  private func evaluateHand() -> HandEvaluation {
     HandRank.evaluate(cards: currentHand)
   }
   
@@ -74,15 +80,15 @@ class VideoPoker {
   }
   
   func evaluateAndStoreHand() {
-    let handRank = evaluateHand()
-    winnings = handRank.winnings * (currentPlayerData.currentBet ?? 0)
+    let evaluation = evaluateHand()
+    winnings = evaluation.handRank.winnings * (currentPlayerData.currentBet ?? 0)
     currentPlayerData.totalPoints += winnings
-    checkAndUpdateBestHandIfNeeded(with: handRank)
+    checkAndUpdateBestHandIfNeeded(with: evaluation)
     checkAndUpdateBiggestWin()
     checkAndUpdateFirstWinningHandDateIfNeeded()
     currentPlayerData.totalHandsPlayed += 1
 
-    if handRank != .none {
+    if evaluation.handRank != .none {
       currentPlayerData.winningHands += 1
     }
     
@@ -97,6 +103,6 @@ class VideoPoker {
   }
   
   func getHandName() -> String {
-    evaluateHand().name
+    evaluateHand().handRank.name
   }
 }

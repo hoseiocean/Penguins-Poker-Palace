@@ -104,7 +104,8 @@ struct VideoPokerView: View {
 
 #Preview {
   let testPlayerData = PlayerData(
-    bestHand: .royalFlush,
+    bestCardRank: .ace,
+    bestHandRank: .royalFlush,
     bestHandDate: Date(),
     biggestWin: 10,
     biggestWinDate: Date(),

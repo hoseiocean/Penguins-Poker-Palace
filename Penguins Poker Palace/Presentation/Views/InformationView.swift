@@ -37,7 +37,7 @@ struct InformationView: View {
               .foregroundColor(.gray)
           }
           VStack(alignment: .leading) {
-            Text("info_best_hand: \(viewModel.bestHand)")
+            Text("info_best_hand: \(viewModel.bestHandRank) / \(viewModel.bestCardRank)")
               .font(.body)
             Text(viewModel.formatDate(viewModel.bestHandDate))
               .font(.caption)

@@ -23,7 +23,8 @@ struct VideoPokerApp: App {
   init() {
     let repository = UserDefaultsPlayerDataRepository()
     let playerData = repository.loadPlayerData() ?? PlayerData(
-      bestHand: Optional.none,
+      bestCardRank: nil,
+      bestHandRank: Optional.none,
       bestHandDate: nil,
       biggestWin: nil,
       biggestWinDate: nil,

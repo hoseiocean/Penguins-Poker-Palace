@@ -52,7 +52,7 @@ enum HandRank: Int {
     return false
   }
   
-  static func evaluate(cards: [Card]) -> HandRank {
+  static func evaluate(cards: [Card]) -> HandEvaluation {
     let ranks = cards.map { card in card.rank }
     let suits = cards.map { card in card.suit }
     
@@ -62,23 +62,53 @@ enum HandRank: Int {
     let isFlush = sameSuitCounts.values.contains(5)
     let isStraight = areImmediatelyConsecutive(ranks: ranks)
     
-    return switch (isFlush, isStraight, sameRankCounts) {
-      case (true, true, _) where ranks.max() == .ace && ranks.min() == .ten: .royalFlush
-      case (true, true, _): .straightFlush
-      case (_, _, let sameRanks) where sameRanks.values.contains(4): .fourOfAKind
-      case (_, _, let sameRanks) where sameRanks.values.contains(3) && sameRanks.values.contains(2): .fullHouse
-      case (true, _, _): .flush
-      case (_, true, _): .straight
-      case (_, _, let sameRanks) where sameRanks.values.contains(3): .threeOfAKind
-      case (_, _, let sameRanks) where sameRanks.filter { rankCount in rankCount.value == 2 }.count == 2: .twoPair
-      case (_, _, let sameRanks) where containsWinningPair(in: sameRanks): .onePair
-      default: .none
+    switch (isFlush, isStraight, sameRankCounts) {
+      case (true, true, _) where ranks.max() == .ace && ranks.min() == .ten:
+        let highestCard = cards.first { $0.rank == .ace }!.rank
+        return (.royalFlush, highestCard)
+        
+      case (true, true, _):
+        let highestCard = cards.max(by: { $0.rank < $1.rank })!.rank
+        return (.straightFlush, highestCard)
+        
+      case (_, _, let sameRanks) where sameRanks.values.contains(4):
+        let highestCard = cards.first { sameRanks[$0.rank] == 4 }!.rank
+        return (.fourOfAKind, highestCard)
+        
+      case (_, _, let sameRanks) where sameRanks.values.contains(3) && sameRanks.values.contains(2):
+        let highestCard = cards.first { sameRanks[$0.rank] == 3 }!.rank
+        return (.fullHouse, highestCard)
+        
+      case (true, _, _):
+        let highestCard = cards.max(by: { $0.rank < $1.rank })!.rank
+        return (.flush, highestCard)
+        
+      case (_, true, _):
+        let highestCard = cards.max(by: { $0.rank < $1.rank })!.rank
+        return (.straight, highestCard)
+        
+      case (_, _, let sameRanks) where sameRanks.values.contains(3):
+        let highestCard = cards.first { sameRanks[$0.rank] == 3 }!.rank
+        return (.threeOfAKind, highestCard)
+        
+      case (_, _, let sameRanks) where sameRanks.filter { $0.value == 2 }.count == 2:
+        let highestCard = cards.first { sameRanks[$0.rank] == 2 }!.rank
+        return (.twoPair, highestCard)
+        
+      case (_, _, let sameRanks) where containsWinningPair(in: sameRanks):
+        let pairRank = sameRanks.filter { $0.value == 2 }.keys.max()!
+        let highestCard = cards.first { $0.rank == pairRank }!.rank
+        return (.onePair, highestCard)
+        
+      default:
+        let highestCard = cards.max(by: { $0.rank < $1.rank })!.rank
+        return (.none, highestCard)
     }
   }
 }
 
 extension HandRank: Comparable {
-  public static func < (lhs: HandRank, rhs: HandRank) -> Bool {
+  public static func < (lhs: Self, rhs: Self) -> Bool {
     lhs.rawValue < rhs.rawValue
   }
 }

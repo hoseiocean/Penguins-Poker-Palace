@@ -478,6 +478,7 @@
       }
     },
     "info_best_hand: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -507,6 +508,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "최고 패: %@"
+          }
+        }
+      }
+    },
+    "info_best_hand: %@ / %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "info_best_hand: %1$@ / %2$@"
           }
         }
       }

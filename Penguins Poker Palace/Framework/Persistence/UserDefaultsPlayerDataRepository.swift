@@ -9,7 +9,8 @@ import Foundation
 
 
 final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
-  private let bestHandKey = "bestHand"
+  private let bestCardRankKey = "bestCardRank"
+  private let bestHandRankKey = "bestHandRank"
   private let bestHandDateKey = "bestHandDate"
   private let biggestWinKey = "biggestWin"
   private let biggestWinDateKey = "biggestWinDate"
@@ -26,7 +27,8 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
   
   func savePlayerData(_ playerData: PlayerData) {
     let defaults = UserDefaults.standard
-    defaults.set(playerData.bestHand?.rawValue, forKey: bestHandKey)
+    defaults.set(playerData.bestCardRank?.rawValue, forKey: bestCardRankKey)
+    defaults.set(playerData.bestHandRank?.rawValue, forKey: bestHandRankKey)
     defaults.set(playerData.bestHandDate?.timeIntervalSince1970, forKey: bestHandDateKey)
     defaults.set(playerData.biggestWin, forKey: biggestWinKey)
     defaults.set(playerData.biggestWinDate?.timeIntervalSince1970, forKey: biggestWinDateKey)
@@ -50,8 +52,10 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
     let defaults = UserDefaults.standard
     
     guard
-      let bestHandRaw = defaults.value(forKey: bestHandKey) as? Int,
-      let bestHand = HandRank(rawValue: bestHandRaw),
+      let bestCardRaw = defaults.value(forKey: bestCardRankKey) as? Int,
+      let bestCardRank = Rank(rawValue: bestCardRaw),
+      let bestHandRaw = defaults.value(forKey: bestHandRankKey) as? Int,
+      let bestHandRank = HandRank(rawValue: bestHandRaw),
       let bestHandDate = defaults.value(forKey: bestHandDateKey) as? TimeInterval,
       let biggestWin = defaults.value(forKey: biggestWinKey) as? Int,
       let biggestWinDate = defaults.value(forKey: biggestWinDateKey) as? TimeInterval,
@@ -75,7 +79,8 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
     let winningHands = defaults.integer(forKey: winningHandsKey)
     
     return PlayerData(
-      bestHand: bestHand,
+      bestCardRank: bestCardRank,
+      bestHandRank: bestHandRank,
       bestHandDate: bestHandDateValue,
       biggestWin: biggestWin,
       biggestWinDate: biggestWinDateValue,

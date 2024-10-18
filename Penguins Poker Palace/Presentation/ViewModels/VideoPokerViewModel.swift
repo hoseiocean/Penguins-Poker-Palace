@@ -22,9 +22,14 @@ final class VideoPokerViewModel: ObservableObject {
   @Published var laterality: Laterality
   @Published var showPlayerInfo: Bool = false
   
-  var bestHand: String {
-    guard let bestHand = videoPoker.currentPlayerData.bestHand else { return "Unknown" }
-    return bestHand.name
+  var bestCardRank: String {
+    guard let bestCardRank = videoPoker.currentPlayerData.bestCardRank else { return "Unknown" }
+    return bestCardRank.name
+  }
+  
+  var bestHandRank: String {
+    guard let bestHandRank = videoPoker.currentPlayerData.bestHandRank else { return "Unknown" }
+    return bestHandRank.name
   }
   
   var bestHandDate: Date? {

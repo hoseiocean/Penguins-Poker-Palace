@@ -9,7 +9,8 @@ import Foundation
 
 
 struct PlayerData {
-  var bestHand: HandRank?
+  var bestCardRank: Rank?
+  var bestHandRank: HandRank?
   var bestHandDate: Date?
   var biggestWin: Int?
   var biggestWinDate: Date?
@@ -35,7 +36,8 @@ struct PlayerData {
   }
 
   init(
-    bestHand: HandRank?,
+    bestCardRank: Rank?,
+    bestHandRank: HandRank?,
     bestHandDate: Date?,
     biggestWin: Int?,
     biggestWinDate: Date?,
@@ -50,7 +52,8 @@ struct PlayerData {
     totalPoints: Int = 0,
     winningHands: Int = 0
   ) {
-    self.bestHand = bestHand
+    self.bestCardRank = bestCardRank
+    self.bestHandRank = bestHandRank
     self.bestHandDate = bestHandDate
     self.biggestWin = biggestWin
     self.biggestWinDate = biggestWinDate
