@@ -9,10 +9,9 @@
 class PlayerLevelDetermination {
   
   static func determinePlayerLevel(playerData: PlayerData) -> PokerLevel {
-    let pokerSuccessRatio = playerData.ratioOfSuccessHandsAtPoker
-    let bettingSuccessRatio = playerData.ratioOfSuccessTriesAtBet
+    guard playerData.totalHandsPlayed > 50 else { return .newbie }
     
-    return switch (pokerSuccessRatio, bettingSuccessRatio) {
+    return switch (playerData.ratioOfSuccessHandsAtPoker, playerData.ratioOfSuccessTriesAtBet) {
       case let (poker, bet) where poker < 0.5 && bet < 0.5 && poker < bet: .donkey
       case let (poker, bet) where poker < 0.5 && bet < 0.5 && bet <= poker: .fish
       case let (poker, bet) where bet >= 0.5 && bet >= poker: .whale
