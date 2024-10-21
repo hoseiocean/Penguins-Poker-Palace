@@ -17,8 +17,10 @@ final class VideoPokerViewModel: ObservableObject {
   @Published var betInput: String = ""
   @Published var currentBet: Int? = nil
   @Published var currentHand: [Card] = []
+  @Published var dailyWinningHistory: Set<Date>
   @Published var expertMode: Bool
   @Published var handName: String = ""
+  @Published var lastSevenDays: [DayWinningStatus] = []
   @Published var laterality: Laterality
   @Published var showPlayerInfo: Bool = false
   
@@ -91,12 +93,16 @@ final class VideoPokerViewModel: ObservableObject {
   }
   
   init(videoPoker: VideoPoker, repository: PlayerDataRepository, videoPokerStateManager: VideoPokerStateManager) {
+    self.dailyWinningHistory = videoPoker.currentPlayerData.dailyWinningHistory
     self.videoPoker = videoPoker
     self.repository = repository
     self.videoPokerStateManager = videoPokerStateManager
-    expertMode = videoPoker.currentPlayerData.expertMode ?? false
-    laterality = videoPoker.currentPlayerData.laterality ?? .right
+
+    self.expertMode = videoPoker.currentPlayerData.expertMode ?? false
+    self.laterality = videoPoker.currentPlayerData.laterality ?? .right
+
     loadGameState()
+    loadLastSevenDays()
   }
   
   func exchangeSelectedCards(indices: [Int]) {
@@ -104,6 +110,7 @@ final class VideoPokerViewModel: ObservableObject {
     videoPoker.evaluateAndStoreHand()
     updateState()
     saveGameState()
+    loadLastSevenDays()
   }
   
   func loadGameState() {
@@ -111,6 +118,18 @@ final class VideoPokerViewModel: ObservableObject {
     videoPoker.currentPlayerData = loadedPlayerData
   }
 
+  func loadLastSevenDays() {
+    let calendar = Calendar.current
+    var days: [DayWinningStatus] = []
+    for i in 0..<7 {
+      if let day = calendar.date(byAdding: .day, value: -i, to: Date()) {
+        let hasWinningHand = videoPoker.currentPlayerData.dailyWinningHistory.contains(where: { calendar.isDate($0, inSameDayAs: day) })
+        days.append(DayWinningStatus(date: day, hasWinningHand: hasWinningHand))
+      }
+    }
+    lastSevenDays = days.reversed()
+  }
+  
   func saveGameState() {
     repository.savePlayerData(videoPoker.currentPlayerData)
   }
@@ -151,7 +170,7 @@ extension VideoPokerViewModel {
   private var dateFormatter: DateFormatter {
     let formatter = DateFormatter()
     formatter.dateStyle = .full
-    formatter.timeStyle = .short
+    formatter.timeStyle = .medium
     return formatter
   }
   
@@ -159,4 +178,36 @@ extension VideoPokerViewModel {
     guard let date = date else { return "Unknown" }
     return dateFormatter.string(from: date).localizedCapitalized
   }
+  
+  func formatDate(_ date: Date, style: DateFormatter.Style) -> String {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .medium
+    return formatter.string(from: date)
+  }
+  
+  func dayForDate(_ date: Date) -> Day {
+      let calendar = Calendar.current
+      let weekday = calendar.component(.weekday, from: date)
+      
+      switch weekday {
+      case 1: return .sunday
+      case 2: return .monday
+      case 3: return .tuesday
+      case 4: return .wednesday
+      case 5: return .thursday
+      case 6: return .friday
+      case 7: return .saturday
+      default: fatalError("Invalid day")
+      }
+  }
+}
+
+enum Day: String {
+    case sunday = "Di"
+    case monday = "Lu"
+    case tuesday = "Ma"
+    case wednesday = "Me"
+    case thursday = "Je"
+    case friday = "Ve"
+    case saturday = "Sa"
 }

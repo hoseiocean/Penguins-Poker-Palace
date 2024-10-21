@@ -15,6 +15,7 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
   private let biggestWinKey = "biggestWin"
   private let biggestWinDateKey = "biggestWinDate"
   private let currentBetKey = "currentBet"
+  private let dailyWinningHistoryKey = "dailyWinningHistory"
   private let expertModeKey = "expertMode"
   private let firstWinningHandDateKey = "firstWinningHandDate"
   private let languageKey = "preferredLanguage"
@@ -33,6 +34,10 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
     defaults.set(playerData.biggestWin, forKey: biggestWinKey)
     defaults.set(playerData.biggestWinDate?.timeIntervalSince1970, forKey: biggestWinDateKey)
     defaults.set(playerData.currentBet, forKey: currentBetKey)
+    
+    let winningHistoryTimestamps = playerData.dailyWinningHistory.map { $0.timeIntervalSince1970 }
+    defaults.set(winningHistoryTimestamps, forKey: dailyWinningHistoryKey)
+    
     defaults.set(playerData.expertMode, forKey: expertModeKey)
 
     if let firstWinningHandDate = playerData.firstWinningHandDate {
@@ -69,6 +74,10 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
     let bestHandDateValue = Date(timeIntervalSince1970: bestHandDate)
     let biggestWinDateValue = Date(timeIntervalSince1970: biggestWinDate)
     let currentBet = defaults.integer(forKey: currentBetKey)
+    
+    let winningHistoryTimestamps = defaults.array(forKey: dailyWinningHistoryKey) as? [TimeInterval] ?? []
+    let dailyWinningHistory: Set<Date> = Set(winningHistoryTimestamps.map { Date(timeIntervalSince1970: $0) })
+
     let expertMode = defaults.bool(forKey: expertModeKey)
     let firstWinningHandDate = defaults.value(forKey: firstWinningHandDateKey) as? TimeInterval
     let firstWinningHandDateValue = firstWinningHandDate != nil ? Date(timeIntervalSince1970: firstWinningHandDate!) : nil
@@ -85,6 +94,7 @@ final class UserDefaultsPlayerDataRepository: PlayerDataRepository {
       biggestWin: biggestWin,
       biggestWinDate: biggestWinDateValue,
       currentBet: currentBet,
+      dailyWinningHistory: dailyWinningHistory,
       expertMode: expertMode,
       firstWinningHandDate: firstWinningHandDateValue,
       language: language,

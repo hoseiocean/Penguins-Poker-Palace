@@ -22,19 +22,7 @@ struct VideoPokerApp: App {
   
   init() {
     let repository = UserDefaultsPlayerDataRepository()
-    let playerData = repository.loadPlayerData() ?? PlayerData(
-      bestCardRank: nil,
-      bestHandRank: Optional.none,
-      bestHandDate: nil,
-      biggestWin: nil,
-      biggestWinDate: nil,
-      currentBet: nil,
-      expertMode: false,
-      firstWinningHandDate: nil,
-      language: Locale.current.language.languageCode?.identifier ?? "en",
-      laterality: .right,
-      totalPoints: 100
-    )
+    let playerData = repository.loadPlayerData() ?? PlayerData(totalPoints: 100)
     videoPokerStateManager = VideoPokerStateManager(initialState: .initializing)
     let videoPoker = VideoPoker(deck: Deck(), playerData: playerData, videoPokerStateManager: videoPokerStateManager)
 

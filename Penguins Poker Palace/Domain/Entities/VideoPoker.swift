@@ -26,8 +26,29 @@ class VideoPoker {
     self.deck = deck
     self.videoPokerStateManager = videoPokerStateManager
     self.currentPlayerData = playerData
+    startNewSession()
   }
   
+  @discardableResult
+  private func checkAndAwardDailyPoints() -> Int {
+    let today = Calendar.current.startOfDay(for: Date())
+    
+    guard
+      currentPlayerData.giftIsAvailableForDate(today),
+      currentPlayerData.hasWinningHandsForLastSevenDaysBeforeDate(today)
+    else {
+      return .zero
+    }
+    
+    let giftRange = 1 ... 10
+    let pointsGift = Int.random(in: giftRange)
+    
+    currentPlayerData.lastGiftDate = today
+    currentPlayerData.totalPoints += pointsGift
+    
+    return pointsGift
+  }
+
   private func checkAndUpdateBestHandIfNeeded(with evaluation: HandEvaluation) {
     if let bestHand = currentPlayerData.bestHandRank, let bestCard = currentPlayerData.bestCardRank {
       guard evaluation.handRank > bestHand, evaluation.cardRank > bestCard else { return }
@@ -51,6 +72,44 @@ class VideoPoker {
   
   private func evaluateHand() -> HandEvaluation {
     HandRank.evaluate(cards: currentHand)
+  }
+  
+  func getLongestWinningStreak() -> Int {
+    let winningDays = currentPlayerData.dailyWinningHistory.sorted()
+    
+    var longestStreak = 0
+    var currentStreak = 0
+    var previousDay: Date?
+    
+    for day in winningDays {
+      if let previous = previousDay, Calendar.current.isDate(day, equalTo: previous, toGranularity: .day) {
+        continue
+      } else if let previous = previousDay, let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: previous), Calendar.current.isDate(day, equalTo: nextDay, toGranularity: .day) {        // Si le jour actuel est consécutif au jour précédent
+        currentStreak += 1
+      } else {
+        longestStreak = max(longestStreak, currentStreak)
+        currentStreak = 1
+      }
+      previousDay = day
+    }
+    
+    longestStreak = max(longestStreak, currentStreak)
+    
+    return longestStreak
+  }
+
+  func startNewSession() {
+    checkAndAwardDailyPoints()
+  }
+  
+  private func updateWinningHistoryIfNeeded() {
+    let today = Calendar.current.startOfDay(for: Date())
+    
+    if currentPlayerData.dailyWinningHistory.contains(where: { Calendar.current.isDate($0, inSameDayAs: today) }) {
+      return
+    }
+
+    currentPlayerData.dailyWinningHistory.insert(today)
   }
   
   @discardableResult
@@ -87,6 +146,7 @@ class VideoPoker {
 
     if evaluation.handRank != .none {
       currentPlayerData.winningHands += 1
+      updateWinningHistoryIfNeeded()
     }
     
     videoPokerStateManager.transition(to: .finalHand, with: currentPlayerData.currentBet)

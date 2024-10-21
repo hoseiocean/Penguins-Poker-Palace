@@ -1,6 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
+    "🐧" : {
+
+    },
     "button_confirm_selection" : {
       "localizations" : {
         "de" : {
@@ -136,6 +142,9 @@
           }
         }
       }
+    },
+    "Derniers 7 jours" : {
+
     },
     "hand_flush" : {
       "localizations" : {
@@ -1137,6 +1146,9 @@
         }
       }
     },
+    "level_newbie" : {
+
+    },
     "level_shark" : {
       "localizations" : {
         "de" : {
@@ -1204,6 +1216,9 @@
           }
         }
       }
+    },
+    "Newbie" : {
+
     },
     "No poker level assigned yet. Keep playing to define your level!" : {
 

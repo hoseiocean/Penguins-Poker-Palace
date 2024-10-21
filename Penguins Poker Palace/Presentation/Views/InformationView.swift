@@ -8,6 +8,10 @@
 import SwiftUI
 
 
+struct DayWinningStatus: Hashable {
+  let date: Date
+  let hasWinningHand: Bool
+}
 struct InformationView: View {
   @ObservedObject var viewModel: VideoPokerViewModel
   
@@ -25,6 +29,20 @@ struct InformationView: View {
             Text(viewModel.pokerLevel.description)
           }
           .padding()
+        }
+        
+        Section(header: Text("Derniers 7 jours")) {
+          HStack {
+          ForEach(viewModel.lastSevenDays, id: \.self) { day in
+            VStack(alignment: .center) {
+                Text(day.hasWinningHand ? "🐧" : "")
+                  .foregroundColor(day.hasWinningHand ? .green : .red)
+                Text(viewModel.dayForDate(day.date).rawValue)
+              }
+            }
+          .frame(maxWidth: .infinity)
+          }
+          .frame(maxWidth: .infinity)
         }
         
         Section(header: Text("info_general_info")) {
@@ -78,24 +96,30 @@ struct InformationView: View {
   }
 }
 
-//#Preview {
-//  let testPlayerData = PlayerData(
-//    bestHand: .royalFlush,
-//    bestHandDate: Date(),
-//    currentBet: 50,
-//    expertMode: true,
-//    firstWinningHandDate: Date(),
-//    language: "en",
-//    laterality: .right,
-//    successfulBets: 10,
-//    totalBets: 20,
-//    totalHandsPlayed: 100,
-//    totalPoints: 1000,
-//    winningHands: 30
-//  )
-//  
-//  let testGame = VideoPoker(deck: Deck(), playerData: testPlayerData)
-//  let testViewModel = VideoPokerViewModel(videoPoker: testGame, repository: UserDefaultsPlayerDataRepository())
-//  
-//  InformationView(viewModel: testViewModel)
-//}
+#Preview {
+  let calendar = Calendar.current
+  let today = Date()
+  let lastSevenDays = Set((0..<7).map { calendar.date(byAdding: .day, value: -$0, to: today)! })
+  
+  let testPlayerData = PlayerData(
+    bestCardRank: .ace,
+    bestHandRank: .royalFlush,
+    bestHandDate: Date(),
+    currentBet: 50,
+    dailyWinningHistory: lastSevenDays,
+    expertMode: true,
+    firstWinningHandDate: Date(),
+    language: "en",
+    laterality: .right,
+    successfulBets: 10,
+    totalBets: 20,
+    totalHandsPlayed: 100,
+    totalPoints: 1000,
+    winningHands: 30
+  )
+  
+  let testGame = VideoPoker(deck: Deck(), playerData: testPlayerData, videoPokerStateManager: .init(initialState: .initializing))
+  let testViewModel = VideoPokerViewModel(videoPoker: testGame, repository: UserDefaultsPlayerDataRepository(), videoPokerStateManager: .init(initialState: .initializing))
+  
+  InformationView(viewModel: testViewModel)
+}
