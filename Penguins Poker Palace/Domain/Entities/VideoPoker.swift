@@ -11,20 +11,14 @@ import Foundation
 typealias HandEvaluation = (handRank: HandRank, cardRank: Rank)
 class VideoPoker {
   private var deck: Deck
-  private var videoPokerStateManager: VideoPokerStateManager
 
   private(set) var currentHand: [Card] = []
   private(set) var winnings: Int = 0
 
   var currentPlayerData: PlayerData
   
-  var handState: HandState {
-    videoPokerStateManager.currentState
-  }
-
-  init(deck: Deck, playerData: PlayerData, videoPokerStateManager: VideoPokerStateManager) {
+  init(deck: Deck, playerData: PlayerData) {
     self.deck = deck
-    self.videoPokerStateManager = videoPokerStateManager
     self.currentPlayerData = playerData
     startNewSession()
   }
@@ -40,8 +34,8 @@ class VideoPoker {
       return .zero
     }
     
-    let giftRange = 1 ... 10
-    let pointsGift = Int.random(in: giftRange)
+    let pointsGiftRange = 1 ... 10
+    let pointsGift = Int.random(in: pointsGiftRange)
     
     currentPlayerData.lastGiftDate = today
     currentPlayerData.totalPoints += pointsGift
@@ -51,7 +45,7 @@ class VideoPoker {
 
   private func checkAndUpdateBestHandIfNeeded(with evaluation: HandEvaluation) {
     if let bestHand = currentPlayerData.bestHandRank, let bestCard = currentPlayerData.bestCardRank {
-      guard evaluation.handRank > bestHand, evaluation.cardRank > bestCard else { return }
+      guard evaluation.handRank > bestHand || (evaluation.handRank == bestHand && evaluation.cardRank > bestCard) else { return }
     }
     currentPlayerData.bestCardRank = evaluation.cardRank
     currentPlayerData.bestHandRank = evaluation.handRank
@@ -70,7 +64,7 @@ class VideoPoker {
     currentPlayerData.firstWinningHandDate = Date()
   }
   
-  private func evaluateHand() -> HandEvaluation {
+  private func evaluateHand() -> HandEvaluation? {
     HandRank.evaluate(cards: currentHand)
   }
   
@@ -84,7 +78,7 @@ class VideoPoker {
     for day in winningDays {
       if let previous = previousDay, Calendar.current.isDate(day, equalTo: previous, toGranularity: .day) {
         continue
-      } else if let previous = previousDay, let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: previous), Calendar.current.isDate(day, equalTo: nextDay, toGranularity: .day) {        // Si le jour actuel est consécutif au jour précédent
+      } else if let previous = previousDay, let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: previous), Calendar.current.isDate(day, equalTo: nextDay, toGranularity: .day) {
         currentStreak += 1
       } else {
         longestStreak = max(longestStreak, currentStreak)
@@ -114,8 +108,6 @@ class VideoPoker {
   
   @discardableResult
   func exchangeCards(indices: [Int]) -> [Card] {
-    guard videoPokerStateManager.currentState == .initialHand else { return currentHand }
-
     indices.forEach { index in
       if let newCard = deck.dealCard() {
         currentHand[index] = newCard
@@ -136,7 +128,7 @@ class VideoPoker {
   }
   
   func evaluateAndStoreHand() {
-    let evaluation = evaluateHand()
+    guard let evaluation = evaluateHand() else { return }
     winnings = evaluation.handRank.winnings * (currentPlayerData.currentBet ?? 0)
     currentPlayerData.totalPoints += winnings
     checkAndUpdateBestHandIfNeeded(with: evaluation)
@@ -148,18 +140,15 @@ class VideoPoker {
       currentPlayerData.winningHands += 1
       updateWinningHistoryIfNeeded()
     }
-    
-    videoPokerStateManager.transition(to: .finalHand, with: currentPlayerData.currentBet)
   }
   
   func resetForNewRound() {
-    videoPokerStateManager.transition(to: .initialHand, with: currentPlayerData.currentBet)
     winnings = 0
     deck.reset()
     currentHand = deck.drawCards(5)
   }
   
   func getHandName() -> String {
-    evaluateHand().handRank.name
+    evaluateHand()?.handRank.name ?? ""
   }
 }

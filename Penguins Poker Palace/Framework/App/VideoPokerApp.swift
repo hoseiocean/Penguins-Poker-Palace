@@ -24,7 +24,7 @@ struct VideoPokerApp: App {
     let repository = UserDefaultsPlayerDataRepository()
     let playerData = repository.loadPlayerData() ?? PlayerData(totalPoints: 100)
     videoPokerStateManager = VideoPokerStateManager(initialState: .initializing)
-    let videoPoker = VideoPoker(deck: Deck(), playerData: playerData, videoPokerStateManager: videoPokerStateManager)
+    let videoPoker = VideoPoker(deck: Deck(), playerData: playerData)
 
     _viewModel = StateObject(wrappedValue: VideoPokerViewModel(videoPoker: videoPoker, repository: repository, videoPokerStateManager: VideoPokerStateManager(initialState: .initializing)))
   }

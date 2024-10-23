@@ -56,6 +56,10 @@ final class VideoPokerViewModel: ObservableObject {
     videoPoker.currentPlayerData.firstWinningHandDate
   }
   
+  var isBetSet: Bool {
+    videoPoker.currentPlayerData.currentBet != nil
+  }
+  
   var language: String {
     videoPoker.currentPlayerData.language ?? String()
   }
@@ -101,19 +105,25 @@ final class VideoPokerViewModel: ObservableObject {
     self.expertMode = videoPoker.currentPlayerData.expertMode ?? false
     self.laterality = videoPoker.currentPlayerData.laterality ?? .right
 
-    loadGameState()
+    loadSavedGame()
     loadLastSevenDays()
   }
   
   func exchangeSelectedCards(indices: [Int]) {
+    guard
+      videoPokerStateManager.currentState != .initializing,
+      videoPokerStateManager.currentState == .initialHand
+    else {
+      return
+    }
+    
     videoPoker.exchangeCards(indices: indices)
     videoPoker.evaluateAndStoreHand()
-    updateState()
-    saveGameState()
-    loadLastSevenDays()
+    updateInfosAndSaveGame()
+    videoPokerStateManager.transition(to: .finalHand, isBetSet)
   }
   
-  func loadGameState() {
+  func loadSavedGame() {
     guard let loadedPlayerData = repository.loadPlayerData() else { return }
     videoPoker.currentPlayerData = loadedPlayerData
   }
@@ -130,38 +140,48 @@ final class VideoPokerViewModel: ObservableObject {
     lastSevenDays = days.reversed()
   }
   
-  func saveGameState() {
-    repository.savePlayerData(videoPoker.currentPlayerData)
-  }
-
   func setBet(_ bet: String) {
     guard let betValue = Int(bet) else { return }
-
     currentBet = min(max(betValue, 1), videoPoker.currentPlayerData.totalPoints)
     videoPoker.currentPlayerData.currentBet = currentBet
     betInput = ""
+    updateInfosAndSaveGame()
+    
+    guard
+      videoPokerStateManager.currentState == .initializing
+    else {
+      return
+    }
+    
     videoPokerStateManager.currentState = .finalHand
-    saveGameState()
   }
   
   func startNewRound() {
-    guard videoPokerStateManager.currentState != .initializing else { return }
+    guard
+      videoPokerStateManager.currentState != .initializing,
+      videoPokerStateManager.currentState == .finalHand
+    else {
+      return
+    }
+    
     videoPoker.pay()
-    updateState()
-    saveGameState()
+    updateInfosAndSaveGame()
+    videoPokerStateManager.transition(to: .initialHand, isBetSet)
   }
   
-  private func updateState() {
+  private func updateInfosAndSaveGame() {
     currentHand = videoPoker.currentHand
     handName = videoPoker.getHandName()
-    switch videoPokerStateManager.currentState {
-    case .initialHand:
-        videoPokerStateManager.transition(to: .finalHand, with: videoPoker.currentPlayerData.currentBet)
-    case .finalHand:
-        videoPokerStateManager.transition(to: .initialHand, with: videoPoker.currentPlayerData.currentBet)
-    default:
-        return
-    }
+    repository.savePlayerData(videoPoker.currentPlayerData)
+    loadLastSevenDays()
+//    switch videoPokerStateManager.currentState {
+//    case .initialHand:
+//        videoPokerStateManager.transition(to: .finalHand, (videoPoker.currentPlayerData.currentBet != nil))
+//    case .finalHand:
+//        videoPokerStateManager.transition(to: .initialHand, (videoPoker.currentPlayerData.currentBet != nil))
+//    default:
+//        return
+//    }
   }
 }
 

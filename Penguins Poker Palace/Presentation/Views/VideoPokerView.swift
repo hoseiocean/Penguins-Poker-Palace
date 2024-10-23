@@ -84,7 +84,7 @@ struct VideoPokerView: View {
       .padding()
     }
     .onAppear {
-      viewModel.loadGameState()
+      viewModel.loadSavedGame()
     }
     .sheet(isPresented: $showingSheet) {
       InformationView(viewModel: viewModel)
@@ -121,9 +121,9 @@ struct VideoPokerView: View {
     winningHands: 20
   )
   let videoPokerStateManager = VideoPokerStateManager(initialState: .initializing)
-  let mockGame = MockVideoPokerGame(playerData: testPlayerData, videoPokerStateManager: videoPokerStateManager)
+  let mockGame = MockVideoPokerGame(playerData: testPlayerData)
   let mockRepository = MockPlayerDataRepository()
-  let viewModel = VideoPokerViewModel(videoPoker: mockGame, repository: mockRepository, videoPokerStateManager: VideoPokerStateManager(initialState: .initializing))
+  let viewModel = VideoPokerViewModel(videoPoker: mockGame, repository: mockRepository, videoPokerStateManager: videoPokerStateManager)
 
   VideoPokerView(viewModel: viewModel)
 }

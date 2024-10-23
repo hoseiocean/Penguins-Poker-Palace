@@ -13,12 +13,15 @@ class VideoPokerStateManager {
     self.currentState = initialState
   }
   
-  func canTransition(to newState: HandState, with bet: Int?) -> Bool {
-    switch (currentState, newState) {
+  func canTransition(to newState: HandState, _ isBetSet: Bool) -> Bool {
+    guard isBetSet else { return false }
+    return switch (currentState, newState) {
+      case (.initializing, .initialHand):
+        true
+      case (.initializing, .finalHand):
+        true
       case (.initialHand, .finalHand):
         true
-      case (.initializing, .initialHand):
-        bet != nil
       case (.finalHand, .initialHand):
         true
       default:
@@ -26,8 +29,8 @@ class VideoPokerStateManager {
     }
   }
   
-  func transition(to newState: HandState, with bet: Int?) {
-    guard canTransition(to: newState, with: bet) else {
+  func transition(to newState: HandState, _ isBetSet: Bool) {
+    guard canTransition(to: newState, isBetSet) else {
       print("Invalid state transition: \(currentState) to \(newState)")
       return
     }
