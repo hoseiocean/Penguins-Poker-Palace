@@ -31,16 +31,15 @@ struct InformationView: View {
           .padding()
         }
         
-        Section(header: Text("Derniers 7 jours")) {
+        Section(header: Text("info_last_7_days")) {
           HStack {
-          ForEach(viewModel.lastSevenDays, id: \.self) { day in
-            VStack(alignment: .center) {
+            ForEach(viewModel.lastSevenDays, id: \.self) { day in
+              VStack(alignment: .center) {
                 Text(day.hasWinningHand ? "🐧" : "")
-                  .foregroundColor(day.hasWinningHand ? .green : .red)
                 Text(viewModel.dayForDate(day.date).rawValue)
               }
             }
-          .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity)
           }
           .frame(maxWidth: .infinity)
         }
@@ -118,7 +117,7 @@ struct InformationView: View {
     winningHands: 30
   )
   
-  let testGame = VideoPoker(deck: Deck(), playerData: testPlayerData, videoPokerStateManager: .init(initialState: .initializing))
+  let testGame = VideoPoker(deck: Deck(), playerData: testPlayerData)
   let testViewModel = VideoPokerViewModel(videoPoker: testGame, repository: UserDefaultsPlayerDataRepository(), videoPokerStateManager: .init(initialState: .initializing))
   
   InformationView(viewModel: testViewModel)

@@ -143,9 +143,6 @@
         }
       }
     },
-    "Derniers 7 jours" : {
-
-    },
     "hand_flush" : {
       "localizations" : {
         "de" : {
@@ -737,6 +734,9 @@
           }
         }
       }
+    },
+    "info_last_7_days" : {
+
     },
     "info_laterality:" : {
       "localizations" : {
