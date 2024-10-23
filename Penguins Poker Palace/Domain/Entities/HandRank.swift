@@ -8,7 +8,7 @@
 
 enum HandRank: Int {
   case none, onePair, twoPair, threeOfAKind, straight, flush, fullHouse, fourOfAKind, straightFlush, royalFlush
-
+  
   var name: String {
     switch self {
       case .royalFlush: String(localized: "hand_royal_flush")
@@ -52,7 +52,9 @@ enum HandRank: Int {
     return false
   }
   
-  static func evaluate(cards: [Card]) -> HandEvaluation {
+  static func evaluate(cards: [Card]) -> HandEvaluation? {
+    guard cards.count == 5 else { return nil }
+    
     let ranks = cards.map { card in card.rank }
     let suits = cards.map { card in card.suit }
     
@@ -63,41 +65,51 @@ enum HandRank: Int {
     let isStraight = areImmediatelyConsecutive(ranks: ranks)
     
     switch (isFlush, isStraight, sameRankCounts) {
-      case (true, true, _) where ranks.max() == .ace && ranks.min() == .ten:
-        let highestCard = cards.first { $0.rank == .ace }!.rank
-        return (.royalFlush, highestCard)
+      case (true, true, _) where ranks.contains(.ace) && ranks.contains(.ten):
+        let winningCards = cards.filter { $0.rank == .ace || ($0.rank >= .ten && $0.rank <= .king) }
+        return (.royalFlush, .ace)
         
       case (true, true, _):
-        let highestCard = cards.max(by: { $0.rank < $1.rank })!.rank
+        let winningCards = cards
+        let highestCard = winningCards.max(by: { $0.rank < $1.rank })!.rank
         return (.straightFlush, highestCard)
         
       case (_, _, let sameRanks) where sameRanks.values.contains(4):
-        let highestCard = cards.first { sameRanks[$0.rank] == 4 }!.rank
+        let quadRank = sameRanks.first(where: { $0.value == 4 })!.key
+        let winningCards = cards.filter { $0.rank == quadRank }
+        let highestCard = winningCards.first!.rank
         return (.fourOfAKind, highestCard)
         
       case (_, _, let sameRanks) where sameRanks.values.contains(3) && sameRanks.values.contains(2):
-        let highestCard = cards.first { sameRanks[$0.rank] == 3 }!.rank
+        let winningCards = cards
+        let highestCard = winningCards.max(by: { $0.rank < $1.rank })!.rank
         return (.fullHouse, highestCard)
         
       case (true, _, _):
-        let highestCard = cards.max(by: { $0.rank < $1.rank })!.rank
+        let winningCards = cards
+        let highestCard = winningCards.max(by: { $0.rank < $1.rank })!.rank
         return (.flush, highestCard)
         
       case (_, true, _):
-        let highestCard = cards.max(by: { $0.rank < $1.rank })!.rank
+        let winningCards = cards
+        let highestCard = winningCards.max(by: { $0.rank < $1.rank })!.rank
         return (.straight, highestCard)
         
       case (_, _, let sameRanks) where sameRanks.values.contains(3):
-        let highestCard = cards.first { sameRanks[$0.rank] == 3 }!.rank
+        let tripleRank = sameRanks.first(where: { $0.value == 3 })!.key
+        let winningCards = cards.filter { $0.rank == tripleRank }
+        let highestCard = winningCards.first!.rank
         return (.threeOfAKind, highestCard)
         
       case (_, _, let sameRanks) where sameRanks.filter { $0.value == 2 }.count == 2:
-        let highestCard = cards.first { sameRanks[$0.rank] == 2 }!.rank
+        let winningCards = sameRanks.filter { $0.value == 2 }.keys
+        let highestCard = winningCards.max()!
         return (.twoPair, highestCard)
         
       case (_, _, let sameRanks) where containsWinningPair(in: sameRanks):
         let pairRank = sameRanks.filter { $0.value == 2 }.keys.max()!
-        let highestCard = cards.first { $0.rank == pairRank }!.rank
+        let winningCards = cards.filter { $0.rank == pairRank }
+        let highestCard = winningCards.first!.rank
         return (.onePair, highestCard)
         
       default:
