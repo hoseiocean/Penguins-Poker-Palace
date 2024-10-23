@@ -66,7 +66,6 @@ enum HandRank: Int {
     
     switch (isFlush, isStraight, sameRankCounts) {
       case (true, true, _) where ranks.contains(.ace) && ranks.contains(.ten):
-        let winningCards = cards.filter { $0.rank == .ace || ($0.rank >= .ten && $0.rank <= .king) }
         return (.royalFlush, .ace)
         
       case (true, true, _):
