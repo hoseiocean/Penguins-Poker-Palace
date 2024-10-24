@@ -174,14 +174,6 @@ final class VideoPokerViewModel: ObservableObject {
     handName = videoPoker.getHandName()
     repository.savePlayerData(videoPoker.currentPlayerData)
     loadLastSevenDays()
-//    switch videoPokerStateManager.currentState {
-//    case .initialHand:
-//        videoPokerStateManager.transition(to: .finalHand, (videoPoker.currentPlayerData.currentBet != nil))
-//    case .finalHand:
-//        videoPokerStateManager.transition(to: .initialHand, (videoPoker.currentPlayerData.currentBet != nil))
-//    default:
-//        return
-//    }
   }
 }
 
@@ -220,14 +212,4 @@ extension VideoPokerViewModel {
       default: fatalError("Invalid day")
       }
   }
-}
-
-enum Day: String {
-    case sunday = "Di"
-    case monday = "Lu"
-    case tuesday = "Ma"
-    case wednesday = "Me"
-    case thursday = "Je"
-    case friday = "Ve"
-    case saturday = "Sa"
 }

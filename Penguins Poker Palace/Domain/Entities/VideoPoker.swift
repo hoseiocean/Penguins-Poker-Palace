@@ -8,7 +8,6 @@
 import Foundation
 
 
-typealias HandEvaluation = (handRank: HandRank, cardRank: Rank)
 class VideoPoker {
   private var deck: Deck
 

@@ -8,10 +8,6 @@
 import SwiftUI
 
 
-struct DayWinningStatus: Hashable {
-  let date: Date
-  let hasWinningHand: Bool
-}
 struct InformationView: View {
   @ObservedObject var viewModel: VideoPokerViewModel
   
@@ -28,15 +24,16 @@ struct InformationView: View {
               .bold()
             Text(viewModel.pokerLevel.description)
           }
+          .frame(maxWidth: .infinity)
           .padding()
         }
         
         Section(header: Text("info_last_7_days")) {
-          HStack {
+          HStack(alignment: .bottom) {
             ForEach(viewModel.lastSevenDays, id: \.self) { day in
               VStack(alignment: .center) {
                 Text(day.hasWinningHand ? "🐧" : "")
-                Text(viewModel.dayForDate(day.date).rawValue)
+                Text(viewModel.dayForDate(day.date).short)
               }
             }
             .frame(maxWidth: .infinity)

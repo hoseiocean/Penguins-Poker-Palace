@@ -483,6 +483,9 @@
         }
       }
     },
+    "Hello, World!" : {
+
+    },
     "info_best_hand: %@" : {
       "extractionState" : "stale",
       "localizations" : {
