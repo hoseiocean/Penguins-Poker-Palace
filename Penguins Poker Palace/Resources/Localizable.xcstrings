@@ -1333,6 +1333,24 @@
         }
       }
     },
+    "level_description_donkey_You’re a donkey! Your poker game is the weakest, but you also don’t fare well in betting." : {
+
+    },
+    "level_description_fish_You’re a fish! You struggle with both poker and betting, especially with the latter." : {
+
+    },
+    "level_description_mass_No poker level assigned yet. Keep playing to define your level!" : {
+
+    },
+    "level_description_newbie_You’re a newbie" : {
+
+    },
+    "level_description_shark_You’re a shark! You’ve mastered poker and consistently outplay others." : {
+
+    },
+    "level_description_whale_You’re a whale! You take big risks in betting and often come out on top." : {
+
+    },
     "level_donkey" : {
       "localizations" : {
         "de" : {
@@ -1536,9 +1554,6 @@
           }
         }
       }
-    },
-    "No poker level assigned yet. Keep playing to define your level!" : {
-
     },
     "rank_name_ace" : {
       "localizations" : {
@@ -2531,21 +2546,6 @@
           }
         }
       }
-    },
-    "You’re a donkey! Your poker game is the weakest, but you also don’t fare well in betting." : {
-
-    },
-    "You’re a fish! You struggle with both poker and betting, especially with the latter." : {
-
-    },
-    "You’re a newbie" : {
-
-    },
-    "You’re a shark! You’ve mastered poker and consistently outplay others." : {
-
-    },
-    "You’re a whale! You take big risks in betting and often come out on top." : {
-
     }
   },
   "version" : "1.0"

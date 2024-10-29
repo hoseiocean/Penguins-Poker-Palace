@@ -16,12 +16,12 @@ enum PokerLevel {
 
   var description: String {
     switch self {
-      case .donkey: String(localized: String.LocalizationValue("You’re a donkey! Your poker game is the weakest, but you also don’t fare well in betting."))
-      case .fish: String(localized: String.LocalizationValue("You’re a fish! You struggle with both poker and betting, especially with the latter."))
-      case .mass: String(localized: String.LocalizationValue("No poker level assigned yet. Keep playing to define your level!"))
-      case .newbie: String(localized: String.LocalizationValue("You’re a newbie"))
-      case .shark: String(localized: String.LocalizationValue("You’re a shark! You’ve mastered poker and consistently outplay others."))
-      case .whale: String(localized: String.LocalizationValue("You’re a whale! You take big risks in betting and often come out on top."))
+      case .donkey: String(localized: String.LocalizationValue("level_description_donkey_You’re a donkey! Your poker game is the weakest, but you also don’t fare well in betting."))
+      case .fish: String(localized: String.LocalizationValue("level_description_fish_You’re a fish! You struggle with both poker and betting, especially with the latter."))
+      case .mass: String(localized: String.LocalizationValue("level_description_mass_No poker level assigned yet. Keep playing to define your level!"))
+      case .newbie: String(localized: String.LocalizationValue("level_description_newbie_You’re a newbie"))
+      case .shark: String(localized: String.LocalizationValue("level_description_shark_You’re a shark! You’ve mastered poker and consistently outplay others."))
+      case .whale: String(localized: String.LocalizationValue("level_description_whale_You’re a whale! You take big risks in betting and often come out on top."))
     }
   }
   
