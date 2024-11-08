@@ -48,6 +48,7 @@ struct PlayerData {
     expertMode: Bool? = nil,
     firstWinningHandDate: Date? = nil,
     language: String? = nil,
+    lastGiftDate: Date? = nil,
     laterality: Laterality? = nil,
     successfulBets: Int = 0,
     totalBets: Int = 0,
@@ -65,33 +66,66 @@ struct PlayerData {
     self.expertMode = expertMode
     self.firstWinningHandDate = firstWinningHandDate
     self.language = language
+    self.lastGiftDate = lastGiftDate
     self.laterality = laterality
     self.successfulBets = successfulBets
     self.totalBets = totalBets
     self.totalHandsPlayed = totalHandsPlayed
     self.totalPoints = totalPoints
     self.winningHands = winningHands
+
+    checkAndAwardDailyPoints()
   }
   
-  func giftIsAvailableForDate(_ date: Date) -> Bool {
-    guard let lastGiftDate, Calendar.current.isDate(lastGiftDate, inSameDayAs: date) else { return true }
-    return false
+  var isGiftAvailableForToday: Bool {
+    if let lastGiftDate, Calendar.current.isDate(lastGiftDate, inSameDayAs: Date()) {
+      print("Gift not available today, last gift date: \(lastGiftDate), current date: \(Date())")
+      return false
+    } else {
+      print("Gift available today, last gift date: \(String(describing: lastGiftDate)), current date: \(Date())")
+      return true
+    }
   }
   
-  func hasWinningHandsForLastSevenDaysBeforeDate(_ date: Date) -> Bool {
+  var hasWinningHandsForLastSevenDays: Bool {
     let calendar = Calendar.current
     
     for daysAgo in 1 ... 7 {
-      guard let dayToCheck = calendar.date(byAdding: .day, value: -daysAgo, to: date) else {
+      guard let dayToCheck = calendar.date(byAdding: .day, value: -daysAgo, to: Date()) else {
+        print("Missing day dayAgo: \(daysAgo)")
         return false
       }
-      
+      print("OK for day: \(dayToCheck)")
       if !dailyWinningHistory.contains(where: { calendar.isDate($0, inSameDayAs: dayToCheck) }) {
         return false
       }
     }
     
     return true
+  }
+  
+  @discardableResult
+  private mutating func checkAndAwardDailyPoints() -> Int {
+    guard
+      isGiftAvailableForToday,
+      hasWinningHandsForLastSevenDays
+    else {
+      return .zero
+    }
+    
+    let pointsGiftRange = 1 ... 10
+    let pointsGift = Int.random(in: pointsGiftRange)
+    
+    lastGiftDate = Date()
+    totalPoints += pointsGift
+    
+    return pointsGift
+  }
+  
+  func hasWinningHand(on date: Date) -> Bool {
+    dailyWinningHistory.contains { storedDate in
+      Calendar.current.isDate(storedDate, inSameDayAs: date)
+    }
   }
   
   mutating func updateWinningHistory(for date: Date) {

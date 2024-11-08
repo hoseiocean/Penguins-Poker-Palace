@@ -10,7 +10,7 @@ class MockPlayerDataRepository: PlayerDataRepository {
   func savePlayerData(_ playerData: PlayerData) {
   }
   
-  func loadPlayerData() -> PlayerData? {
-    nil
+  func loadPlayerData() -> PlayerData {
+    PlayerData()
   }
 }

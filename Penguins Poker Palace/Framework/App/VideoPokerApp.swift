@@ -7,13 +7,12 @@
 
 import SwiftUI
 
+
 @main
 struct VideoPokerApp: App {
   
-  private let videoPokerStateManager: VideoPokerStateManager
-  
   @StateObject private var viewModel: VideoPokerViewModel
-
+  
   var body: some Scene {
     WindowGroup {
       VideoPokerView(viewModel: viewModel)
@@ -22,10 +21,13 @@ struct VideoPokerApp: App {
   
   init() {
     let repository = UserDefaultsPlayerDataRepository()
-    let playerData = repository.loadPlayerData() ?? PlayerData(totalPoints: 100)
-    videoPokerStateManager = VideoPokerStateManager(initialState: .initializing)
-    let videoPoker = VideoPoker(deck: Deck(), playerData: playerData)
-
-    _viewModel = StateObject(wrappedValue: VideoPokerViewModel(videoPoker: videoPoker, repository: repository, videoPokerStateManager: VideoPokerStateManager(initialState: .initializing)))
+    let pokerGame = PokerGame(deck: Deck())
+    _viewModel = StateObject(wrappedValue: VideoPokerViewModel(videoPoker: pokerGame, repository: repository))
   }
+  
+  let initialDailyWinningHistory: Set<Date> = {
+    let calendar = Calendar.current
+    let today = Date()
+    return Set((1..<8).compactMap { calendar.date(byAdding: .day, value: -$0, to: today) })
+  }()
 }

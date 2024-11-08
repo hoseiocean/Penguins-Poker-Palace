@@ -23,7 +23,7 @@
 		116D413B2CB3223A00F55A08 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D413A2CB3223A00F55A08 /* Deck.swift */; };
 		116D413D2CB3224F00F55A08 /* HandRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D413C2CB3224F00F55A08 /* HandRank.swift */; };
 		116D41442CB322A200F55A08 /* VideoPokerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41432CB322A200F55A08 /* VideoPokerViewModel.swift */; };
-		116D41462CB3234000F55A08 /* VideoPoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41452CB3234000F55A08 /* VideoPoker.swift */; };
+		116D41462CB3234000F55A08 /* PokerGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41452CB3234000F55A08 /* PokerGame.swift */; };
 		116D41492CB326DB00F55A08 /* MockVideoPokerGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D41482CB326DB00F55A08 /* MockVideoPokerGame.swift */; };
 		116D414B2CB326FD00F55A08 /* MockGameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D414A2CB326FD00F55A08 /* MockGameRepository.swift */; };
 		116D415E2CB32FB100F55A08 /* CardFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D415D2CB32FB100F55A08 /* CardFactory.swift */; };
@@ -71,7 +71,7 @@
 		116D413A2CB3223A00F55A08 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		116D413C2CB3224F00F55A08 /* HandRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandRank.swift; sourceTree = "<group>"; };
 		116D41432CB322A200F55A08 /* VideoPokerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPokerViewModel.swift; sourceTree = "<group>"; };
-		116D41452CB3234000F55A08 /* VideoPoker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPoker.swift; sourceTree = "<group>"; };
+		116D41452CB3234000F55A08 /* PokerGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerGame.swift; sourceTree = "<group>"; };
 		116D41482CB326DB00F55A08 /* MockVideoPokerGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockVideoPokerGame.swift; sourceTree = "<group>"; };
 		116D414A2CB326FD00F55A08 /* MockGameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGameRepository.swift; sourceTree = "<group>"; };
 		116D41532CB32CB400F55A08 /* VideoPokerAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VideoPokerAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,18 +164,18 @@
 		116D411B2CB3215F00F55A08 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				11B1722F2CCA0FE300769A87 /* HandEvaluation.swift */,
 				116D412F2CB321AE00F55A08 /* Card.swift */,
 				116D41612CB3352300F55A08 /* CardColor.swift */,
 				116D413A2CB3223A00F55A08 /* Deck.swift */,
 				11512EED2CB71905005207EF /* Laterality.swift */,
+				11B1722F2CCA0FE300769A87 /* HandEvaluation.swift */,
 				116D413C2CB3224F00F55A08 /* HandRank.swift */,
 				116D41692CB3681100F55A08 /* HandState.swift */,
 				11512EE52CB7159A005207EF /* PlayerData.swift */,
 				11512EE32CB71577005207EF /* PokerLevel.swift */,
 				116D41362CB3220F00F55A08 /* Rank.swift */,
 				116D41342CB3220100F55A08 /* Suit.swift */,
-				116D41452CB3234000F55A08 /* VideoPoker.swift */,
+				116D41452CB3234000F55A08 /* PokerGame.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -460,7 +460,7 @@
 			files = (
 				116D41492CB326DB00F55A08 /* MockVideoPokerGame.swift in Sources */,
 				116D41442CB322A200F55A08 /* VideoPokerViewModel.swift in Sources */,
-				116D41462CB3234000F55A08 /* VideoPoker.swift in Sources */,
+				116D41462CB3234000F55A08 /* PokerGame.swift in Sources */,
 				116D41622CB3352A00F55A08 /* CardColor.swift in Sources */,
 				116D415E2CB32FB100F55A08 /* CardFactory.swift in Sources */,
 				11B172302CCA0FE300769A87 /* HandEvaluation.swift in Sources */,

@@ -9,104 +9,151 @@ import Foundation
 
 
 final class VideoPokerViewModel: ObservableObject {
-  
-  private let videoPoker: VideoPoker
   private let repository: PlayerDataRepository
+  private let videoPoker: PokerGame
   private let videoPokerStateManager: VideoPokerStateManager
-
+  
+  @Published private(set) var playerData: PlayerData
   @Published var betInput: String = ""
-  @Published var currentBet: Int? = nil
-  @Published var currentHand: [Card] = []
-  @Published var dailyWinningHistory: Set<Date>
-  @Published var expertMode: Bool
-  @Published var handName: String = ""
-  @Published var lastSevenDays: [DayWinningStatus] = []
-  @Published var laterality: Laterality
+  @Published private(set) var currentHand: [Card] = []
   @Published var showPlayerInfo: Bool = false
   
+  var lastSevenDays: [(date: Date, hasWin: Bool)] {
+    let calendar = Calendar.current
+    let today = Date()
+    
+    return Array(
+      (0..<8)
+        .compactMap { dayOffset in
+          calendar.date(byAdding: .day, value: -dayOffset, to: today)
+        }
+        .filter { day in
+          day != today || playerData.hasWinningHand(on: day)
+        }
+        .map { day in
+          (date: day, hasWin: playerData.hasWinningHand(on: day))
+        }
+        .reversed()
+        .suffix(7)
+    )
+  }
+  
   var bestCardRank: String {
-    guard let bestCardRank = videoPoker.currentPlayerData.bestCardRank else { return "Unknown" }
-    return bestCardRank.name
+    playerData.bestCardRank?.name ?? "Unknown"
   }
   
   var bestHandRank: String {
-    guard let bestHandRank = videoPoker.currentPlayerData.bestHandRank else { return "Unknown" }
-    return bestHandRank.name
+    playerData.bestHandRank?.name ?? "Unknown"
   }
   
   var bestHandDate: Date? {
-    videoPoker.currentPlayerData.bestHandDate
+    playerData.bestHandDate
   }
   
   var biggestWin: String {
-    guard let biggestWin = videoPoker.currentPlayerData.biggestWin else { return "Unknown" }
+    guard let biggestWin = playerData.biggestWin else { return "Unknown" }
     return String(biggestWin)
   }
   
   var biggestWinDate: Date? {
-    videoPoker.currentPlayerData.biggestWinDate
+    playerData.biggestWinDate
   }
   
   var currentBetString: String {
-    guard let currentBet = videoPoker.currentPlayerData.currentBet else { return "Unknown" }
+    guard let currentBet = playerData.currentBet else { return "Unknown" }
     return String(currentBet)
   }
   
+  var expertMode: Bool {
+    get { playerData.expertMode ?? false }
+    set {
+      var updatedData = playerData
+      updatedData.expertMode = newValue
+      playerData = updatedData
+      repository.savePlayerData(playerData)
+    }
+  }
+  
   var firstWinningHandDate: Date? {
-    videoPoker.currentPlayerData.firstWinningHandDate
+    playerData.firstWinningHandDate
   }
   
-  var isBetSet: Bool {
-    videoPoker.currentPlayerData.currentBet != nil
-  }
-  
-  var language: String {
-    videoPoker.currentPlayerData.language ?? String()
-  }
-  
-  var pokerLevel: PokerLevel {
-    PlayerLevelDetermination.determinePlayerLevel(playerData: videoPoker.currentPlayerData)
-  }
-  
-  var successfulBets: Int {
-    videoPoker.currentPlayerData.successfulBets
-  }
-  
-  var totalBets: Int {
-    videoPoker.currentPlayerData.totalBets
-  }
-  
-  var totalHandsPlayed: Int {
-    videoPoker.currentPlayerData.totalHandsPlayed
-  }
-  
-  var totalPoints: Int {
-    videoPoker.currentPlayerData.totalPoints
-  }
-  
-  var winningHands: Int {
-    videoPoker.currentPlayerData.winningHands
-  }
-  
-  var winnings: Int {
-    videoPoker.winnings
+  var handName: String {
+    videoPoker.getHandName()
   }
   
   var handState: HandState {
     videoPokerStateManager.currentState
   }
   
-  init(videoPoker: VideoPoker, repository: PlayerDataRepository, videoPokerStateManager: VideoPokerStateManager) {
-    self.dailyWinningHistory = videoPoker.currentPlayerData.dailyWinningHistory
-    self.videoPoker = videoPoker
+  var isBetSet: Bool {
+    playerData.currentBet != nil
+  }
+  
+  var language: String {
+    playerData.language ?? String()
+  }
+  
+  var laterality: Laterality {
+    get { playerData.laterality ?? .right }
+    set {
+      var updatedData = playerData
+      updatedData.laterality = newValue
+      playerData = updatedData
+      repository.savePlayerData(playerData)
+    }
+  }
+  
+  var pokerLevel: PokerLevel {
+    PlayerLevelDetermination.determinePlayerLevel(playerData: playerData)
+  }
+  
+  var successfulBets: Int {
+    playerData.successfulBets
+  }
+  
+  var totalBets: Int {
+    playerData.totalBets
+  }
+  
+  var totalHandsPlayed: Int {
+    playerData.totalHandsPlayed
+  }
+  
+  var totalPoints: Int {
+    playerData.totalPoints
+  }
+  
+  var winningHands: Int {
+    playerData.winningHands
+  }
+  
+  var winnings: Int {
+    videoPoker.winnings
+  }
+  
+  init(videoPoker: PokerGame, repository: PlayerDataRepository) {
     self.repository = repository
-    self.videoPokerStateManager = videoPokerStateManager
-
-    self.expertMode = videoPoker.currentPlayerData.expertMode ?? false
-    self.laterality = videoPoker.currentPlayerData.laterality ?? .right
-
-    loadSavedGame()
-    loadLastSevenDays()
+    self.videoPoker = videoPoker
+    self.videoPokerStateManager = VideoPokerStateManager(initialState: .initializing)
+    self.playerData = repository.loadPlayerData()
+  }
+  
+  func setBet(_ bet: String) {
+    guard let betValue = Int(bet) else { return }
+    let validBet = min(max(betValue, 1), playerData.totalPoints)
+    
+    playerData.currentBet = validBet
+    repository.savePlayerData(playerData)
+    
+    betInput = ""
+    updateInfos()
+    
+    guard videoPokerStateManager.currentState == .initializing else {
+      return
+    }
+    
+    videoPokerStateManager.transition(to: .finalHand, isBetSet)
   }
   
   func exchangeSelectedCards(indices: [Int]) {
@@ -117,43 +164,11 @@ final class VideoPokerViewModel: ObservableObject {
       return
     }
     
-    videoPoker.exchangeCards(indices: indices)
-    videoPoker.evaluateAndStoreHand()
-    updateInfosAndSaveGame()
+    currentHand = videoPoker.exchangeCards(indices: indices)
+    videoPoker.evaluateAndStoreHand(playerData: &playerData)
+    repository.savePlayerData(playerData)
+    updateInfos()
     videoPokerStateManager.transition(to: .finalHand, isBetSet)
-  }
-  
-  func loadSavedGame() {
-    guard let loadedPlayerData = repository.loadPlayerData() else { return }
-    videoPoker.currentPlayerData = loadedPlayerData
-  }
-
-  func loadLastSevenDays() {
-    let calendar = Calendar.current
-    var days: [DayWinningStatus] = []
-    for i in 0..<7 {
-      if let day = calendar.date(byAdding: .day, value: -i, to: Date()) {
-        let hasWinningHand = videoPoker.currentPlayerData.dailyWinningHistory.contains(where: { calendar.isDate($0, inSameDayAs: day) })
-        days.append(DayWinningStatus(date: day, hasWinningHand: hasWinningHand))
-      }
-    }
-    lastSevenDays = days.reversed()
-  }
-  
-  func setBet(_ bet: String) {
-    guard let betValue = Int(bet) else { return }
-    currentBet = min(max(betValue, 1), videoPoker.currentPlayerData.totalPoints)
-    videoPoker.currentPlayerData.currentBet = currentBet
-    betInput = ""
-    updateInfosAndSaveGame()
-    
-    guard
-      videoPokerStateManager.currentState == .initializing
-    else {
-      return
-    }
-    
-    videoPokerStateManager.currentState = .finalHand
   }
   
   func startNewRound() {
@@ -164,21 +179,19 @@ final class VideoPokerViewModel: ObservableObject {
       return
     }
     
-    videoPoker.pay()
-    updateInfosAndSaveGame()
+    videoPoker.pay(playerData: &playerData)
+    repository.savePlayerData(playerData)
+    updateInfos()
     videoPokerStateManager.transition(to: .initialHand, isBetSet)
   }
   
-  private func updateInfosAndSaveGame() {
+  private func updateInfos() {
     currentHand = videoPoker.currentHand
-    handName = videoPoker.getHandName()
-    repository.savePlayerData(videoPoker.currentPlayerData)
-    loadLastSevenDays()
   }
 }
 
+// MARK: - Date Formatting
 extension VideoPokerViewModel {
-  
   private var dateFormatter: DateFormatter {
     let formatter = DateFormatter()
     formatter.dateStyle = .full
@@ -198,10 +211,10 @@ extension VideoPokerViewModel {
   }
   
   func dayForDate(_ date: Date) -> Day {
-      let calendar = Calendar.current
-      let weekday = calendar.component(.weekday, from: date)
-      
-      switch weekday {
+    let calendar = Calendar.current
+    let weekday = calendar.component(.weekday, from: date)
+    
+    switch weekday {
       case 1: return .sunday
       case 2: return .monday
       case 3: return .tuesday
@@ -210,6 +223,6 @@ extension VideoPokerViewModel {
       case 6: return .friday
       case 7: return .saturday
       default: fatalError("Invalid day")
-      }
+    }
   }
 }

@@ -7,13 +7,13 @@
 
 
 class VideoPokerStateManager {
-  var currentState: HandState = .initializing
+  private(set) var currentState: HandState = .initializing
   
   init(initialState: HandState) {
     self.currentState = initialState
   }
   
-  func canTransition(to newState: HandState, _ isBetSet: Bool) -> Bool {
+  private func canTransition(to newState: HandState, _ isBetSet: Bool) -> Bool {
     guard isBetSet else { return false }
     return switch (currentState, newState) {
       case (.initializing, .initialHand):

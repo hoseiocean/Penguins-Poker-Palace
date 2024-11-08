@@ -7,6 +7,6 @@
 
 
 protocol PlayerDataRepository {
-  func loadPlayerData() -> PlayerData?
+  func loadPlayerData() -> PlayerData
   func savePlayerData(_ playerData: PlayerData)
 }

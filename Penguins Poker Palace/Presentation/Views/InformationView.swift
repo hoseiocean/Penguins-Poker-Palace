@@ -30,11 +30,11 @@ struct InformationView: View {
         
         Section(header: Text("info_last_7_days")) {
           HStack(alignment: .bottom) {
-            ForEach(viewModel.lastSevenDays, id: \.self) { day in
-              VStack(alignment: .center) {
-                Text(day.hasWinningHand ? "🐧" : "")
-                Text(viewModel.dayForDate(day.date).short)
-              }
+            ForEach(Array(viewModel.lastSevenDays.enumerated()), id: \.element.date) { _, day in
+                VStack(alignment: .center) {
+                    Text(day.hasWin ? "🐧" : "")
+                    Text(viewModel.dayForDate(day.date).short)
+                }
             }
             .frame(maxWidth: .infinity)
           }
@@ -114,8 +114,8 @@ struct InformationView: View {
     winningHands: 30
   )
   
-  let testGame = VideoPoker(deck: Deck(), playerData: testPlayerData)
-  let testViewModel = VideoPokerViewModel(videoPoker: testGame, repository: UserDefaultsPlayerDataRepository(), videoPokerStateManager: .init(initialState: .initializing))
+  let testGame = PokerGame(deck: Deck())
+  let testViewModel = VideoPokerViewModel(videoPoker: testGame, repository: UserDefaultsPlayerDataRepository())
   
   InformationView(viewModel: testViewModel)
 }
